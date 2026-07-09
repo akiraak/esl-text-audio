@@ -2,6 +2,12 @@
 
 ## 2026-07-09
 
+- [x] About CEFR Levels のページの文字が画面からはみ出しているので修正
+  - 原因は8列の巨大な表（`docs/specs/esl-level-spec.md`の「CEFR Level Definitions」）が画面幅に収まらないこと
+  - `lib/site.js`の`renderLevels()`で表をパースし、レベル1件=1カードの縦積み表示（2列グリッド、640px未満は1列）に変更。値は引き続きspecファイルから読み取るため二重管理にならない
+  - Notesは開発ワークフロー向けの原文（`config.md`等への言及）ではなく、サイト訪問者（学習者）向けの説明文に書き換え
+  - 汎用の`table`CSSにも横スクロールのフォールバックを追加（将来幅広の表が増えた場合の保険）
+
 - [x] webの横幅をもっと広くする（[archived plan](docs/plans/archive/widen-web-layout.md)）
   - `lib/site.js`の`layout()`内`body`の`max-width`を`760px`→`1000px`に変更（全ページ共通のレイアウトなので1箇所の変更で反映）
   - `npm start`・`npm run build`双方の出力で`max-width: 1000px`が反映されていることを確認

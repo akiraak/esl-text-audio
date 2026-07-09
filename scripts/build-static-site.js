@@ -40,14 +40,11 @@ function build() {
     const detail = site.renderTextDetail(basePath, id);
     writeHtml(`texts/${id}`, detail.title, detail.body);
 
-    for (const version of site.listVersions(id, 'articles')) {
-      const rendered = site.renderArticle(basePath, id, version);
-      writeHtml(`texts/${id}/article/${version}`, rendered.title, rendered.body);
-    }
-
-    for (const version of site.listVersions(id, 'outlines')) {
-      const rendered = site.renderOutline(basePath, id, version);
-      writeHtml(`texts/${id}/outline/${version}`, rendered.title, rendered.body);
+    for (const tier of site.TIERS) {
+      for (const version of site.listOutlineVersions(id, tier)) {
+        const rendered = site.renderOutline(basePath, id, tier, version);
+        writeHtml(`texts/${id}/outline/${tier}/${version}`, rendered.title, rendered.body);
+      }
     }
 
     for (const filename of site.listSources(id)) {
@@ -55,14 +52,24 @@ function build() {
       writeHtml(`texts/${id}/sources/${filename}`, rendered.title, rendered.body);
     }
 
-    const imagesDir = path.join(site.TEXTS_DIR, id, 'images');
-    if (fs.existsSync(imagesDir)) {
-      const outImagesDir = path.join(OUT_DIR, 'texts', id, 'images');
-      fs.mkdirSync(outImagesDir, { recursive: true });
-      for (const file of fs.readdirSync(imagesDir)) {
-        const match = file.match(/^v(\d+)\.png$/);
-        if (!match) continue;
-        fs.copyFileSync(path.join(imagesDir, file), path.join(outImagesDir, `${match[1]}.png`));
+    for (const { variantId } of site.listVariants(id)) {
+      const variantDetail = site.renderVariantDetail(basePath, id, variantId);
+      writeHtml(`texts/${id}/${variantId}`, variantDetail.title, variantDetail.body);
+
+      for (const version of site.listArticleVersions(id, variantId)) {
+        const rendered = site.renderArticle(basePath, id, variantId, version);
+        writeHtml(`texts/${id}/${variantId}/article/${version}`, rendered.title, rendered.body);
+      }
+
+      const imagesDir = path.join(site.TEXTS_DIR, id, 'variants', variantId, 'images');
+      if (fs.existsSync(imagesDir)) {
+        const outImagesDir = path.join(OUT_DIR, 'texts', id, variantId, 'images');
+        fs.mkdirSync(outImagesDir, { recursive: true });
+        for (const file of fs.readdirSync(imagesDir)) {
+          const match = file.match(/^v(\d+)\.png$/);
+          if (!match) continue;
+          fs.copyFileSync(path.join(imagesDir, file), path.join(outImagesDir, `${match[1]}.png`));
+        }
       }
     }
   }

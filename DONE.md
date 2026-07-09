@@ -2,6 +2,21 @@
 
 ## 2026-07-09
 
+- [x] 分量3段階化（通常/長い/すごく長い）＋トピック単位の複数バリアント（レベル×分量）管理・選択の仕組み（[archived plan](docs/plans/archive/topic-variants-and-length-tiers.md)）
+  - Phase A: 分量3段階の語数テーブル確定（`docs/specs/esl-level-spec.md` を3段階テーブルに拡張、長文モードのしきい値を600語以上に統一）
+  - Phase B: ディレクトリ構造・ワークフロー再設計（`config.md`をトピック単位のみに整理、`outline.md`にレベル・分量確定とカスケード派生ロジックを追加、`generate.md`/`factcheck.md`/`illustrate.md`/`brushup.md`を新パス（`outlines/{tier}/`・`variants/{level}-{tier}/`）に対応）
+  - Phase C: 表示側の対応・既存サンプルの移行（`lib/site.js`にトピック→バリアントの階層構造を実装、`server.js`/`scripts/build-static-site.js`を新URL構成に更新、既存2サンプル（water-cycle→B1-normal、lost-while-traveling→A2-normal）を新ディレクトリ構成に移行）
+  - Phase D: 実地検証（新規トピック「ハチミツができるまで」で以下を確認、全項目PASS）
+    - `very-long`（C1、4000語弱）のアウトラインを先に作成し、`long`（2000語程度）→`normal`（1000語程度）と1段階ずつ間引いてカスケード派生させ、内容の一貫性を確認
+    - 同じ`normal`アウトラインからA1（109語）とC1（1010語）の2レベルを生成し、同じ構成のまま語彙・文法だけが書き分けられることを確認
+    - 低レベル×長い分量（A1×very-long、634語）を生成し、A1の限られた語彙でも単純な繰り返しにならない構成にできることを確認
+    - ローカルサーバー・静的ビルド両方でトピック一覧→バリアント一覧（レベル×分量マトリクス）→記事の階層ナビゲーションが機能することを確認
+    - 既存2サンプルが移行後も正しく表示されることを再確認
+  - 各バリアントの本文生成後、`factcheck.md`により事実確認を実施（懐疑的ファクトチェッカー・簡略化セーフティチェッカーの観点で、統計値の因果関係の混同や未検証の行動記述など数件の指摘を検出・修正）
+  - 全5バリアントでイラスト生成（`illustrate.md`）まで実施し、レベル・分量に応じて描き分けられることを確認
+
+## 2026-07-09
+
 - [x] Webのデザインを入れる（[archived plan](docs/plans/archive/web-design-candidates.md)）
   - Phase 1〜4: `lib/design-themes.js` に5デザイン案（Minimal / Editorial / Card / Dark / Playful）を実装し、
     `server.js` に `?design=` クエリでの切り替えと `/designs` 比較ページを追加。実データ（water-cycle等）を使って

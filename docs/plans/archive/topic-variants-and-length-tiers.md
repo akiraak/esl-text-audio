@@ -134,11 +134,11 @@ texts/{topic-slug}-{timestamp}/
 
 ### Phase C: 表示側の対応・既存サンプルの移行
 
-- [ ] `lib/site.js` にトピック→バリアントの階層構造（一覧・詳細・記事・アウトラインページ）を実装
-- [ ] `server.js` のルーティングを新URL構成に更新
-- [ ] `scripts/build-static-site.js` を新URL構成に合わせて更新
-- [ ] 既存2サンプル（`water-cycle-*`, `lost-while-traveling-*`）を新ディレクトリ構成に移行
-- [ ] CSSでバリアント一覧・アウトライン tier一覧が既存デザインと馴染むことを確認
+- [x] `lib/site.js` にトピック→バリアントの階層構造（一覧・詳細・記事・アウトラインページ）を実装
+- [x] `server.js` のルーティングを新URL構成に更新
+- [x] `scripts/build-static-site.js` を新URL構成に合わせて更新
+- [x] 既存2サンプル（`water-cycle-*`, `lost-while-traveling-*`）を新ディレクトリ構成に移行
+- [x] CSSでバリアント一覧・アウトライン tier一覧が既存デザインと馴染むことを確認
 
 ### Phase D: 実地検証
 

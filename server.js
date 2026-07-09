@@ -5,6 +5,7 @@ const matter = require('gray-matter');
 const { marked } = require('marked');
 
 const TEXTS_DIR = path.join(__dirname, 'texts');
+const LEVEL_SPEC_PATH = path.join(__dirname, 'docs', 'specs', 'esl-level-spec.md');
 const PORT = process.env.PORT || 3020;
 
 const app = express();
@@ -44,6 +45,9 @@ function layout(title, body) {
   nav.back { margin-bottom: 1.5rem; }
   section.block { margin: 2rem 0; padding-top: 1rem; border-top: 1px solid #eee; }
   hr { border: none; border-top: 1px solid #eee; margin: 2rem 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; vertical-align: top; }
+  th { background: #f5f5f5; }
 </style>
 </head>
 <body>
@@ -83,6 +87,12 @@ function isValidId(id) {
   return /^[A-Za-z0-9._-]+$/.test(id) && fs.existsSync(path.join(TEXTS_DIR, id, 'config.json'));
 }
 
+function readLevelSpecSection() {
+  const raw = fs.readFileSync(LEVEL_SPEC_PATH, 'utf-8');
+  const match = raw.match(/## CEFR レベル定義\n([\s\S]*?)(?=\n## |$)/);
+  return match ? match[1].trim() : '';
+}
+
 function listAllTexts() {
   if (!fs.existsSync(TEXTS_DIR)) return [];
   return fs
@@ -113,9 +123,20 @@ app.get('/', (req, res) => {
 
   const body = `
   <h1>ESL生成テキスト一覧</h1>
+  <p><a href="/levels">レベル（CEFR）についての説明</a></p>
   ${texts.length === 0 ? '<p>まだ生成物がありません。</p>' : `<ul class="text-list">${items}</ul>`}
   `;
   res.send(layout('ESL生成テキスト一覧', body));
+});
+
+app.get('/levels', (req, res) => {
+  const section = readLevelSpecSection();
+  const body = `
+  <nav class="back"><a href="/">&larr; 一覧に戻る</a></nav>
+  <h1>レベル（CEFR）についての説明</h1>
+  <article>${marked.parse(section)}</article>
+  `;
+  res.send(layout('レベル（CEFR）についての説明', body));
 });
 
 app.get('/texts/:id', (req, res) => {

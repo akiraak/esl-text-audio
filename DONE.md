@@ -2,6 +2,11 @@
 
 ## 2026-07-08
 
+- [x] レベルについての説明ページを作る（[archived plan](docs/plans/archive/level-explanation-page.md)）
+  - Phase 1: `server.js` に `GET /levels` ルート追加。`docs/specs/esl-level-spec.md` の「CEFR レベル定義」セクションを抽出し `marked` でレンダリング、一覧ページにリンク追加
+  - Phase 2: `/levels` の表示・一覧ページからのリンク遷移・404ケースを実地確認、全項目PASS
+  - レベル定義の二重管理を避けるため、スペックファイルを都度読み込んで表示する方式（表の内容はサーバ側に複製しない）
+
 - [x] 生成したページを表示するWebサーバを作成（[archived plan](docs/plans/archive/text-viewer-server.md)）
   - Phase 1: `package.json` 作成・依存パッケージ導入（express, marked, gray-matter）、`.gitignore` に `node_modules/` 追加
   - Phase 2: `server.js` 実装（一覧ページ、詳細ページ、article/outline/sourcesの各バージョン表示ルーティング、404処理）

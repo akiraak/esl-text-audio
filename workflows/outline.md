@@ -29,7 +29,7 @@ ESL学習用テキスト生成フローの3番目のステップ（`requiresFact
 
 - 既に CEFR レベル（A1〜C2）が明示されていればそのまま採用する
 - 明示されていない場合は、利用者にとって分かりやすいよう「初級（A1-A2）/ 中級（B1-B2）/ 上級（C1-C2）」の3段階から選んでもらう
-- 3段階のいずれかが選ばれた場合、[esl-level-spec.md](../docs/specs/esl-level-spec.md) の「CEFR レベル定義」表を提示し、
+- 3段階のいずれかが選ばれた場合、[esl-level-spec.md](../docs/specs/esl-level-spec.md) の「CEFR Level Definitions」表を提示し、
   その中でどのレベルに近づけたいか（例: 中級なら B1 寄りか B2 寄りか）を確認する。利用者が「お任せ」であれば範囲の中央寄りを選ばず、
   レベル帯の低い方（初級なら A1、中級なら B1、上級なら C1）をデフォルトとする
 - 確定したら CEFR の6段階表記（例: `B1`）で保持する
@@ -37,7 +37,7 @@ ESL学習用テキスト生成フローの3番目のステップ（`requiresFact
 ### 4. 分量（長さ）の確定（このバリアントの）
 
 - 利用者に **通常 / 長い / すごく長い** の3段階（分量tier、`normal` / `long` / `very-long`）から選んでもらう。未指定時は「通常」をデフォルトとする
-- [esl-level-spec.md](../docs/specs/esl-level-spec.md) の「CEFR レベル定義」表から、手順3で確定したレベルの行×選択した分量tierの列を引き、`wordCountTarget`（語数目安）を確定する
+- [esl-level-spec.md](../docs/specs/esl-level-spec.md) の「CEFR Level Definitions」表から、手順3で確定したレベルの行×選択した分量tierの列を引き、`wordCountTarget`（語数目安）を確定する
 - 同表の「長文モード」節のルールに従い、`wordCountTarget` の下限が概ね600語以上なら `longForm: true`、未満なら `longForm: false` を自動的に確定する（利用者への個別確認は行わない）
 
 ### 5. レベル・ジャンルの整合確認
@@ -158,7 +158,7 @@ version: 1
 {
   "level": "B1",
   "tier": "normal",
-  "wordCountTarget": "300〜600語",
+  "wordCountTarget": "300-600 words",
   "longForm": false,
   "outlineTier": "normal",
   "outlineVersion": 1,
@@ -166,6 +166,8 @@ version: 1
 }
 ```
 
+- `wordCountTarget` は公開ビューアにそのまま表示されるため、[esl-level-spec.md](../docs/specs/esl-level-spec.md) の「CEFR Level Definitions」表の値を
+  英語表記（例: `"300-600 words"`, `"4000+ words"`）に変換して保存する（表中は既に英語表記なのでそのまま転記すればよい）
 - 保存先: `texts/{topic-slug}-{timestamp}/variants/{level}-{tier}/variant.json`
 - `tier` と `outlineTier` は基本的に同じ値になる（このバリアントがどの分量tierのアウトラインを使うか）
 - `outlineVersion` は手順10で承認された `outlines/{tier}/v{N}.md` の `N`

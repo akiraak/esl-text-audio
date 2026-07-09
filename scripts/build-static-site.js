@@ -40,13 +40,6 @@ function build() {
     const detail = site.renderTextDetail(basePath, id);
     writeHtml(`texts/${id}`, detail.title, detail.body);
 
-    for (const tier of site.TIERS) {
-      for (const version of site.listOutlineVersions(id, tier)) {
-        const rendered = site.renderOutline(basePath, id, tier, version);
-        writeHtml(`texts/${id}/outline/${tier}/${version}`, rendered.title, rendered.body);
-      }
-    }
-
     for (const filename of site.listSources(id)) {
       const rendered = site.renderSource(basePath, id, filename);
       writeHtml(`texts/${id}/sources/${filename}`, rendered.title, rendered.body);

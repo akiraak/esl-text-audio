@@ -2,6 +2,15 @@
 
 ## 2026-07-09
 
+- [x] Webの表示は全て英語にする（[archived plan](docs/plans/archive/web-display-english.md)）
+  - `lib/site.js`のUI文言（見出し・ナビ・ラベル・分量tierラベル等）を全て英語化、`layout()`の`lang`属性も`en`に変更
+  - source一覧のリンク文字列を生ファイル名からfrontmatterの`title`（既に英語）に変更
+  - outlineページ（企画メモ、内容が丸ごと日本語）を公開サイトから除去（`renderOutline`・`listOutlineVersions`削除、`server.js`のルート・`scripts/build-static-site.js`のビルドループを削除）。ファイル自体は`texts/`配下に残しワークフローも変更なし
+  - `docs/specs/esl-level-spec.md`の「CEFR レベル定義」セクションのみ英語化（`/levels`ページがそのまま表示するため）。他セクションはワークフロー専用の内部参照として日本語のまま維持
+  - 既存3トピック（how-honey-is-made、lost-while-traveling、water-cycle）の`config.json`（`topic`/`genre`）・`variant.json`（`wordCountTarget`）を英語に移行
+  - `workflows/config.md`・`workflows/outline.md`を更新し、今後生成する`topic`/`genre`/`wordCountTarget`は常に英語で保存するよう明記
+  - `npm start`でのローカル表示・`npm run build`の静的ビルド出力（`dist/`配下の全HTML）に日本語文字が残っていないことを実地確認
+
 - [x] 画像はトピックで１枚のみ生成し全バリアントで共有（[archived plan](docs/plans/archive/topic-level-single-illustration.md)）
   - `workflows/illustrate.md`にトピックの`images/`に既存イラストがあれば生成をスキップするロジックを追加し、保存先をバリアント配下からトピック直下`images/`に変更
   - `workflows/brushup.md`のイラスト再生成ステップを、再生成が全バリアントに影響する共有イラストである旨を明記する内容に更新

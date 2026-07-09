@@ -6,28 +6,28 @@ CEFR レベルごとの語彙・文長・語数の目安と、ESL読解に適し
 このファイルの値は生成物をレビューする際の判断基準（目安）であり、外部ツールでの厳密な語彙チェックを要求するものではない。
 Claude Code が本文執筆・レビュー時にこの表を参照し、レベルに見合っているか判断する。
 
-## CEFR レベル定義
+## CEFR Level Definitions
 
-| レベル | 語数目安: 通常 | 語数目安: 長い | 語数目安: すごく長い | 平均文長（words/sentence） | 語彙範囲の目安 | 使ってよい文法項目 | 避けるもの |
+| Level | Target Word Count: Normal | Target Word Count: Long | Target Word Count: Very Long | Avg. Sentence Length (words/sentence) | Vocabulary Range | Grammar Allowed | Avoid |
 |---|---|---|---|---|---|---|---|
-| A1 | 100〜150語 | 250〜350語 | 600語以上 | 5〜8語 | 最頻出500語程度（Oxford 3000 の A1帯：be動詞、基本代名詞、数・色・家族・日常動作の語彙） | 現在形（be動詞・一般動詞）、基本前置詞、単純な等位接続詞（and/but/so） | 従属節、受動態、時制の混在、句動詞、慣用句 |
-| A2 | 150〜300語 | 350〜600語 | 700語以上 | 8〜10語 | 最頻出1000語程度（Oxford 3000 の A1-A2帯） | 過去形、未来表現（will / be going to）、助動詞（can/must/should）、頻度副詞 | 現在完了、条件法、関係詞節、複雑な句動詞 |
-| B1 | 300〜600語 | 700〜1200語 | 1500語以上 | 10〜14語 | 2000語程度（Oxford 3000全域） | 現在完了、受動態（基本形）、条件法1（if + 現在形）、比較級・最上級、基本的な関係詞（who/which/that） | 条件法2/3、仮定法、複雑な倒置、専門的アカデミック語彙 |
-| B2 | 600〜1000語 | 1300〜2000語 | 2500語以上 | 14〜18語 | 3000〜4000語程度（Oxford 5000帯、一般的な句動詞・イディオムを含む） | 条件法2/3、関係詞節（省略含む）、使役動詞（have/get + O + done）、分詞構文の基本形 | 専門分野特有の術語、詩的・文学的な高度な比喩表現 |
-| C1 | 1000〜1500語 | 2000〜3000語 | 4000語以上 | 18〜22語 | 5000語以上、アカデミック語彙・抽象語彙を含む | 複雑な従属節の多重構造、仮定法、倒置構文、高度な談話標識（nevertheless, whereby 等） | 特になし（ネイティブ相当の高度な語彙・構文も許容） |
-| C2 | 1500語以上 | 3000語以上 | 6000語以上 | 制限なし | 制限なし（ネイティブレベル） | 制限なし | 特になし |
+| A1 | 100-150 words | 250-350 words | 600+ words | 5-8 words | ~500 most frequent words (Oxford 3000 A1 band: be-verbs, basic pronouns, numbers/colors/family/daily-action vocabulary) | Present tense (be-verbs, simple verbs), basic prepositions, simple coordinating conjunctions (and/but/so) | Subordinate clauses, passive voice, mixed tenses, phrasal verbs, idioms |
+| A2 | 150-300 words | 350-600 words | 700+ words | 8-10 words | ~1000 most frequent words (Oxford 3000 A1-A2 band) | Past tense, future expressions (will / be going to), modal verbs (can/must/should), frequency adverbs | Present perfect, conditionals, relative clauses, complex phrasal verbs |
+| B1 | 300-600 words | 700-1200 words | 1500+ words | 10-14 words | ~2000 words (full Oxford 3000) | Present perfect, basic passive voice, first conditional (if + present tense), comparatives/superlatives, basic relative pronouns (who/which/that) | 2nd/3rd conditionals, subjunctive mood, complex inversion, specialized academic vocabulary |
+| B2 | 600-1000 words | 1300-2000 words | 2500+ words | 14-18 words | ~3000-4000 words (Oxford 5000 band, including common phrasal verbs/idioms) | 2nd/3rd conditionals, relative clauses (including reduced forms), causative verbs (have/get + O + done), basic participial phrases | Field-specific terminology, highly literary/poetic figurative language |
+| C1 | 1000-1500 words | 2000-3000 words | 4000+ words | 18-22 words | 5000+ words, including academic/abstract vocabulary | Multiple layers of complex subordinate clauses, subjunctive mood, inversion, advanced discourse markers (nevertheless, whereby, etc.) | None in particular (native-level advanced vocabulary/structures allowed) |
+| C2 | 1500+ words | 3000+ words | 6000+ words | No limit | No limit (native level) | No limit | None in particular |
 
-補足:
-- 「語数目安」はテキスト全体（本文のみ、タイトル除く）のおおよその語数レンジ。**通常 / 長い / すごく長い の3段階（分量tier）**から選ぶ。
-  `long-form-article-structure.md` にあったような自由記述での語数上書きは廃止し、この3段階のいずれかを選ぶ方式に統一する
-  （詳細な運用は [topic-variants-and-length-tiers.md](../plans/topic-variants-and-length-tiers.md) を参照）。
-- 「長い」は「通常」の概ね2倍、「すごく長い」は概ね4〜5倍を目安にした値（丸めた数値。実際に運用しながら調整可）。
-- 語彙範囲は目安の名称として Oxford 3000 / Oxford 5000 を挙げているが、リスト自体の突き合わせは行わず、「その難易度帯の単語」という感覚的な基準として扱う。
-- レベルは6段階だが、`config.md` では利用者にとって分かりやすいよう「初級（A1-A2）/ 中級（B1-B2）/ 上級（C1-C2）」の3段階からまず選んでもらい、必要なら詳細レベルを追加で確認する運用でもよい。
-- **レベル（語彙・文法の難度）と分量（テキストの長さ）は独立したパラメータ**。分量（通常/長い/すごく長い）はレベルに関わらず自由に選べる
-  （例: A1の易しい語彙のまま「すごく長い」を選んだ長い物語、C1の難しい語彙のまま「通常」の短い文章、なども可能）。
-  ただし「平均文長（words/sentence）」「語彙範囲」「使ってよい文法項目」はレベルそのものの定義であり、分量を変えても変わらない
-  - 低レベル×長い分量の場合、限られた語彙・文法の範囲内で長さを確保する必要があるため、単純な繰り返しにならないよう出来事や描写を積み重ねる構成にする（アウトライン作成時に調整）
+Notes:
+- "Target word count" is the approximate word-count range for the entire text (body only, excluding the title). Choose one of **three length tiers: Normal / Long / Very Long**.
+  The free-form word-count override that existed in `long-form-article-structure.md` has been removed in favor of this fixed 3-tier system
+  (see [topic-variants-and-length-tiers.md](../plans/topic-variants-and-length-tiers.md) for details).
+- "Long" is roughly 2x "Normal", and "Very Long" is roughly 4-5x "Normal" (rounded figures, adjustable based on real usage).
+- Oxford 3000 / Oxford 5000 are cited as reference names for the vocabulary range, but no actual list matching is performed; treat them as an intuitive sense of "words at that difficulty band."
+- There are 6 levels, but for the user's convenience `config.md` may first offer a simpler 3-way choice — "Beginner (A1-A2) / Intermediate (B1-B2) / Advanced (C1-C2)" — and confirm the specific level afterward if needed.
+- **Level (vocabulary/grammar difficulty) and length (text length) are independent parameters.** The length tier (Normal/Long/Very Long) can be freely chosen regardless of level
+  (e.g., a long "Very Long" story using only easy A1 vocabulary, or a short "Normal" text using difficult C1 vocabulary, are both valid).
+  However, "average sentence length," "vocabulary range," and "grammar allowed" are defined by the level itself and do not change with length.
+  - For a low level combined with a long length, the text must reach the target length within a limited vocabulary/grammar range, so outlines should stack up events and descriptions rather than relying on simple repetition (adjust this during outline creation)
 
 ## ESL読解に適した文章形式（ジャンル）
 

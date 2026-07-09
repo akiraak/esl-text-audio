@@ -26,15 +26,6 @@ app.get('/texts/:topicId', (req, res) => {
   res.send(site.layout(rendered.title, rendered.body));
 });
 
-app.get('/texts/:topicId/outline/:tier/:version', (req, res) => {
-  const rendered = site.renderOutline(BASE_PATH, req.params.topicId, req.params.tier, req.params.version);
-  if (!rendered) {
-    const { title, body } = site.render404(BASE_PATH);
-    return res.status(404).send(site.layout(title, body));
-  }
-  res.send(site.layout(rendered.title, rendered.body));
-});
-
 app.get('/texts/:topicId/sources/:filename', (req, res) => {
   const rendered = site.renderSource(BASE_PATH, req.params.topicId, req.params.filename);
   if (!rendered) {

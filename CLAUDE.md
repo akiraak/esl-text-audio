@@ -10,6 +10,61 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 このリポジトリにはまだコードが存在しません(LICENSE と README のみ)。ビルド・Lint・テストコマンドやアーキテクチャは、実装が追加され次第このファイルに追記してください。
 
+## ESL学習用テキスト生成の仕組み
+
+読解用テキストの生成は、LLM API を直接呼ぶコードとしてではなく、**Claude Code 自身が `workflows/*.md` の指示に従って対話的に生成する方式**を取る
+（`~/git-art` の outline → generate → brushup、`~/deep-pulse` のプラン作成 → 本文生成 → ファクトチェックという多段プロセスを踏襲）。
+詳細な設計は [docs/plans/esl-text-generation.md](docs/plans/esl-text-generation.md) を参照。
+
+### ディレクトリ構成
+
+```
+esl-text-audio/
+├── docs/
+│   └── specs/
+│       └── esl-level-spec.md   # CEFRレベル別の語彙・文長・語数、文章形式（ジャンル）・事実チェック方針の定義
+├── workflows/
+│   ├── config.md       # トピック・英語レベルなど生成条件の収集
+│   ├── research.md      # 事実チェック対象ジャンルの場合の外部資料収集
+│   ├── outline.md       # アウトライン（構成案）作成・承認
+│   ├── generate.md      # 本文生成
+│   ├── factcheck.md     # 生成した本文と外部資料の突き合わせ・修正
+│   └── brushup.md       # フィードバックに基づく調整・再生成
+├── personas/             # 生成・チェック時に使うAIペルソナ定義（1ペルソナ1ファイル）
+└── texts/                # 生成物（gitignore 対象、ローカルにのみ保存）
+    └── {topic-slug}-{YYYYMMDD-HHMMSS}/
+        ├── config.json
+        ├── sources/      # 事実チェック対象ジャンルの場合のみ作成
+        ├── outlines/
+        │   └── v1.md, v2.md, ...
+        └── articles/
+            └── v1.md, v2.md, ...
+```
+
+- outline / article はバージョン管理し、brushup のたびに新しいバージョンとして保存する（既存バージョンは直接編集しない）。article のバージョン番号は生成元 outline のバージョン番号に合わせる
+- レベル別の語彙・文長・語数の目安、ESL読解に適した文章形式（ジャンル）、事実チェック方針は [docs/specs/esl-level-spec.md](docs/specs/esl-level-spec.md) に一元化し、各 `workflows/*.md` はこのファイルを参照する
+
+### ワークフロー一覧（実行順）
+
+1. `workflows/config.md` — トピック・英語レベル・形式（ジャンル）を収集し、事実チェック要否を判定して `config.json` に保存
+2. `workflows/research.md` — `requiresFactCheck: true` の場合のみ、外部資料を `sources/` に保存
+3. `workflows/outline.md` — アウトラインを作成し利用者の承認を得る（`outlines/v{N}.md`）
+4. `workflows/generate.md` — 承認済みアウトラインから本文を生成する（`articles/v{N}.md`）
+5. `workflows/factcheck.md` — `requiresFactCheck: true` の場合のみ、本文と `sources/` を突き合わせて事実面を修正
+6. `workflows/brushup.md` — フィードバックに基づき新バージョンとして調整・再生成
+
+トピックと英語レベルだけが送られてきた場合は、上記フローに沿って `config.md` から開始し、`research.md` と `factcheck.md` は `requiresFactCheck` の値に応じてスキップしながら `outline.md` → `generate.md` → （`factcheck.md`）と進める。
+
+### レベル・ジャンル・事実チェック方針
+
+CEFR レベル（A1〜C2）ごとの語彙・文長・語数の目安とジャンル別の適性レベル帯は [docs/specs/esl-level-spec.md](docs/specs/esl-level-spec.md) を参照。
+事実チェックは物語・対話文など明らかにフィクションとわかるジャンルは対象外、それ以外（説明文・手順文・説明的文章・日記/手紙/メール・ニュース記事風・意見文/エッセイ）は対象とする。
+ただし、対象ジャンルでも利用者が「架空の人物・場所を扱うフィクションである」と明示した場合は対象外にできる（理由は `config.json` に記録する）。
+
+### AIペルソナ
+
+本文生成・チェックの各段階で異なる視点を持たせるためのペルソナ定義を [personas/](personas/README.md) に用意している。各 `workflows/*.md` は該当する `personas/*.md` を参照してそのペルソナとして振る舞う。
+
 <!-- vibeboard:begin -->
 ## 開発管理画面 (vibeboard)
 

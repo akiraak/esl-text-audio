@@ -1,5 +1,29 @@
 # DONE
 
+## 2026-07-09
+
+- [x] GitHub Pages にテキストを公開する仕組みを作る（[archived plan](docs/plans/archive/github-pages-static-site.md)）
+  - Phase 1: `server.js` のHTML組み立てロジックを `lib/site.js` に切り出し、全リンク・画像srcを `basePath` 引数付きの
+    `href()` ヘルパー経由で生成するように変更（GitHub Pagesのプロジェクトページはサブパス配下で配信されるため）。
+    `server.js` は `basePath=''` 固定で `lib/site.js` を呼ぶ薄いルーティングに書き換え
+  - Phase 2: `scripts/build-static-site.js` を作成。`texts/` 配下から `dist/`（gitignore対象）へ静的HTML一式・イラスト画像・
+    404ページを出力する。basePathは `PAGES_BASE_PATH` 環境変数、無ければ `GITHUB_REPOSITORY` から自動算出
+  - Phase 3: `.github/workflows/deploy-pages.yml` を作成。`main` へのpushで `npm run build` を実行し
+    `actions/upload-pages-artifact` + `actions/deploy-pages` でGitHub Pagesへデプロイ
+  - Phase 4: `.gitignore` から `texts/` を除外し、既存生成物（water-cycle, lost-while-traveling）をコミット対象化。
+    CLAUDE.mdの「生成物はローカルのみ保存」という記述を「公開対象」に更新
+  - Phase 5: `npm run build` の出力をローカルサーバ・静的ファイルサーバの両方で動作確認（日本語ファイル名のsourcesページ、
+    イラスト画像、404ページ含む）。README.mdに公開手順を追記
+  - 公開範囲: `texts/` 配下の生成物は基本的にすべて公開する方針（利用者確認済み）
+  - リポジトリ設定（Settings → Pages → Source: GitHub Actions）の有効化は利用者側の作業として案内
+
+- [x] `brushup.md` 実行時のイラスト再生成に対応する（[archived plan](docs/plans/archive/brushup-illustration-regeneration.md)）
+  - Phase 1: `workflows/brushup.md` に手順7「イラスト再生成の判断」を追加（旧手順7は手順8に繰り下げ）。本文修正が場面・雰囲気に
+    影響する場合のみ `illustrate.md` 手順2〜6を新バージョンに対して再実行する方針を明記。`workflows/illustrate.md` 手順7の
+    「自動化されていない」旨の記述をこの手順への参照に更新
+  - Phase 2: `server.js` に `resolveIllustrationVersion` を追加。イラストを再生成しなかった本文バージョンでは、直近の
+    旧バージョンの画像にフォールバック表示する（一覧・詳細・バージョン別ページで確認、画像が一つも無い場合は非表示のまま）
+
 ## 2026-07-08
 
 - [x] レベルについての説明ページを作る（[archived plan](docs/plans/archive/level-explanation-page.md)）

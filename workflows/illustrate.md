@@ -67,5 +67,5 @@ node scripts/generate-illustration.js texts/{topic-slug}-{timestamp} {N} texts/{
 ### 7. 次のワークフローへの案内
 
 - この時点でイラスト生成は完了。フィードバックがあれば [workflows/brushup.md](brushup.md) を実行する
-- `brushup.md` で本文が新バージョンとして更新された場合のイラスト再生成は現時点では自動化されていない。
-  必要であれば、新しい本文バージョンに対してこのワークフローの手順2〜6を改めて実行する
+- `brushup.md` で本文が新バージョンとして更新された場合のイラスト再生成は [workflows/brushup.md](brushup.md) 手順7で扱う
+  （本文の主題・場面・雰囲気に影響する修正があった場合のみ、このワークフローの手順2〜6に準じて新バージョンに対して再実行する）

@@ -1,5 +1,5 @@
 vibeboard/dist/
 vibeboard/node_modules/
-texts/
 node_modules/
+dist/
 .env

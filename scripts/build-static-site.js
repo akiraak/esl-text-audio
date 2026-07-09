@@ -60,16 +60,16 @@ function build() {
         const rendered = site.renderArticle(basePath, id, variantId, version);
         writeHtml(`texts/${id}/${variantId}/article/${version}`, rendered.title, rendered.body);
       }
+    }
 
-      const imagesDir = path.join(site.TEXTS_DIR, id, 'variants', variantId, 'images');
-      if (fs.existsSync(imagesDir)) {
-        const outImagesDir = path.join(OUT_DIR, 'texts', id, variantId, 'images');
-        fs.mkdirSync(outImagesDir, { recursive: true });
-        for (const file of fs.readdirSync(imagesDir)) {
-          const match = file.match(/^v(\d+)\.png$/);
-          if (!match) continue;
-          fs.copyFileSync(path.join(imagesDir, file), path.join(outImagesDir, `${match[1]}.png`));
-        }
+    const imagesDir = path.join(site.TEXTS_DIR, id, 'images');
+    if (fs.existsSync(imagesDir)) {
+      const outImagesDir = path.join(OUT_DIR, 'texts', id, 'images');
+      fs.mkdirSync(outImagesDir, { recursive: true });
+      for (const file of fs.readdirSync(imagesDir)) {
+        const match = file.match(/^v(\d+)\.png$/);
+        if (!match) continue;
+        fs.copyFileSync(path.join(imagesDir, file), path.join(outImagesDir, `${match[1]}.png`));
       }
     }
   }

@@ -51,18 +51,19 @@ esl-text-audio/
         │   ├── normal/v1.md, v2.md, ...
         │   ├── long/v1.md, ...
         │   └── very-long/v1.md, ...
+        ├── images/        # illustrate.md 実行後のみ作成。トピックにつき1枚を全バリアントで共有
+        │   └── v1.png, v1.prompt.txt, ...
         └── variants/      # レベル×分量tierの組み合わせ＝バリアント単位
             └── {level}-{tier}/            # 例: B1-normal, C1-long, A1-very-long
                 ├── variant.json           # level / tier / wordCountTarget / longForm / outlineTier / outlineVersion
-                ├── articles/v1.md, v2.md, ...
-                └── images/                # illustrate.md 実行後のみ作成
-                    └── v1.png, v1.prompt.txt, ...
+                └── articles/v1.md, v2.md, ...
 ```
 
 - outline（分量tier単位）・article（バリアント単位）はそれぞれ独立にバージョン管理し、brushup のたびに新しいバージョンとして保存する（既存バージョンは直接編集しない）
 - レベル（語彙・文法の難度）と分量tier（テキストの長さ、通常/長い/すごく長い）は独立した2軸。アウトラインは分量tierごとに1つ作り、同じtierを使う複数レベルのバリアントで共有する
   （詳細な設計は [docs/plans/topic-variants-and-length-tiers.md](docs/plans/topic-variants-and-length-tiers.md) を参照）
 - レベル別の語彙・文長・分量tier別語数の目安、ESL読解に適した文章形式（ジャンル）、長文モード、事実チェック方針は [docs/specs/esl-level-spec.md](docs/specs/esl-level-spec.md) に一元化し、各 `workflows/*.md` はこのファイルを参照する
+- イラストはバリアント単位ではなくトピック単位で1枚のみ生成し、全バリアントの記事ページで共有する（[docs/plans/archive/topic-level-single-illustration.md](docs/plans/archive/topic-level-single-illustration.md) を参照）
 
 ### ワークフロー一覧（実行順）
 
@@ -71,7 +72,7 @@ esl-text-audio/
 3. `workflows/outline.md` — バリアント（レベル×分量tier）ごとにレベル・分量を確定し、分量tier単位のアウトラインを作成・承認（`outlines/{tier}/v{N}.md`）。`variant.json` を保存
 4. `workflows/generate.md` — 承認済みアウトラインとバリアントの条件から本文を生成する（`variants/{level}-{tier}/articles/v{N}.md`）
 5. `workflows/factcheck.md` — `requiresFactCheck: true` の場合のみ、本文と `sources/` を突き合わせて事実面を修正
-6. `workflows/illustrate.md` — 確定した本文に対応するAI生成イラスト（GPT Image 2）を `scripts/generate-illustration.js` 経由で生成
+6. `workflows/illustrate.md` — 確定した本文に対応するAI生成イラスト（GPT Image 2）を `scripts/generate-illustration.js` 経由で生成。トピックにつき1枚のみ生成し、全バリアントで共有する（既に生成済みの場合はスキップ）
 7. `workflows/brushup.md` — フィードバックに基づき新バージョンとして調整・再生成（1バリアント単位で実行）
 
 トピックだけが送られてきた場合は、上記フローに沿って `config.md` から開始し、`research.md` と `factcheck.md` は `requiresFactCheck` の値に応じてスキップしながら `outline.md`（レベル・分量の確定を含む）→ `generate.md` → （`factcheck.md`）→ `illustrate.md` と進める。

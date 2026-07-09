@@ -2,6 +2,14 @@
 
 ## 2026-07-09
 
+- [x] 画像はトピックで１枚のみ生成し全バリアントで共有（[archived plan](docs/plans/archive/topic-level-single-illustration.md)）
+  - `workflows/illustrate.md`にトピックの`images/`に既存イラストがあれば生成をスキップするロジックを追加し、保存先をバリアント配下からトピック直下`images/`に変更
+  - `workflows/brushup.md`のイラスト再生成ステップを、再生成が全バリアントに影響する共有イラストである旨を明記する内容に更新
+  - `lib/site.js`のイラスト関連関数（`hasIllustration`/`illustrationBlock`）から`variantId`引数を除去し、常にトピックの最新バージョンを表示する`latestIllustrationVersion`に簡略化
+  - `server.js`の画像配信ルートを`/texts/:topicId/:variantId/images/:version.png`から`/texts/:topicId/images/:version.png`に変更、`scripts/build-static-site.js`の画像コピー処理をバリアントループの外に移動
+  - 既存3トピック（how-honey-is-made、lost-while-traveling、water-cycle）を新構成に移行し、バリアント配下の重複画像を削除
+  - `npm start`・`npm run build`双方で、同一トピックの複数バリアントページに同じ共有イラストが表示されることを実地確認
+
 - [x] 分量3段階化（通常/長い/すごく長い）＋トピック単位の複数バリアント（レベル×分量）管理・選択の仕組み（[archived plan](docs/plans/archive/topic-variants-and-length-tiers.md)）
   - Phase A: 分量3段階の語数テーブル確定（`docs/specs/esl-level-spec.md` を3段階テーブルに拡張、長文モードのしきい値を600語以上に統一）
   - Phase B: ディレクトリ構造・ワークフロー再設計（`config.md`をトピック単位のみに整理、`outline.md`にレベル・分量確定とカスケード派生ロジックを追加、`generate.md`/`factcheck.md`/`illustrate.md`/`brushup.md`を新パス（`outlines/{tier}/`・`variants/{level}-{tier}/`）に対応）

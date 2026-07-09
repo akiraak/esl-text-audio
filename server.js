@@ -62,17 +62,17 @@ app.get('/texts/:topicId/:variantId/article/:version', (req, res) => {
   res.send(site.layout(rendered.title, rendered.body));
 });
 
-app.get('/texts/:topicId/:variantId/images/:version.png', (req, res) => {
-  const { topicId, variantId, version } = req.params;
+app.get('/texts/:topicId/images/:version.png', (req, res) => {
+  const { topicId, version } = req.params;
   if (
-    !site.isValidVariantId(topicId, variantId) ||
+    !site.isValidId(topicId) ||
     !/^\d+$/.test(version) ||
-    !site.hasIllustration(topicId, variantId, version)
+    !site.hasIllustration(topicId, version)
   ) {
     const { title, body } = site.render404(BASE_PATH);
     return res.status(404).send(site.layout(title, body));
   }
-  res.type('image/png').sendFile(path.join(site.TEXTS_DIR, topicId, 'variants', variantId, 'images', `v${version}.png`));
+  res.type('image/png').sendFile(path.join(site.TEXTS_DIR, topicId, 'images', `v${version}.png`));
 });
 
 app.use((req, res) => {

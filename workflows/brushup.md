@@ -82,19 +82,22 @@ ESL学習用テキスト生成フローの7番目（最後）のステップ。[
 
 ### 8. イラスト再生成の判断
 
+- イラストはバリアントごとではなく**トピックで1枚を全バリアントが共有**している（[workflows/illustrate.md](illustrate.md) 参照）。
+  ここで再生成すると、このトピックの**他のバリアントで表示されるイラストも変わる**ことを利用者に伝えたうえで判断する
 - 手順3a/3bでの修正が記事の主題・キーとなる場面・雰囲気に影響するか判断する
-  - 影響する場合: イラストの再生成を利用者に提案し、意向を確認する
+  - 影響する場合: イラストの再生成を利用者に提案し、他バリアントにも影響する旨を伝えたうえで意向を確認する
   - 語彙・言い回しレベルの軽微な修正のみで場面・トーンに変化がない場合: 再生成不要と判断してよい（迷う場合は利用者に確認する）
-- 利用者が再生成を希望する場合、[personas/esl-writer.md](../personas/esl-writer.md) のペルソナのまま
-  [workflows/illustrate.md](illustrate.md) 手順2〜6を、確定した新しい本文バージョン `variants/{level}-{tier}/articles/v{N+1}.md` に対して実行する
-  - プロンプト保存先: `variants/{level}-{tier}/images/v{N+1}.prompt.txt`
-  - 生成コマンド: `node scripts/generate-illustration.js texts/{topic-slug}-{timestamp}/variants/{level}-{tier} {N+1} texts/{topic-slug}-{timestamp}/variants/{level}-{tier}/images/v{N+1}.prompt.txt`
-- 再生成しない場合は何もしない。`variants/{level}-{tier}/images/v{N+1}.*` は作成せず、既存の直近バージョンのイラストをそのまま使う
-  （ビューアは該当バージョンの画像が無い場合、直近の旧バージョンの画像にフォールバックして表示する）
+- 利用者が再生成を希望する場合、`texts/{topic-slug}-{timestamp}/images/` の既存バージョンを確認し、次の番号 M
+  （既存の最大バージョン+1）を決めたうえで、[personas/esl-writer.md](../personas/esl-writer.md) のペルソナのまま
+  [workflows/illustrate.md](illustrate.md) 手順3〜7に準じて、確定した新しい本文バージョン `variants/{level}-{tier}/articles/v{N+1}.md` を題材に実行する
+  - プロンプト保存先: `texts/{topic-slug}-{timestamp}/images/v{M}.prompt.txt`
+  - 生成コマンド: `node scripts/generate-illustration.js texts/{topic-slug}-{timestamp} {M} texts/{topic-slug}-{timestamp}/images/v{M}.prompt.txt`
+- 再生成しない場合は何もしない。`images/v{M}.*` は作成せず、既存の最新バージョンのイラストをそのまま全バリアントで使い続ける
 
 ### 9. 保存・報告
 
 - 保存先: `variants/{level}-{tier}/articles/v{N+1}.md`（構成変更を伴った場合は対応する `outlines/{outlineTier}/v{outlineVersion+1}.md` も、
-  イラストを再生成した場合は `variants/{level}-{tier}/images/v{N+1}.png` と `variants/{level}-{tier}/images/v{N+1}.prompt.txt` も）
-- 利用者に保存したバージョンと変更内容を報告する。手順4で他バリアント・他tierへの反映を行った場合はその内容も併せて報告する
+  イラストを再生成した場合はトピック直下の `images/v{M}.png` と `images/v{M}.prompt.txt` も）
+- 利用者に保存したバージョンと変更内容を報告する。手順4で他バリアント・他tierへの反映を行った場合、イラストを再生成した場合は
+  他バリアントの表示にも影響する旨を併せて報告する
 - 追加のフィードバックがあれば、この [workflows/brushup.md](brushup.md) を再度実行する

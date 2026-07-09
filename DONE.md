@@ -2,6 +2,12 @@
 
 ## 2026-07-09
 
+- [x] 印刷時に文字の色が薄くなる原因の調査を対応策を考える（[archived plan](docs/plans/archive/print-color-fade.md)）
+  - 原因: `lib/site.js`の画面用配色（本文`#2f2a3a`、見出し`#3d3560`、メタ情報`#7a7290`等）がいずれも純黒でなく、`@media print`用の上書きも無かったため、印刷パイプラインの省インク補正・CMYK変換でさらに薄く出ていた
+  - `layout()`の`<style>`に`@media print`ブロックを追加し、印刷時は本文・見出し・メタ情報・テーブル等の文字色を`#000`に強制、装飾用の背景色/box-shadowは白背景・グレー枠線に簡略化
+  - 手書きメモを書き込めるよう、`article`の枠線・paddingは印刷時のみ描画しない（`border: none; padding: 0;`）よう追加対応
+  - `server.js`・`scripts/build-static-site.js`共通の`lib/site.js`のみの変更のため両方に自動反映。`npm run build`で生成されたdist/index.htmlに`@media print`ブロックが正しく含まれることを確認
+
 - [x] トップページの記事一覧にサムネを表示（[archived plan](docs/plans/archive/top-page-thumbnails.md)）
   - `lib/site.js`の`renderIndex`で、トピックごとに`latestIllustrationVersion()`でイラストの有無を確認し、あれば`<li>`内に72x72のサムネイル画像を追加
   - `<li>`をflexレイアウト化（サムネ+テキスト情報を横並び）。イラスト未生成のトピックはサムネイル枠なしでテキストのみ従来通り表示

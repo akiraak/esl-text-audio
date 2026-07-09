@@ -41,6 +41,7 @@ ESL学習用テキスト生成フローの7番目（最後）のステップ。[
   追加しない。追加の資料収集が必要な場合は、その旨を利用者に伝え [workflows/research.md](research.md) に一度戻ることを提案する
 - 更新した outline を利用者に提示し承認を得る（[workflows/outline.md](outline.md) 手順10と同様、フィードバックがあれば繰り返す）
 - 承認された `outlines/{outlineTier}/v{N+1}.md` から、[workflows/generate.md](generate.md) 手順3〜6に準じて本文を再生成し、
+  [workflows/generate.md](generate.md) 手順8と同様に `aiModel`/`createdAt` の frontmatter を付けたうえで
   `variants/{level}-{tier}/articles/v{M+1}.md` として保存する（M はこのバリアントの直前の本文バージョン。outline のバージョン番号とは独立に採番する）
 - このバリアントの `variant.json` の `outlineVersion` を更新後のバージョン番号に更新する
 
@@ -49,7 +50,8 @@ ESL学習用テキスト生成フローの7番目（最後）のステップ。[
 - [personas/esl-writer.md](../personas/esl-writer.md) のペルソナで、フィードバックに沿って該当箇所を修正する
 - `requiresFactCheck: true` の場合、修正が事実に関わる記述に影響しないか確認する。影響する場合は `sources/` の根拠範囲内で修正し、
   新たな事実を書き加えない
-- outline 側は変更しないため `outlines/{outlineTier}/v{outlineVersion}.md` のバージョンは据え置き、修正後の本文のみ
+- outline 側は変更しないため `outlines/{outlineTier}/v{outlineVersion}.md` のバージョンは据え置き、修正後の本文のみ、
+  [workflows/generate.md](generate.md) 手順8と同様に `aiModel`/`createdAt` の frontmatter を付けたうえで
   `variants/{level}-{tier}/articles/v{N+1}.md` として新バージョンを保存する（既存バージョンは直接編集しない）
 
 ### 4. 他バリアント・他tierへの影響確認（手順3aで構成変更した場合のみ）

@@ -2,6 +2,13 @@
 
 ## 2026-07-09
 
+- [x] 記事に表示される内容を見やすくシンプルにする（[archived plan](docs/plans/archive/simplify-article-display.md)）
+  - 記事バージョンファイル（`variants/{level}-{tier}/articles/v{N}.md`）にYAML frontmatterで`aiModel`（生成に使ったAIモデル）・`createdAt`を記録する方式を追加し、既存8バージョンに後付け。`workflows/generate.md`・`workflows/brushup.md`を更新し今後の生成でも記録するよう明記
+  - `lib/site.js`に`breadcrumb()`ヘルパーを追加し、全ページの「戻る」リンク1本だけのナビを`Home > トピック > バリアント`形式のパンくずに統一
+  - `splitTitle()`で本文先頭の`# タイトル`を分離し、記事ページの表示順を「パンくず→タイトル→レベル/長さバッジ（別要素化）→作成者/作成日→イラスト→本文」に再構成（トピック名とレベル/長さを結合した二重タイトルを解消）
+  - `renderVariantDetail`から埋め込みの本文プレビューを削除し、本文を読む導線を`renderArticle`に一本化
+  - `npm start`でのローカル表示（index/levels/topic detail/variant detail/article/source/404の全ページ）と`npm run build`の静的ビルド出力を実地確認
+
 - [x] Webの表示は全て英語にする（[archived plan](docs/plans/archive/web-display-english.md)）
   - `lib/site.js`のUI文言（見出し・ナビ・ラベル・分量tierラベル等）を全て英語化、`layout()`の`lang`属性も`en`に変更
   - source一覧のリンク文字列を生ファイル名からfrontmatterの`title`（既に英語）に変更

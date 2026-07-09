@@ -66,7 +66,18 @@ ESL学習用テキスト生成フローの4番目のステップ。[personas/esl
 ### 8. articles/v{N}.md の保存
 
 - 保存先: `texts/{topic-slug}-{timestamp}/variants/{level}-{tier}/articles/v{N}.md`（N はこのバリアントの `articles/` 内で次に割り当てる番号。初回は1）
-- 内容は本文そのもの（タイトル＋本文、装飾的メタ情報なし）
+- ファイル先頭に YAML frontmatter で `aiModel`（このセッションで本文生成に使っているAIモデル名。例: `Claude Sonnet 5`）と
+  `createdAt`（保存時点のISO日時）を記録し、その後に本文（タイトル＋本文、装飾的メタ情報なし）を続ける
+
+```
+---
+aiModel: Claude Sonnet 5
+createdAt: "2026-07-09T08:23:23"
+---
+
+# タイトル
+本文...
+```
 
 ### 9. 次のワークフローへの案内
 

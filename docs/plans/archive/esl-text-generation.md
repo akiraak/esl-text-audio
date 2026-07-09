@@ -161,5 +161,21 @@ esl-text-audio/
 - [x] Phase 6: `workflows/outline.md` 作成（アウトライン作成・承認・バージョン管理、レベルと形式の整合確認、セクション別ソース記録、esl-writerペルソナ適用）
 - [x] Phase 7: `workflows/generate.md` 作成（本文生成・esl-level-spec.md に基づく適性チェックリスト反映、ソース参照執筆、esl-writer/learner-simulator/final-editorペルソナ適用）
 - [x] Phase 8: `workflows/factcheck.md` 作成（生成本文と `sources/` の突き合わせ・修正の反復、skeptical-fact-checker/simplification-safety-checker/final-editorペルソナ適用）
-- [ ] Phase 9: `workflows/brushup.md` 作成（フィードバック反映・再生成、事実に関わる修正時は factcheck 再実行、final-editorペルソナ適用）
-- [ ] Phase 10: サンプルトピックでの通し動作確認（テスト方針の実施、事実チェック対象・対象外の両パターン、各ペルソナの動作確認）
+- [x] Phase 9: `workflows/brushup.md` 作成（フィードバック反映・再生成、事実に関わる修正時は factcheck 再実行、final-editorペルソナ適用）
+- [x] Phase 10: サンプルトピックでの通し動作確認（テスト方針の実施、事実チェック対象・対象外の両パターン、各ペルソナの動作確認）
+
+### Phase 10 実施結果
+
+2フォークエージェントによる並行実地検証を実施。実ファイルは `texts/`（gitignore対象）配下に生成。
+
+- **テストケース1**（物語/A2、事実チェック対象外、`texts/lost-while-traveling-20260708-222921/`）: config→outline→generate→brushup を1往復実施。全項目PASS。
+  - config.json / outlines/v1.md / articles/v1.md が仕様どおり作成され、`sources/` は作られず
+  - brushup（本文のみ調整ルート）で `articles/v2.md` を新規作成、`outlines/v1.md`・`articles/v1.md` は無変更のまま保持
+  - generate.md・brushup.mdいずれもlearner-simulatorペルソナが意図的に混入させたレベル超過語彙・構文（非限定関係詞節、過去完了、比較級）を実際に検出し、esl-writerペルソナでの修正→再レビューのループが機能することを確認
+- **テストケース2**（説明的文章/B1「水の循環について」、事実チェック対象、`texts/water-cycle-20260709-052935/`）: config→research→outline→generate→factcheck を実施。全項目PASS。
+  - `sources/` に公的機関3件（USGS, NASA Science, NASA GPM）をフロントマター付きで保存、outline各セクションに根拠ソースを記録
+  - 正常系の本文はfactcheckで無修正のまま確定
+  - 懐疑的ファクトチェッカー: 事実と食い違う虚偽ドラフト（海洋の水貯蔵割合を誤った数値に書き換え）を「要修正」として検出
+  - 簡略化セーフティチェッカー: 条件を省略した過度な一般化ドラフトを歪みとして検出し、修正案を提示
+
+**気づいた点への対応**: research.md にWebFetchの挙動（要約的に処理される場合がある点）とアクセス不可時の代替情報源探索についての注記を追記済み。その他（learner-simulatorレビュー結果のログ化、factcheck.mdの新バージョン判断基準の定性性）は運用上の支障がないため、現時点では追加対応せず据え置き。

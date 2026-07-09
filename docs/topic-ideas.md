@@ -38,6 +38,7 @@
   - A Morning at a Fish Market | Descriptive | A1〜B2 | 市場の音・匂い・色の描写。形容詞の練習に向く
   - Diary of My First Trip Abroad | Personal writing | A2〜B2 | 一人称の感情表現・時系列の練習。架空の書き手ならフィクション扱いにできる
 - Science & Nature
+  - Is a Tomato a Fruit or a Vegetable? | Expository | B1〜B2 | 植物学的定義（花が咲いて実がなる＝fruit）と料理上の分類（vegetable）の違いを、トマト・カボチャ・唐辛子を例に説明。定義・分類の語彙と対比表現（while, on the other hand）の練習に向く
   - Why Do We Sleep? | Expository | B1〜C1 | 睡眠の科学。身近なテーマで事実チェック資料も集めやすい
   - How Volcanoes Work | Expository | B1〜C1 | 地学の基礎。図解的な説明の練習に向く
 - History & Culture

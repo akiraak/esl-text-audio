@@ -2,6 +2,10 @@
 
 ## 2026-07-09
 
+- [x] webの横幅をもっと広くする（[archived plan](docs/plans/archive/widen-web-layout.md)）
+  - `lib/site.js`の`layout()`内`body`の`max-width`を`760px`→`1000px`に変更（全ページ共通のレイアウトなので1箇所の変更で反映）
+  - `npm start`・`npm run build`双方の出力で`max-width: 1000px`が反映されていることを確認
+
 - [x] 記事に表示される内容を見やすくシンプルにする（[archived plan](docs/plans/archive/simplify-article-display.md)）
   - 記事バージョンファイル（`variants/{level}-{tier}/articles/v{N}.md`）にYAML frontmatterで`aiModel`（生成に使ったAIモデル）・`createdAt`を記録する方式を追加し、既存8バージョンに後付け。`workflows/generate.md`・`workflows/brushup.md`を更新し今後の生成でも記録するよう明記
   - `lib/site.js`に`breadcrumb()`ヘルパーを追加し、全ページの「戻る」リンク1本だけのナビを`Home > トピック > バリアント`形式のパンくずに統一

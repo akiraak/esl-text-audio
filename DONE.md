@@ -2,6 +2,11 @@
 
 ## 2026-07-09
 
+- [x] トップページの記事一覧にサムネを表示（[archived plan](docs/plans/archive/top-page-thumbnails.md)）
+  - `lib/site.js`の`renderIndex`で、トピックごとに`latestIllustrationVersion()`でイラストの有無を確認し、あれば`<li>`内に72x72のサムネイル画像を追加
+  - `<li>`をflexレイアウト化（サムネ+テキスト情報を横並び）。イラスト未生成のトピックはサムネイル枠なしでテキストのみ従来通り表示
+  - `npm start`・`npm run build`双方の出力でサムネイルURL・200応答を確認
+
 - [x] About CEFR Levels のページの文字が画面からはみ出しているので修正
   - 原因は8列の巨大な表（`docs/specs/esl-level-spec.md`の「CEFR Level Definitions」）が画面幅に収まらないこと
   - `lib/site.js`の`renderLevels()`で表をパースし、レベル1件=1カードの縦積み表示（2列グリッド、640px未満は1列）に変更。値は引き続きspecファイルから読み取るため二重管理にならない

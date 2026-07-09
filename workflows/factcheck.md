@@ -20,16 +20,17 @@ ESL学習用テキスト生成フローの5番目のステップ（`requiresFact
 
 ## 前提
 
-- `texts/{topic-slug}-{timestamp}/articles/v{N}.md` に [workflows/generate.md](generate.md) の本文（学習者シミュレーターのセルフレビュー済み・最終エディターによる統合前）が存在すること
-- `sources/` に [workflows/research.md](research.md) で取得した外部資料が保存済みであること
-- `outlines/v{N}.md` の各セクションに根拠ソースが記録されていること
+- `texts/{topic-slug}-{timestamp}/variants/{level}-{tier}/articles/v{N}.md` に [workflows/generate.md](generate.md) の本文（学習者シミュレーターのセルフレビュー済み・最終エディターによる統合前）が存在すること
+- `texts/{topic-slug}-{timestamp}/variants/{level}-{tier}/variant.json` の `outlineTier` / `outlineVersion` から対応する `outlines/{outlineTier}/v{outlineVersion}.md` が特定できること
+- `sources/`（トピック直下、バリアント間で共通）に [workflows/research.md](research.md) で取得した外部資料が保存済みであること
+- `outlines/{outlineTier}/v{outlineVersion}.md` の各セクションに根拠ソースが記録されていること
 
 ## 手順
 
 ### 1. 本文・outline・sources の確認
 
 - `articles/v{N}.md` を読み、事実確認の対象とする本文全体を把握する
-- `outlines/v{N}.md` のセクション別ソース記録を読み、各セクションがどの `sources/` ファイルを根拠にしているか把握する
+- `variant.json` を読み、対応する `outlines/{outlineTier}/v{outlineVersion}.md` を特定する。そのセクション別ソース記録を読み、各セクションがどの `sources/` ファイルを根拠にしているか把握する
 - `sources/` のファイル一覧に目を通し、参照可能な原資料の範囲を把握する
 
 ### 2. 懐疑的ファクトチェッカーによる事実確認
@@ -64,8 +65,8 @@ ESL学習用テキスト生成フローの5番目のステップ（`requiresFact
 
 ### 7. articles/v{N}.md への保存
 
-- 食い違い・歪みが解消された本文は、同じ `articles/v{N}.md` に対する事実修正として上書き保存する
-- 修正によって内容（構成・エピソード・主張の骨子など）が大きく変わった場合は、新バージョンとして `articles/v{N+1}.md` に保存する
+- 食い違い・歪みが解消された本文は、同じ `variants/{level}-{tier}/articles/v{N}.md` に対する事実修正として上書き保存する
+- 修正によって内容（構成・エピソード・主張の骨子など）が大きく変わった場合は、新バージョンとして `variants/{level}-{tier}/articles/v{N+1}.md` に保存する
   （既存バージョンは直接編集しないという基本ルールを優先する）
 
 ### 8. 次のワークフローへの案内

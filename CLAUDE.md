@@ -14,7 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 読解用テキストの生成は、LLM API を直接呼ぶコードとしてではなく、**Claude Code 自身が `workflows/*.md` の指示に従って対話的に生成する方式**を取る
 （`~/git-art` の outline → generate → brushup、`~/deep-pulse` のプラン作成 → 本文生成 → ファクトチェックという多段プロセスを踏襲）。
-詳細な設計は [docs/plans/esl-text-generation.md](docs/plans/esl-text-generation.md) を参照。
+当初の詳細設計は [docs/plans/archive/esl-text-generation.md](docs/plans/archive/esl-text-generation.md) を参照（トピックの複数バリアント対応など、その後の変更は [docs/plans/topic-variants-and-length-tiers.md](docs/plans/topic-variants-and-length-tiers.md) を参照）。
 
 例外として、本文に添えるイラスト生成（[workflows/illustrate.md](workflows/illustrate.md)）のみ、Claude Code がピクセルデータを直接生成できないため
 `scripts/generate-illustration.js` 経由で画像生成API（OpenAI GPT Image 2）を実際に呼び出す。プロンプト作成までは他ワークフローと同様
@@ -26,11 +26,11 @@ Claude Code が対話的に行う。
 esl-text-audio/
 ├── docs/
 │   └── specs/
-│       └── esl-level-spec.md   # CEFRレベル別の語彙・文長・語数、文章形式（ジャンル）・事実チェック方針の定義
+│       └── esl-level-spec.md   # CEFRレベル別の語彙・文長・分量tier別語数、文章形式（ジャンル）・長文モード・事実チェック方針の定義
 ├── workflows/
-│   ├── config.md       # トピック・英語レベルなど生成条件の収集
+│   ├── config.md       # トピック・ジャンルなどトピック単位の生成条件の収集
 │   ├── research.md      # 事実チェック対象ジャンルの場合の外部資料収集
-│   ├── outline.md       # アウトライン（構成案）作成・承認
+│   ├── outline.md       # バリアント（レベル×分量）設定・アウトライン作成・承認
 │   ├── generate.md      # 本文生成
 │   ├── factcheck.md     # 生成した本文と外部資料の突き合わせ・修正
 │   ├── illustrate.md    # 本文に対応するAI生成イラストの作成
@@ -44,35 +44,43 @@ esl-text-audio/
 ├── scripts/
 │   └── build-static-site.js   # texts/ 配下からGitHub Pages公開用の静的HTMLを dist/ に生成
 └── texts/                # 生成物。GitHub Pagesで公開するためコミット対象
-    └── {topic-slug}-{YYYYMMDD-HHMMSS}/
-        ├── config.json
-        ├── sources/      # 事実チェック対象ジャンルの場合のみ作成
-        ├── outlines/
-        │   └── v1.md, v2.md, ...
-        ├── articles/
-        │   └── v1.md, v2.md, ...
-        └── images/       # illustrate.md 実行後のみ作成
-            └── v1.png, v1.prompt.txt, ...
+    └── {topic-slug}-{YYYYMMDD-HHMMSS}/     # トピック単位
+        ├── config.json    # topic / genre / requiresFactCheck など、トピック単位の条件
+        ├── sources/       # 事実チェック対象ジャンルの場合のみ作成。バリアント間で共有
+        ├── outlines/      # 分量tier単位（レベルには依存しない、複数バリアントで共有）
+        │   ├── normal/v1.md, v2.md, ...
+        │   ├── long/v1.md, ...
+        │   └── very-long/v1.md, ...
+        └── variants/      # レベル×分量tierの組み合わせ＝バリアント単位
+            └── {level}-{tier}/            # 例: B1-normal, C1-long, A1-very-long
+                ├── variant.json           # level / tier / wordCountTarget / longForm / outlineTier / outlineVersion
+                ├── articles/v1.md, v2.md, ...
+                └── images/                # illustrate.md 実行後のみ作成
+                    └── v1.png, v1.prompt.txt, ...
 ```
 
-- outline / article はバージョン管理し、brushup のたびに新しいバージョンとして保存する（既存バージョンは直接編集しない）。article のバージョン番号は生成元 outline のバージョン番号に合わせる
-- レベル別の語彙・文長・語数の目安、ESL読解に適した文章形式（ジャンル）、事実チェック方針は [docs/specs/esl-level-spec.md](docs/specs/esl-level-spec.md) に一元化し、各 `workflows/*.md` はこのファイルを参照する
+- outline（分量tier単位）・article（バリアント単位）はそれぞれ独立にバージョン管理し、brushup のたびに新しいバージョンとして保存する（既存バージョンは直接編集しない）
+- レベル（語彙・文法の難度）と分量tier（テキストの長さ、通常/長い/すごく長い）は独立した2軸。アウトラインは分量tierごとに1つ作り、同じtierを使う複数レベルのバリアントで共有する
+  （詳細な設計は [docs/plans/topic-variants-and-length-tiers.md](docs/plans/topic-variants-and-length-tiers.md) を参照）
+- レベル別の語彙・文長・分量tier別語数の目安、ESL読解に適した文章形式（ジャンル）、長文モード、事実チェック方針は [docs/specs/esl-level-spec.md](docs/specs/esl-level-spec.md) に一元化し、各 `workflows/*.md` はこのファイルを参照する
 
 ### ワークフロー一覧（実行順）
 
-1. `workflows/config.md` — トピック・英語レベル・形式（ジャンル）を収集し、事実チェック要否を判定して `config.json` に保存
-2. `workflows/research.md` — `requiresFactCheck: true` の場合のみ、外部資料を `sources/` に保存
-3. `workflows/outline.md` — アウトラインを作成し利用者の承認を得る（`outlines/v{N}.md`）
-4. `workflows/generate.md` — 承認済みアウトラインから本文を生成する（`articles/v{N}.md`）
+1. `workflows/config.md` — トピック・形式（ジャンル）を収集し、事実チェック要否を判定して `config.json`（トピック単位）に保存
+2. `workflows/research.md` — `requiresFactCheck: true` の場合のみ、外部資料を `sources/` に保存（トピック単位、バリアント間で共有）
+3. `workflows/outline.md` — バリアント（レベル×分量tier）ごとにレベル・分量を確定し、分量tier単位のアウトラインを作成・承認（`outlines/{tier}/v{N}.md`）。`variant.json` を保存
+4. `workflows/generate.md` — 承認済みアウトラインとバリアントの条件から本文を生成する（`variants/{level}-{tier}/articles/v{N}.md`）
 5. `workflows/factcheck.md` — `requiresFactCheck: true` の場合のみ、本文と `sources/` を突き合わせて事実面を修正
 6. `workflows/illustrate.md` — 確定した本文に対応するAI生成イラスト（GPT Image 2）を `scripts/generate-illustration.js` 経由で生成
-7. `workflows/brushup.md` — フィードバックに基づき新バージョンとして調整・再生成
+7. `workflows/brushup.md` — フィードバックに基づき新バージョンとして調整・再生成（1バリアント単位で実行）
 
-トピックと英語レベルだけが送られてきた場合は、上記フローに沿って `config.md` から開始し、`research.md` と `factcheck.md` は `requiresFactCheck` の値に応じてスキップしながら `outline.md` → `generate.md` → （`factcheck.md`）→ `illustrate.md` と進める。
+トピックだけが送られてきた場合は、上記フローに沿って `config.md` から開始し、`research.md` と `factcheck.md` は `requiresFactCheck` の値に応じてスキップしながら `outline.md`（レベル・分量の確定を含む）→ `generate.md` → （`factcheck.md`）→ `illustrate.md` と進める。
+同じトピックに別のレベル・分量のバリアントを追加したい場合は、`config.md` 手順1でその旨を伝えれば既存トピックを再利用し、`outline.md` から再開する。
 
-### レベル・ジャンル・事実チェック方針
+### レベル・分量・ジャンル・事実チェック方針
 
-CEFR レベル（A1〜C2）ごとの語彙・文長・語数の目安とジャンル別の適性レベル帯は [docs/specs/esl-level-spec.md](docs/specs/esl-level-spec.md) を参照。
+CEFR レベル（A1〜C2）ごとの語彙・文長・分量tier別（通常/長い/すごく長い）の語数目安とジャンル別の適性レベル帯は [docs/specs/esl-level-spec.md](docs/specs/esl-level-spec.md) を参照。
+レベルと分量は独立したパラメータであり、任意の組み合わせを選べる。
 事実チェックは物語・対話文など明らかにフィクションとわかるジャンルは対象外、それ以外（説明文・手順文・説明的文章・日記/手紙/メール・ニュース記事風・意見文/エッセイ）は対象とする。
 ただし、対象ジャンルでも利用者が「架空の人物・場所を扱うフィクションである」と明示した場合は対象外にできる（理由は `config.json` に記録する）。
 

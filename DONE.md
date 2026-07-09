@@ -2,6 +2,14 @@
 
 ## 2026-07-09
 
+- [x] Webのデザインを入れる（[archived plan](docs/plans/archive/web-design-candidates.md)）
+  - Phase 1〜4: `lib/design-themes.js` に5デザイン案（Minimal / Editorial / Card / Dark / Playful）を実装し、
+    `server.js` に `?design=` クエリでの切り替えと `/designs` 比較ページを追加。実データ（water-cycle等）を使って
+    ローカルサーバ上で見比べられるようにした上で利用者が Playful を選定
+  - 選定後、比較用の仕組み（テーマ切り替えバー・`/designs`・`lib/design-themes.js` の複数テーマ定義）は撤去し、
+    Playful のCSSを `lib/site.js` の `layout()` に直接組み込んで唯一のデザインとして確定
+    （静的ビルド `scripts/build-static-site.js` も変更なしでそのまま反映される）
+
 - [x] GitHub Pages にテキストを公開する仕組みを作る（[archived plan](docs/plans/archive/github-pages-static-site.md)）
   - Phase 1: `server.js` のHTML組み立てロジックを `lib/site.js` に切り出し、全リンク・画像srcを `basePath` 引数付きの
     `href()` ヘルパー経由で生成するように変更（GitHub Pagesのプロジェクトページはサブパス配下で配信されるため）。

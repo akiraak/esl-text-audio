@@ -16,6 +16,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 （`~/git-art` の outline → generate → brushup、`~/deep-pulse` のプラン作成 → 本文生成 → ファクトチェックという多段プロセスを踏襲）。
 詳細な設計は [docs/plans/esl-text-generation.md](docs/plans/esl-text-generation.md) を参照。
 
+例外として、本文に添えるイラスト生成（[workflows/illustrate.md](workflows/illustrate.md)）のみ、Claude Code がピクセルデータを直接生成できないため
+`scripts/generate-illustration.js` 経由で画像生成API（OpenAI GPT Image 2）を実際に呼び出す。プロンプト作成までは他ワークフローと同様
+Claude Code が対話的に行う。
+
 ### ディレクトリ構成
 
 ```
@@ -29,7 +33,10 @@ esl-text-audio/
 │   ├── outline.md       # アウトライン（構成案）作成・承認
 │   ├── generate.md      # 本文生成
 │   ├── factcheck.md     # 生成した本文と外部資料の突き合わせ・修正
+│   ├── illustrate.md    # 本文に対応するAI生成イラストの作成
 │   └── brushup.md       # フィードバックに基づく調整・再生成
+├── scripts/
+│   └── generate-illustration.js   # OpenAI Images API を呼び出しイラストを生成するスクリプト（illustrate.md から実行）
 ├── personas/             # 生成・チェック時に使うAIペルソナ定義（1ペルソナ1ファイル）
 └── texts/                # 生成物（gitignore 対象、ローカルにのみ保存）
     └── {topic-slug}-{YYYYMMDD-HHMMSS}/
@@ -37,8 +44,10 @@ esl-text-audio/
         ├── sources/      # 事実チェック対象ジャンルの場合のみ作成
         ├── outlines/
         │   └── v1.md, v2.md, ...
-        └── articles/
-            └── v1.md, v2.md, ...
+        ├── articles/
+        │   └── v1.md, v2.md, ...
+        └── images/       # illustrate.md 実行後のみ作成
+            └── v1.png, v1.prompt.txt, ...
 ```
 
 - outline / article はバージョン管理し、brushup のたびに新しいバージョンとして保存する（既存バージョンは直接編集しない）。article のバージョン番号は生成元 outline のバージョン番号に合わせる
@@ -51,9 +60,10 @@ esl-text-audio/
 3. `workflows/outline.md` — アウトラインを作成し利用者の承認を得る（`outlines/v{N}.md`）
 4. `workflows/generate.md` — 承認済みアウトラインから本文を生成する（`articles/v{N}.md`）
 5. `workflows/factcheck.md` — `requiresFactCheck: true` の場合のみ、本文と `sources/` を突き合わせて事実面を修正
-6. `workflows/brushup.md` — フィードバックに基づき新バージョンとして調整・再生成
+6. `workflows/illustrate.md` — 確定した本文に対応するAI生成イラスト（GPT Image 2）を `scripts/generate-illustration.js` 経由で生成
+7. `workflows/brushup.md` — フィードバックに基づき新バージョンとして調整・再生成
 
-トピックと英語レベルだけが送られてきた場合は、上記フローに沿って `config.md` から開始し、`research.md` と `factcheck.md` は `requiresFactCheck` の値に応じてスキップしながら `outline.md` → `generate.md` → （`factcheck.md`）と進める。
+トピックと英語レベルだけが送られてきた場合は、上記フローに沿って `config.md` から開始し、`research.md` と `factcheck.md` は `requiresFactCheck` の値に応じてスキップしながら `outline.md` → `generate.md` → （`factcheck.md`）→ `illustrate.md` と進める。
 
 ### レベル・ジャンル・事実チェック方針
 

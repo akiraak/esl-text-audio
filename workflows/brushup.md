@@ -1,7 +1,8 @@
 # workflows/brushup.md — フィードバック反映・再生成
 
-ESL学習用テキスト生成フローの6番目（最後）のステップ。[workflows/generate.md](generate.md)（`requiresFactCheck: false` の場合）
-または [workflows/factcheck.md](factcheck.md)（`requiresFactCheck: true` の場合）で確定した本文に対する利用者のフィードバックを受け、
+ESL学習用テキスト生成フローの7番目（最後）のステップ。[workflows/generate.md](generate.md)（`requiresFactCheck: false` の場合）
+または [workflows/factcheck.md](factcheck.md)（`requiresFactCheck: true` の場合）で確定した本文、および
+[workflows/illustrate.md](illustrate.md) で生成したイラストに対する利用者のフィードバックを受け、
 [personas/esl-writer.md](../personas/esl-writer.md) のペルソナで調整・再生成し、[personas/final-editor.md](../personas/final-editor.md) の
 ペルソナで最終確認する。
 
@@ -12,6 +13,7 @@ ESL学習用テキスト生成フローの6番目（最後）のステップ。[
 
 - `texts/{topic-slug}-{timestamp}/articles/v{N}.md` が確定済みであること（`requiresFactCheck: false` の場合は
   [workflows/generate.md](generate.md) 手順7、`true` の場合は [workflows/factcheck.md](factcheck.md) 手順4〜7完了時点）
+- [workflows/illustrate.md](illustrate.md) の実行が完了していること
 - 対応する `outlines/v{N}.md` が存在すること
 - 利用者からのフィードバック（自由記述）があること
 

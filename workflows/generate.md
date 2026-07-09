@@ -65,4 +65,4 @@ config と承認済み outline を読み本文を生成し、[personas/learner-s
 ### 9. 次のワークフローへの案内
 
 - `requiresFactCheck: true` の場合、次に [workflows/factcheck.md](factcheck.md) を実行する
-- `requiresFactCheck: false` の場合、この時点で生成完了。フィードバックがあれば [workflows/brushup.md](brushup.md) を実行する
+- `requiresFactCheck: false` の場合、この時点で本文は確定。次に [workflows/illustrate.md](illustrate.md) を実行する

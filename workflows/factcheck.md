@@ -15,7 +15,7 @@ ESL学習用テキスト生成フローの5番目のステップ（`requiresFact
 
 - `config.json` を読み、`requiresFactCheck` を確認する
 - `false` の場合はこのワークフローを実行せず、[workflows/generate.md](generate.md) の完了時点で本文は確定済みなので、
-  フィードバックがあれば直接 [workflows/brushup.md](brushup.md) に進む
+  直接 [workflows/illustrate.md](illustrate.md) に進む
 - `true` の場合のみ以下の手順を行う
 
 ## 前提
@@ -70,4 +70,4 @@ ESL学習用テキスト生成フローの5番目のステップ（`requiresFact
 
 ### 8. 次のワークフローへの案内
 
-- この時点で本文は事実面も含めて確定。フィードバックがあれば [workflows/brushup.md](brushup.md) を実行する
+- この時点で本文は事実面も含めて確定。次に [workflows/illustrate.md](illustrate.md) を実行する

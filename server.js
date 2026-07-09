@@ -42,6 +42,7 @@ function layout(title, body) {
   .sources-list { margin: 1rem 0; }
   article { font-size: 1.15rem; line-height: 1.9; }
   article h1 { font-size: 1.6rem; }
+  .illustration { max-width: 100%; border-radius: 8px; margin: 1rem 0; display: block; }
   nav.back { margin-bottom: 1.5rem; }
   section.block { margin: 2rem 0; padding-top: 1rem; border-top: 1px solid #eee; }
   hr { border: none; border-top: 1px solid #eee; margin: 2rem 0; }
@@ -85,6 +86,15 @@ function listSources(id) {
 
 function isValidId(id) {
   return /^[A-Za-z0-9._-]+$/.test(id) && fs.existsSync(path.join(TEXTS_DIR, id, 'config.json'));
+}
+
+function hasIllustration(id, version) {
+  return fs.existsSync(path.join(TEXTS_DIR, id, 'images', `v${version}.png`));
+}
+
+function illustrationBlock(id, version) {
+  if (version === undefined || !hasIllustration(id, version)) return '';
+  return `<img class="illustration" src="/texts/${encodeURIComponent(id)}/images/${version}" alt="Illustration">`;
 }
 
 function readLevelSpecSection() {
@@ -190,6 +200,7 @@ app.get('/texts/:id', (req, res) => {
     articlePreview = `
     <section class="block">
       <h2>本文（最新版 v${latestArticle}）</h2>
+      ${illustrationBlock(id, latestArticle)}
       <article>${marked.parse(content)}</article>
     </section>`;
   }
@@ -235,9 +246,18 @@ app.get('/texts/:id/article/:version', (req, res) => {
   const body = `
   <nav class="back"><a href="/texts/${encodeURIComponent(id)}">&larr; ${escapeHtml(config.topic)} に戻る</a></nav>
   <div class="versions">${versionLinks}</div>
+  ${illustrationBlock(id, version)}
   <article>${marked.parse(content)}</article>
   `;
   res.send(layout(`${config.topic} (v${version})`, body));
+});
+
+app.get('/texts/:id/images/:version', (req, res) => {
+  const { id, version } = req.params;
+  if (!isValidId(id) || !/^\d+$/.test(version) || !hasIllustration(id, version)) {
+    return res.status(404).send(layout('Not Found', '<h1>404 Not Found</h1>'));
+  }
+  res.type('image/png').sendFile(path.join(TEXTS_DIR, id, 'images', `v${version}.png`));
 });
 
 app.get('/texts/:id/outline/:version', (req, res) => {

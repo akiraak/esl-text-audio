@@ -35,3 +35,15 @@
     日記/手紙/メール・ニュース記事風・意見文/エッセイ）は外部資料と突き合わせて事実面を確認する
     （詳細は [esl-level-spec.md](docs/specs/esl-level-spec.md) の「事実チェック方針」参照）
   - AIペルソナ: 生成・チェックの各段階で視点を変えるため [personas/](personas/README.md) に5ペルソナを定義
+
+## 2026-07-08
+
+- [x] 文章にAI生成のイラストを入れる。生成モデルは GPT Image 2（[archived plan](docs/plans/archive/article-illustration.md)）
+  - Phase 1: `scripts/generate-illustration.js` 実装（OpenAI Images API 呼び出し）、`dotenv` 依存追加、`.env.example` 作成、`.gitignore` に `.env` 追加
+  - Phase 2: `workflows/illustrate.md` 新規作成（本文確定後に実行する6番目のステップとして追加、`generate.md`/`factcheck.md`/`brushup.md` の案内も更新）
+  - Phase 3: `server.js` に画像配信ルート（`GET /texts/:id/images/:version`）・詳細ページ/記事ページへのイラスト表示を追加
+  - Phase 4: `CLAUDE.md`（ディレクトリ構成・ワークフロー一覧）・`README.md`（`.env` セットアップ手順）更新
+  - Phase 5: `.env` 設定後、`water-cycle`・`lost-while-traveling` の2記事で実際にイラスト生成・ビューア表示を実地確認、全項目PASS
+  - 記事1本につきイラスト1枚（記事全体を象徴する1枚）、モデル・サイズ・画質（デフォルト `medium`）は環境変数で上書き可能
+  - Claude Code がピクセルデータを直接生成できないため、この機能のみ `workflows/*.md` の対話的生成方式の例外として実際のAPI呼び出しスクリプトを使用
+  - `brushup.md` 実行時のイラスト再生成は今回のスコープ外とし、TODO.md に将来課題として残した

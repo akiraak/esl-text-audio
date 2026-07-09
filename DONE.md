@@ -1,5 +1,15 @@
 # DONE
 
+## 2026-07-08
+
+- [x] 生成したページを表示するWebサーバを作成（[archived plan](docs/plans/archive/text-viewer-server.md)）
+  - Phase 1: `package.json` 作成・依存パッケージ導入（express, marked, gray-matter）、`.gitignore` に `node_modules/` 追加
+  - Phase 2: `server.js` 実装（一覧ページ、詳細ページ、article/outline/sourcesの各バージョン表示ルーティング、404処理）
+  - Phase 3: `npm start` 起動スクリプト整備・README追記（デフォルトポート3020、`PORT`環境変数で変更可）
+  - Phase 4: 既存生成物（water-cycle, lost-while-traveling）での一覧・詳細・各ルート・404ケースを実地確認、全項目PASS
+  - `texts/{topic-slug}-{timestamp}/` 配下の config.json・outlines/・articles/・sources/ をブラウザで閲覧できるローカル開発用ビューア
+  - id はディレクトリ名をそのまま使用し、バージョンやsourceファイル名はファイルシステムを都度読み取って動的に一覧表示する方式（欠番があっても対応）
+
 ## 2026-07-09
 
 - [x] ESL学習用テキストを生成する仕組みを作る（[archived plan](docs/plans/archive/esl-text-generation.md)）

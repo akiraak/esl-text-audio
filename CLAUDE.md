@@ -25,8 +25,9 @@ Claude Code が対話的に行う。
 ```
 esl-text-audio/
 ├── docs/
-│   └── specs/
-│       └── esl-level-spec.md   # CEFRレベル別の語彙・文長・分量tier別語数、文章形式（ジャンル）・長文モード・事実チェック方針の定義
+│   ├── specs/
+│   │   └── esl-level-spec.md   # CEFRレベル別の語彙・文長・分量tier別語数、文章形式（ジャンル）・長文モード・事実チェック方針の定義
+│   └── topic-ideas.md    # トピック案のストック（アイデア一覧＋採用済み一覧）。config.md から参照・更新する
 ├── workflows/
 │   ├── config.md       # トピック・ジャンルなどトピック単位の生成条件の収集
 │   ├── research.md      # 事実チェック対象ジャンルの場合の外部資料収集
@@ -34,7 +35,8 @@ esl-text-audio/
 │   ├── generate.md      # 本文生成
 │   ├── factcheck.md     # 生成した本文と外部資料の突き合わせ・修正
 │   ├── illustrate.md    # 本文に対応するAI生成イラストの作成
-│   └── brushup.md       # フィードバックに基づく調整・再生成
+│   ├── brushup.md       # フィードバックに基づく調整・再生成
+│   └── add-ideas.md     # トピックアイデアの追加（生成パイプラインとは独立の単体ワークフロー）
 ├── scripts/
 │   └── generate-illustration.js   # OpenAI Images API を呼び出しイラストを生成するスクリプト（illustrate.md から実行）
 ├── personas/             # 生成・チェック時に使うAIペルソナ定義（1ペルソナ1ファイル）
@@ -67,13 +69,18 @@ esl-text-audio/
 
 ### ワークフロー一覧（実行順）
 
-1. `workflows/config.md` — トピック・形式（ジャンル）を収集し、事実チェック要否を判定して `config.json`（トピック単位）に保存
+1. `workflows/config.md` — トピック・形式（ジャンル）を収集し、事実チェック要否を判定して `config.json`（トピック単位）に保存。
+   トピック決定時は [docs/topic-ideas.md](docs/topic-ideas.md)（トピック案のストック）を参照し、採用したら「採用済み」へ移動・新しいアイデアを補充する
 2. `workflows/research.md` — `requiresFactCheck: true` の場合のみ、外部資料を `sources/` に保存（トピック単位、バリアント間で共有）
 3. `workflows/outline.md` — バリアント（レベル×分量tier）ごとにレベル・分量を確定し、分量tier単位のアウトラインを作成・承認（`outlines/{tier}/v{N}.md`）。`variant.json` を保存
 4. `workflows/generate.md` — 承認済みアウトラインとバリアントの条件から本文を生成する（`variants/{level}-{tier}/articles/v{N}.md`）
 5. `workflows/factcheck.md` — `requiresFactCheck: true` の場合のみ、本文と `sources/` を突き合わせて事実面を修正
 6. `workflows/illustrate.md` — 確定した本文に対応するAI生成イラスト（GPT Image 2）を `scripts/generate-illustration.js` 経由で生成。トピックにつき1枚のみ生成し、全バリアントで共有する（既に生成済みの場合はスキップ）
 7. `workflows/brushup.md` — フィードバックに基づき新バージョンとして調整・再生成（1バリアント単位で実行）
+
+上記パイプラインとは独立して、いつでも実行できる単体ワークフロー:
+
+- `workflows/add-ideas.md` — [docs/topic-ideas.md](docs/topic-ideas.md) へのトピックアイデアの追加（「アイデアを追加したい」と言われたらこれを実行する）
 
 トピックだけが送られてきた場合は、上記フローに沿って `config.md` から開始し、`research.md` と `factcheck.md` は `requiresFactCheck` の値に応じてスキップしながら `outline.md`（レベル・分量の確定を含む）→ `generate.md` → （`factcheck.md`）→ `illustrate.md` と進める。
 同じトピックに別のレベル・分量のバリアントを追加したい場合は、`config.md` 手順1でその旨を伝えれば既存トピックを再利用し、`outline.md` から再開する。

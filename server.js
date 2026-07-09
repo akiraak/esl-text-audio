@@ -17,6 +17,11 @@ app.get('/levels', (req, res) => {
   res.send(site.layout(title, body));
 });
 
+app.get('/topic-ideas', (req, res) => {
+  const { title, body } = site.renderTopicIdeas(BASE_PATH);
+  res.send(site.layout(title, body));
+});
+
 app.get('/texts/:topicId', (req, res) => {
   const rendered = site.renderTextDetail(BASE_PATH, req.params.topicId);
   if (!rendered) {

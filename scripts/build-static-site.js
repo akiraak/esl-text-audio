@@ -33,6 +33,9 @@ function build() {
   const levels = site.renderLevels(basePath);
   writeHtml('levels', levels.title, levels.body);
 
+  const topicIdeas = site.renderTopicIdeas(basePath);
+  writeHtml('topic-ideas', topicIdeas.title, topicIdeas.body);
+
   const notFound = site.render404(basePath);
   fs.writeFileSync(path.join(OUT_DIR, '404.html'), site.layout(notFound.title, notFound.body), 'utf-8');
 

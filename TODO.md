@@ -1,3 +1,3 @@
 # TODO
 
-- [ ] github pages に OGPタグを設定
+- [ ] esltext.chobi.me

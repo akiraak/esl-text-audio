@@ -13,48 +13,61 @@ function resolveBasePath() {
   return '';
 }
 
-function writeHtml(relPath, title, body) {
+// OGPのog:url/og:imageに使う公開サイトのorigin。不明な場合は空を返し、絶対URLが必要なタグは省略する
+function resolveSiteOrigin() {
+  if (process.env.SITE_ORIGIN !== undefined) return process.env.SITE_ORIGIN;
+  if (process.env.GITHUB_REPOSITORY) {
+    const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
+    return `https://${owner}.github.io`;
+  }
+  return '';
+}
+
+let basePath = '';
+let siteOrigin = '';
+
+function writeHtml(relPath, rendered) {
   const filePath = path.join(OUT_DIR, relPath, 'index.html');
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, site.layout(title, body), 'utf-8');
+  const og = siteOrigin
+    ? {
+        url: `${siteOrigin}${basePath}/${relPath.split('/').filter(Boolean).map(encodeURIComponent).join('/')}${relPath ? '/' : ''}`,
+        image: rendered.imageParts ? siteOrigin + site.href(basePath, rendered.imageParts) : undefined,
+        description: rendered.description,
+        type: rendered.ogType,
+      }
+    : { description: rendered.description, type: rendered.ogType };
+  fs.writeFileSync(filePath, site.layout(rendered.title, rendered.body, og), 'utf-8');
 }
 
 function build() {
-  const basePath = resolveBasePath();
-  console.log(`Building static site with basePath="${basePath}" into ${OUT_DIR}`);
+  basePath = resolveBasePath();
+  siteOrigin = resolveSiteOrigin();
+  console.log(`Building static site with basePath="${basePath}" siteOrigin="${siteOrigin}" into ${OUT_DIR}`);
 
   fs.rmSync(OUT_DIR, { recursive: true, force: true });
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.writeFileSync(path.join(OUT_DIR, '.nojekyll'), '');
 
-  const index = site.renderIndex(basePath);
-  writeHtml('', index.title, index.body);
-
-  const levels = site.renderLevels(basePath);
-  writeHtml('levels', levels.title, levels.body);
-
-  const topicIdeas = site.renderTopicIdeas(basePath);
-  writeHtml('topic-ideas', topicIdeas.title, topicIdeas.body);
+  writeHtml('', site.renderIndex(basePath));
+  writeHtml('levels', site.renderLevels(basePath));
+  writeHtml('topic-ideas', site.renderTopicIdeas(basePath));
 
   const notFound = site.render404(basePath);
   fs.writeFileSync(path.join(OUT_DIR, '404.html'), site.layout(notFound.title, notFound.body), 'utf-8');
 
   for (const { id } of site.listAllTexts()) {
-    const detail = site.renderTextDetail(basePath, id);
-    writeHtml(`texts/${id}`, detail.title, detail.body);
+    writeHtml(`texts/${id}`, site.renderTextDetail(basePath, id));
 
     for (const filename of site.listSources(id)) {
-      const rendered = site.renderSource(basePath, id, filename);
-      writeHtml(`texts/${id}/sources/${filename}`, rendered.title, rendered.body);
+      writeHtml(`texts/${id}/sources/${filename}`, site.renderSource(basePath, id, filename));
     }
 
     for (const { variantId } of site.listVariants(id)) {
-      const variantDetail = site.renderVariantDetail(basePath, id, variantId);
-      writeHtml(`texts/${id}/${variantId}`, variantDetail.title, variantDetail.body);
+      writeHtml(`texts/${id}/${variantId}`, site.renderVariantDetail(basePath, id, variantId));
 
       for (const version of site.listArticleVersions(id, variantId)) {
-        const rendered = site.renderArticle(basePath, id, variantId, version);
-        writeHtml(`texts/${id}/${variantId}/article/${version}`, rendered.title, rendered.body);
+        writeHtml(`texts/${id}/${variantId}/article/${version}`, site.renderArticle(basePath, id, variantId, version));
       }
 
       const audioDir = path.join(site.TEXTS_DIR, id, 'variants', variantId, 'audio');

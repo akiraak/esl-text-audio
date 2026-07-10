@@ -2,6 +2,11 @@
 
 ## 2026-07-10
 
+- [x] github pages に OGPタグを設定（[archived plan](docs/plans/archive/ogp-tags.md)）
+  - `lib/site.js` の `layout()` に og:site_name / og:title / og:type / og:url / og:image / (og:)description / twitter:card の出力を追加し、各 `render*` が `description`・`imageParts`（トピックのイラスト）・`ogType` を返すように変更
+  - 記事系ページの description は本文 Markdown 冒頭からの抜粋（~160字）、og:image はトピック共有イラスト（1536x864 のため twitter:card は summary_large_image）
+  - 絶対URLの origin は静的ビルドでは `SITE_ORIGIN` 環境変数 > `GITHUB_REPOSITORY` の owner（`https://{owner}.github.io`）、ローカルサーバではリクエストの host から解決
+
 - [x] 読み上げキャラ未指定時は chobi / manabi をランダムに使い分ける（[archived plan](docs/plans/archive/tts-random-character.md)）
   - `generate-audio.js` の既定キャラ（chobi 固定）を廃止し、CLI第3引数 > `GEMINI_TTS_CHARACTER` > ランダム選択に変更。選ばれたキャラは従来どおりログと `audio/v{N}.json` の `character` に記録
   - `workflows/audio.md` 手順2（ジャンルからの提案）を「指定なしはスクリプトのランダム選択に任せる。統一したい場合のみ既存音声の `character` に合わせて明示指定」に変更。`.env.example` の注記も更新

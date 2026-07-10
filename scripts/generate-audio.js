@@ -6,7 +6,20 @@ const matter = require('gray-matter');
 
 const API_BASE = 'https://generativelanguage.googleapis.com/v1beta/models';
 const DEFAULT_MODEL = 'gemini-2.5-flash-preview-tts';
-const DEFAULT_VOICE = 'Kore';
+
+// 読み上げキャラ。~/claude-code-manager（ai-monitor/voice-persona.json）の2キャラの声設定を踏襲。
+// manabi は同プロジェクトの生徒キャラ「なるこ」の旧名（本プロジェクトでは TODO の表記に合わせ manabi とする）。
+// tone はレベル別スタイル（速度・明瞭さ）の後ろに連結する声色の指示
+const CHARACTERS = {
+  chobi: { voice: 'Leda', tone: 'Speak in a warm, cheerful, always-smiling tone.' },
+  manabi: { voice: 'Aoede', tone: 'Speak in a bright, energetic voice full of curiosity.' },
+};
+
+// キャラ未指定時は2キャラをランダムに使い分ける
+function randomCharacterName() {
+  const names = Object.keys(CHARACTERS);
+  return names[Math.floor(Math.random() * names.length)];
+}
 const FALLBACK_SAMPLE_RATE = 24000; // Gemini TTS は s16le/mono/24kHz を返す。実際のレートは応答の mimeType から取る
 const MAX_SEGMENT_CHARS = 4000; // これを超える段落のみ文境界でさらに分割する
 const MAX_RETRIES = 5;
@@ -21,7 +34,7 @@ const PAUSES = {
   continuation: 0.5, // 長すぎて分割した段落の続き（文間相当の短い間）
 };
 
-// レベル（CEFR）に応じた読み上げスタイル指示。テキスト冒頭に付与する
+// レベル（CEFR）に応じた読み上げスタイル指示（速度・明瞭さ）。キャラの声色（tone）と連結してテキスト冒頭に付与する
 const STYLE_BY_LEVEL = {
   A1: 'Read aloud very slowly, clearly, and gently, like a narrator for absolute beginner English learners. Pause briefly between sentences.',
   A2: 'Read aloud very slowly and clearly, like a narrator for beginner English learners. Pause briefly between sentences.',
@@ -216,14 +229,22 @@ function encodeMp3(pcmBuffer, sampleRate, outPath) {
 }
 
 async function main() {
-  const [, , variantDir, version] = process.argv;
+  const [, , variantDir, version, characterArg] = process.argv;
   if (!variantDir || !version) {
-    console.error('Usage: node scripts/generate-audio.js <variant-dir> <article-version>');
-    console.error('  e.g. node scripts/generate-audio.js texts/water-cycle-20260709-052935/variants/B1-normal 1');
+    console.error('Usage: node scripts/generate-audio.js <variant-dir> <article-version> [character]');
+    console.error('  e.g. node scripts/generate-audio.js texts/water-cycle-20260709-052935/variants/B1-normal 1 chobi');
+    console.error(`  character: ${Object.keys(CHARACTERS).join(' | ')} (default: random)`);
     process.exit(1);
   }
   if (!/^\d+$/.test(version)) {
     console.error(`Invalid version: ${version} (must be a positive integer)`);
+    process.exit(1);
+  }
+
+  const characterName = characterArg || process.env.GEMINI_TTS_CHARACTER || randomCharacterName();
+  const character = CHARACTERS[characterName];
+  if (!character) {
+    console.error(`Unknown character: ${characterName} (available: ${Object.keys(CHARACTERS).join(', ')})`);
     process.exit(1);
   }
 
@@ -233,7 +254,8 @@ async function main() {
     process.exit(1);
   }
   const model = process.env.GEMINI_TTS_MODEL || DEFAULT_MODEL;
-  const voice = process.env.GEMINI_TTS_VOICE || DEFAULT_VOICE;
+  // GEMINI_TTS_VOICE はキャラの声を明示的に差し替えたいときだけ設定する（通常は空のままキャラの声を使う）
+  const voice = process.env.GEMINI_TTS_VOICE || character.voice;
 
   const articlePath = path.join(variantDir, 'articles', `v${version}.md`);
   if (!fs.existsSync(articlePath)) {
@@ -250,7 +272,7 @@ async function main() {
       /* level不明でもデフォルトスタイルで続行する */
     }
   }
-  const style = STYLE_BY_LEVEL[level] || DEFAULT_STYLE;
+  const style = `${STYLE_BY_LEVEL[level] || DEFAULT_STYLE} ${character.tone}`;
 
   const { content } = matter(fs.readFileSync(articlePath, 'utf-8'));
   const segments = splitLongSegments(segmentArticle(content));
@@ -259,7 +281,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`Generating audio with model "${model}" (voice ${voice}, level ${level || 'unknown'})`);
+  console.log(`Generating audio with model "${model}" (character ${characterName}, voice ${voice}, level ${level || 'unknown'})`);
   console.log(`${segments.length} segments to synthesize...`);
 
   const chunks = [];
@@ -292,6 +314,7 @@ async function main() {
     `${JSON.stringify(
       {
         model,
+        character: characterName,
         voice,
         level,
         style,
@@ -316,4 +339,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { segmentArticle, splitLongSegments, pauseSecondsBetween, assemblePcm, PAUSES };
+module.exports = { segmentArticle, splitLongSegments, pauseSecondsBetween, assemblePcm, PAUSES, CHARACTERS };

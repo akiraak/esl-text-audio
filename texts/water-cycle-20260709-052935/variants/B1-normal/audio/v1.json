@@ -1,11 +1,12 @@
 {
   "model": "gemini-2.5-flash-preview-tts",
-  "voice": "Kore",
+  "character": "chobi",
+  "voice": "Leda",
   "level": "B1",
-  "style": "Read aloud slowly and clearly, like a narrator for intermediate English learners.",
+  "style": "Read aloud slowly and clearly, like a narrator for intermediate English learners. Speak in a warm, cheerful, always-smiling tone.",
   "articleVersion": 1,
   "segmentCount": 8,
   "sampleRate": 24000,
-  "durationSeconds": 198.2,
-  "generatedAt": "2026-07-10T05:28:46.465Z"
+  "durationSeconds": 180.3,
+  "generatedAt": "2026-07-10T20:25:12.862Z"
 }

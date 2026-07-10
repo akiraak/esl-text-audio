@@ -1,5 +1,19 @@
 # DONE
 
+## 2026-07-10
+
+- [x] 読み上げキャラ未指定時は chobi / manabi をランダムに使い分ける（[archived plan](docs/plans/archive/tts-random-character.md)）
+  - `generate-audio.js` の既定キャラ（chobi 固定）を廃止し、CLI第3引数 > `GEMINI_TTS_CHARACTER` > ランダム選択に変更。選ばれたキャラは従来どおりログと `audio/v{N}.json` の `character` に記録
+  - `workflows/audio.md` 手順2（ジャンルからの提案）を「指定なしはスクリプトのランダム選択に任せる。統一したい場合のみ既存音声の `character` に合わせて明示指定」に変更。`.env.example` の注記も更新
+
+- [x] 音声読み上げを入れる（[archived plan](docs/plans/archive/listening-audio-tts.md)）
+  - Phase 1〜4: `scripts/generate-audio.js`（Gemini 2.5 Flash Preview TTS でセグメント分割生成→無音注入→結合→MP3化）、`workflows/audio.md`、閲覧ページのプレイヤー組み込み、water-cycle B1-normal の実音声生成と聴感調整
+  - 読み上げのキャラ設定（[archived plan](docs/plans/archive/tts-voice-characters.md)）: `~/claude-code-manager`（ai-monitor/voice-persona.json、元は ~/ai-twitch-cast）の2キャラの声設定を `generate-audio.js` の `CHARACTERS` として移植
+    - `chobi`（先生役・デフォルト）= voice **Leda**・柔らかく楽しげなにこにこトーン / `manabi`（生徒役、claude-code-manager の「なるこ」の旧名）= voice **Aoede**・元気で明るく好奇心いっぱいのトーン
+    - キャラ選択は CLI第3引数 > `GEMINI_TTS_CHARACTER` > 既定 chobi。スタイル指示はレベル別の速度指示＋キャラの声色を連結。`audio/v{N}.json` に `character` を記録
+    - `GEMINI_TTS_VOICE` は「キャラの声を明示的に差し替える場合のみ」の位置づけに変更（`.env` / `.env.example` から `Kore` 既定値を撤去）
+    - 公開済みの water-cycle B1-normal `audio/v1.mp3` を chobi（Leda）で再生成（3分00秒、旧 Kore 版と同等の尺）
+
 ## 2026-07-09
 
 - [x] 印刷時に先頭にURLを表示（[archived plan](docs/plans/archive/print-page-url.md)）

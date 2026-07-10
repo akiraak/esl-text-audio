@@ -16,8 +16,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 （`~/git-art` の outline → generate → brushup、`~/deep-pulse` のプラン作成 → 本文生成 → ファクトチェックという多段プロセスを踏襲）。
 当初の詳細設計は [docs/plans/archive/esl-text-generation.md](docs/plans/archive/esl-text-generation.md) を参照（トピックの複数バリアント対応など、その後の変更は [docs/plans/topic-variants-and-length-tiers.md](docs/plans/topic-variants-and-length-tiers.md) を参照）。
 
-例外として、本文に添えるイラスト生成（[workflows/illustrate.md](workflows/illustrate.md)）のみ、Claude Code がピクセルデータを直接生成できないため
-`scripts/generate-illustration.js` 経由で画像生成API（OpenAI GPT Image 2）を実際に呼び出す。プロンプト作成までは他ワークフローと同様
+例外として、本文に添えるイラスト生成（[workflows/illustrate.md](workflows/illustrate.md)）とリスニング用音声生成（[workflows/audio.md](workflows/audio.md)）のみ、
+Claude Code がピクセルデータ・音声波形を直接生成できないため、それぞれ `scripts/generate-illustration.js` 経由で画像生成API（OpenAI GPT Image 2）、
+`scripts/generate-audio.js` 経由で音声生成API（Gemini 2.5 Flash Preview TTS）を実際に呼び出す。プロンプト作成までは他ワークフローと同様
 Claude Code が対話的に行う。
 
 ### ディレクトリ構成
@@ -35,10 +36,12 @@ esl-text-audio/
 │   ├── generate.md      # 本文生成
 │   ├── factcheck.md     # 生成した本文と外部資料の突き合わせ・修正
 │   ├── illustrate.md    # 本文に対応するAI生成イラストの作成
+│   ├── audio.md         # 確定した本文のリスニング用音声（TTS）の生成
 │   ├── brushup.md       # フィードバックに基づく調整・再生成
 │   └── add-ideas.md     # トピックアイデアの追加（生成パイプラインとは独立の単体ワークフロー）
 ├── scripts/
-│   └── generate-illustration.js   # OpenAI Images API を呼び出しイラストを生成するスクリプト（illustrate.md から実行）
+│   ├── generate-illustration.js   # OpenAI Images API を呼び出しイラストを生成するスクリプト（illustrate.md から実行）
+│   └── generate-audio.js          # Gemini TTS API で本文をセグメント分割生成→無音（間）注入→結合して音声化するスクリプト（audio.md から実行）
 ├── personas/             # 生成・チェック時に使うAIペルソナ定義（1ペルソナ1ファイル）
 ├── lib/
 │   └── site.js           # 一覧・詳細ページのHTML組み立てロジック（server.js・静的ビルドスクリプト共通）
@@ -58,7 +61,9 @@ esl-text-audio/
         └── variants/      # レベル×分量tierの組み合わせ＝バリアント単位
             └── {level}-{tier}/            # 例: B1-normal, C1-long, A1-very-long
                 ├── variant.json           # level / tier / wordCountTarget / longForm / outlineTier / outlineVersion
-                └── articles/v1.md, v2.md, ...
+                ├── articles/v1.md, v2.md, ...
+                └── audio/                 # audio.md 実行後のみ作成。記事バージョンと同番号のMP3＋生成条件メタデータ
+                    └── v1.mp3, v1.json, ...
 ```
 
 - outline（分量tier単位）・article（バリアント単位）はそれぞれ独立にバージョン管理し、brushup のたびに新しいバージョンとして保存する（既存バージョンは直接編集しない）
@@ -76,13 +81,14 @@ esl-text-audio/
 4. `workflows/generate.md` — 承認済みアウトラインとバリアントの条件から本文を生成する（`variants/{level}-{tier}/articles/v{N}.md`）
 5. `workflows/factcheck.md` — `requiresFactCheck: true` の場合のみ、本文と `sources/` を突き合わせて事実面を修正
 6. `workflows/illustrate.md` — 確定した本文に対応するAI生成イラスト（GPT Image 2）を `scripts/generate-illustration.js` 経由で生成。トピックにつき1枚のみ生成し、全バリアントで共有する（既に生成済みの場合はスキップ）
-7. `workflows/brushup.md` — フィードバックに基づき新バージョンとして調整・再生成（1バリアント単位で実行）
+7. `workflows/audio.md` — 確定した本文のリスニング用音声（Gemini 2.5 Flash Preview TTS）を `scripts/generate-audio.js` 経由で生成。バリアント単位で、記事バージョンと同番号の `audio/v{N}.mp3` を作る
+8. `workflows/brushup.md` — フィードバックに基づき新バージョンとして調整・再生成（1バリアント単位で実行）
 
 上記パイプラインとは独立して、いつでも実行できる単体ワークフロー:
 
 - `workflows/add-ideas.md` — [docs/topic-ideas.md](docs/topic-ideas.md) へのトピックアイデアの追加（「アイデアを追加したい」と言われたらこれを実行する）
 
-トピックだけが送られてきた場合は、上記フローに沿って `config.md` から開始し、`research.md` と `factcheck.md` は `requiresFactCheck` の値に応じてスキップしながら `outline.md`（レベル・分量の確定を含む）→ `generate.md` → （`factcheck.md`）→ `illustrate.md` と進める。
+トピックだけが送られてきた場合は、上記フローに沿って `config.md` から開始し、`research.md` と `factcheck.md` は `requiresFactCheck` の値に応じてスキップしながら `outline.md`（レベル・分量の確定を含む）→ `generate.md` → （`factcheck.md`）→ `illustrate.md` → `audio.md` と進める。
 同じトピックに別のレベル・分量のバリアントを追加したい場合は、`config.md` 手順1でその旨を伝えれば既存トピックを再利用し、`outline.md` から再開する。
 
 ### レベル・分量・ジャンル・事実チェック方針

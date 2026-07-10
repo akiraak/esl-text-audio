@@ -58,6 +58,21 @@ app.get('/texts/:topicId/:variantId/article/:version', (req, res) => {
   res.send(site.layout(rendered.title, rendered.body));
 });
 
+app.get('/texts/:topicId/:variantId/audio/:version.mp3', (req, res) => {
+  const { topicId, variantId, version } = req.params;
+  if (
+    !site.isValidVariantId(topicId, variantId) ||
+    !/^\d+$/.test(version) ||
+    !site.hasAudio(topicId, variantId, version)
+  ) {
+    const { title, body } = site.render404(BASE_PATH);
+    return res.status(404).send(site.layout(title, body));
+  }
+  res
+    .type('audio/mpeg')
+    .sendFile(path.join(site.TEXTS_DIR, topicId, 'variants', variantId, 'audio', `v${version}.mp3`));
+});
+
 app.get('/texts/:topicId/images/:version.png', (req, res) => {
   const { topicId, version } = req.params;
   if (

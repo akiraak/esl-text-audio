@@ -56,6 +56,17 @@ function build() {
         const rendered = site.renderArticle(basePath, id, variantId, version);
         writeHtml(`texts/${id}/${variantId}/article/${version}`, rendered.title, rendered.body);
       }
+
+      const audioDir = path.join(site.TEXTS_DIR, id, 'variants', variantId, 'audio');
+      if (fs.existsSync(audioDir)) {
+        const outAudioDir = path.join(OUT_DIR, 'texts', id, variantId, 'audio');
+        fs.mkdirSync(outAudioDir, { recursive: true });
+        for (const file of fs.readdirSync(audioDir)) {
+          const match = file.match(/^v(\d+)\.mp3$/);
+          if (!match) continue;
+          fs.copyFileSync(path.join(audioDir, file), path.join(outAudioDir, `${match[1]}.mp3`));
+        }
+      }
     }
 
     const imagesDir = path.join(site.TEXTS_DIR, id, 'images');

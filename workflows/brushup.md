@@ -1,6 +1,6 @@
 # workflows/brushup.md — フィードバック反映・再生成
 
-ESL学習用テキスト生成フローの7番目（最後）のステップ。[workflows/generate.md](generate.md)（`requiresFactCheck: false` の場合）
+ESL学習用テキスト生成フローの8番目（最後）のステップ。[workflows/generate.md](generate.md)（`requiresFactCheck: false` の場合）
 または [workflows/factcheck.md](factcheck.md)（`requiresFactCheck: true` の場合）で確定した本文、および
 [workflows/illustrate.md](illustrate.md) で生成したイラストに対する利用者のフィードバックを受け、
 [personas/esl-writer.md](../personas/esl-writer.md) のペルソナで調整・再生成し、[personas/final-editor.md](../personas/final-editor.md) の
@@ -96,10 +96,19 @@ ESL学習用テキスト生成フローの7番目（最後）のステップ。[
   - 生成コマンド: `node scripts/generate-illustration.js texts/{topic-slug}-{timestamp} {M} texts/{topic-slug}-{timestamp}/images/v{M}.prompt.txt`
 - 再生成しない場合は何もしない。`images/v{M}.*` は作成せず、既存の最新バージョンのイラストをそのまま全バリアントで使い続ける
 
-### 9. 保存・報告
+### 9. 音声の再生成
+
+- リスニング用音声はバリアント単位で、記事バージョンと同番号の `audio/v{N}.mp3` として管理している（[workflows/audio.md](audio.md) 参照）。
+  本文を `v{N+1}.md` として更新した場合、音声は自動では追従しない。旧バージョンに音声が存在していた場合は、
+  [workflows/audio.md](audio.md) を新しい本文バージョンに対して実行し `audio/v{N+1}.mp3` を生成する
+  （記事ページは記事バージョンと同番号の音声のみ表示するため、再生成しないと新バージョンのページには音声が出ない）
+- 旧バージョンの `audio/v{N}.mp3` は旧記事ページ用にそのまま残す
+
+### 10. 保存・報告
 
 - 保存先: `variants/{level}-{tier}/articles/v{N+1}.md`（構成変更を伴った場合は対応する `outlines/{outlineTier}/v{outlineVersion+1}.md` も、
-  イラストを再生成した場合はトピック直下の `images/v{M}.png` と `images/v{M}.prompt.txt` も）
+  イラストを再生成した場合はトピック直下の `images/v{M}.png` と `images/v{M}.prompt.txt` も、
+  音声を再生成した場合は `variants/{level}-{tier}/audio/v{N+1}.mp3` と `v{N+1}.json` も）
 - 利用者に保存したバージョンと変更内容を報告する。手順4で他バリアント・他tierへの反映を行った場合、イラストを再生成した場合は
   他バリアントの表示にも影響する旨を併せて報告する
 - 追加のフィードバックがあれば、この [workflows/brushup.md](brushup.md) を再度実行する

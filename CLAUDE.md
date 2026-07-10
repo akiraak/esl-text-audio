@@ -110,6 +110,9 @@ CEFR レベル（A1〜C2）ごとの語彙・文長・分量tier別（通常/長
 - `scripts/build-static-site.js` — `npm run build` で `texts/` 配下から静的HTML一式を `dist/`（gitignore対象）に生成する。
   GitHub Actions（`.github/workflows/deploy-pages.yml`）が push のたびにこれを実行し、GitHub Pages へデプロイする
 - `texts/` は GitHub Pages で公開するためコミット対象（gitignore対象外）。生成したテキストは基本的にすべて公開される想定
+- 同じサイトを自宅サーバ g3plus でも https://esltext.chobi.me/ として公開している（`~/g3plus-ops` 管理、[docs/plans/esltext-chobi-me-deploy.md](docs/plans/esltext-chobi-me-deploy.md) を参照）。
+  ビルドは同一で環境変数のみ違い（`PAGES_BASE_PATH=` 空 + `SITE_ORIGIN=https://esltext.chobi.me`）。サーバ側 cron（15分おき）が main への push を検知して自動再ビルドするため、
+  push するだけで GitHub Pages と esltext.chobi.me の両方に反映される
 
 <!-- vibeboard:begin -->
 ## 開発管理画面 (vibeboard)

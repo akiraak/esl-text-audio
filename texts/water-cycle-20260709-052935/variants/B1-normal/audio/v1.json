@@ -1,0 +1,11 @@
+{
+  "model": "gemini-2.5-flash-preview-tts",
+  "voice": "Kore",
+  "level": "B1",
+  "style": "Read aloud slowly and clearly, like a narrator for intermediate English learners.",
+  "articleVersion": 1,
+  "segmentCount": 8,
+  "sampleRate": 24000,
+  "durationSeconds": 198.2,
+  "generatedAt": "2026-07-10T05:28:46.465Z"
+}

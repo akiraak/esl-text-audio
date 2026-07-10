@@ -2,6 +2,11 @@
 
 ## 2026-07-09
 
+- [x] フォントが見ずらいのでちゃんと決める（[archived plan](docs/plans/archive/readable-font.md)）
+  - 旧指定の `Trebuchet MS` は字形にクセがあり、Windows 以外ではフォールバックもバラつくため、Google Fonts の **Atkinson Hyperlegible Next**（Braille Institute 設計、紛らわしい文字 I/l/1・rn/m 等の判別性を最優先した書体）に変更。ESL 読解用途に適する
+  - `lib/site.js` の `layout()` に Google Fonts の `<link>`（preconnect + 可変フォント 400〜800・イタリック込み）を追加し、`body` の font-family を差し替え。日本語はシステムフォント（Hiragino Sans / Yu Gothic UI / Meiryo）にフォールバック、オフライン時は Segoe UI 等へ自然にフォールバック
+  - `npm run build` の出力に link と新 font-family が含まれることを確認。ローカルサーバを headless Chromium で開き、`document.fonts` でフォント読み込み・computed style での適用・スクリーンショットでの描画を確認
+
 - [x] トピックのアイデアページを作成。新規にページを作成するときはそのページを見たり新規に追加したりする（[archived plan](docs/plans/archive/topic-ideas-page.md)）
   - `docs/topic-ideas.md` を新規作成。「アイデア一覧」（カテゴリで分類できるネストした箇条書きのツリー、全8ジャンルから15案を初期投入）と「採用済み」（既存3トピックを記録）の2部構成
   - `workflows/config.md` 手順2にアイデアページの参照（未定なら候補提示、指定ありなら採用済みとの重複チェック）を追加し、新手順7として採用の記録・アイデア2〜3件の補充を追加（旧手順7は8に繰り下げ）

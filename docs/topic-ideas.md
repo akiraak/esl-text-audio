@@ -24,6 +24,7 @@
 - Everyday Life
   - Food & Cooking
     - How to Make Onigiri | Instructional | A2〜B1 | 手順接続語（first, then, finally）の練習。日本文化の紹介にもなる
+    - Why Does Bread Rise? | Expository | B1〜B2 | イーストの発酵でパンが膨らむ仕組み。料理と科学をつなぐ身近なテーマ
   - Shopping & Dining
     - Ordering at a Restaurant | Dialogue | A1〜B1 | 注文・会計の定番表現。初級の会話練習向き
   - Home & Neighborhood
@@ -33,12 +34,12 @@
     - How to Plant a Vegetable Garden | Instructional | A2〜B1 | 季節・道具の語彙が学べる
 - Work & School
   - A Job Interview | Dialogue | A2〜B1 | 自己紹介・経歴を話す表現の練習
+  - My First Day at a Part-Time Job | Personal writing | A2〜B1 | 初日の緊張と小さな失敗談。過去形と感情表現の練習に向く
   - Should Students Wear School Uniforms? | Opinion/Essay | B2〜C2 | 賛否が分かれる定番テーマ。譲歩構文の練習に向く
 - Travel & Places
   - A Morning at a Fish Market | Descriptive | A1〜B2 | 市場の音・匂い・色の描写。形容詞の練習に向く
   - Diary of My First Trip Abroad | Personal writing | A2〜B2 | 一人称の感情表現・時系列の練習。架空の書き手ならフィクション扱いにできる
 - Science & Nature
-  - Is a Tomato a Fruit or a Vegetable? | Expository | B1〜B2 | 植物学的定義（花が咲いて実がなる＝fruit）と料理上の分類（vegetable）の違いを、トマト・カボチャ・唐辛子を例に説明。定義・分類の語彙と対比表現（while, on the other hand）の練習に向く
   - Why Do We Sleep? | Expository | B1〜C1 | 睡眠の科学。身近なテーマで事実チェック資料も集めやすい
   - How Volcanoes Work | Expository | B1〜C1 | 地学の基礎。図解的な説明の練習に向く
 - History & Culture
@@ -48,6 +49,7 @@
   - Town Opens Its First Community Library | News-style | B1〜C1 | 見出し・リード文の構成練習。架空の町の設定ならフィクション扱いにできる
 - Personal Reflections
   - A Letter to My Future Self | Personal writing | A2〜B2 | 未来表現（will / be going to）の練習に向く
+  - The Best Advice I Ever Received | Personal writing | B1〜B2 | 心に残る助言のエピソード。間接話法の練習に向く
 
 ## 採用済み
 
@@ -56,3 +58,4 @@
 | Lost While Traveling | Narrative | [texts/lost-while-traveling-20260708-222921/](../texts/lost-while-traveling-20260708-222921/) | 2026-07-08 |
 | The Water Cycle | Expository | [texts/water-cycle-20260709-052935/](../texts/water-cycle-20260709-052935/) | 2026-07-09 |
 | How Honey Is Made | Expository | [texts/how-honey-is-made-20260709-082323/](../texts/how-honey-is-made-20260709-082323/) | 2026-07-09 |
+| Is a Tomato a Fruit or a Vegetable? | Expository | [texts/tomato-fruit-or-vegetable-20260709-164126/](../texts/tomato-fruit-or-vegetable-20260709-164126/) | 2026-07-09 |

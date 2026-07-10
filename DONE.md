@@ -2,6 +2,11 @@
 
 ## 2026-07-09
 
+- [x] 印刷時に先頭にURLを表示（[archived plan](docs/plans/archive/print-page-url.md)）
+  - `lib/site.js`の`layout()`で`<body>`直後に`.print-url`要素を追加し、インラインスクリプトで`location.href`を書き込む（ローカルサーバとGitHub Pagesの両方でビルド時にURLを確定できないため実行時に取得）
+  - CSSで通常表示時は`display: none`、`@media print`時のみ純黒・小さめの文字で表示（長いURLの折り返し用に`word-break: break-all`）
+  - `server.js`・`scripts/build-static-site.js`共通の`lib/site.js`のみの変更のため両方に反映。ローカルサーバのHTMLと`npm run build`のdist出力の両方に要素・スタイル・スクリプトが含まれることを確認
+
 - [x] フォントが見ずらいのでちゃんと決める（[archived plan](docs/plans/archive/readable-font.md)）
   - 旧指定の `Trebuchet MS` は字形にクセがあり、Windows 以外ではフォールバックもバラつくため、Google Fonts の **Atkinson Hyperlegible Next**（Braille Institute 設計、紛らわしい文字 I/l/1・rn/m 等の判別性を最優先した書体）に変更。ESL 読解用途に適する
   - `lib/site.js` の `layout()` に Google Fonts の `<link>`（preconnect + 可変フォント 400〜800・イタリック込み）を追加し、`body` の font-family を差し替え。日本語はシステムフォント（Hiragino Sans / Yu Gothic UI / Meiryo）にフォールバック、オフライン時は Segoe UI 等へ自然にフォールバック

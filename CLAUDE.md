@@ -47,8 +47,8 @@ esl-text-audio/
 │   └── site.js           # 一覧・詳細ページのHTML組み立てロジック（server.js・静的ビルドスクリプト共通）
 ├── server.js              # ローカル閲覧用Webサーバ（lib/site.js を basePath なしで呼び出す）
 ├── scripts/
-│   └── build-static-site.js   # texts/ 配下からGitHub Pages公開用の静的HTMLを dist/ に生成
-└── texts/                # 生成物。GitHub Pagesで公開するためコミット対象
+│   └── build-static-site.js   # texts/ 配下から公開用の静的HTMLを dist/ に生成
+└── texts/                # 生成物。公開サイト（esltext.chobi.me）で配信するためコミット対象
     └── {topic-slug}-{YYYYMMDD-HHMMSS}/     # トピック単位
         ├── config.json    # topic / genre / requiresFactCheck など、トピック単位の条件
         ├── sources/       # 事実チェック対象ジャンルの場合のみ作成。バリアント間で共有
@@ -106,13 +106,13 @@ CEFR レベル（A1〜C2）ごとの語彙・文長・分量tier別（通常/長
 
 - `server.js` — `npm start`（デフォルトポート3020）で起動するローカル閲覧用Webサーバ。`texts/` 配下を動的に読み込んで一覧・詳細を表示する
 - `lib/site.js` — 上記のHTML組み立てロジック本体。`server.js` と `scripts/build-static-site.js` の両方から呼ばれる共通モジュールで、
-  全てのリンク・画像srcは `basePath` 引数を受け取って組み立てる（ローカルサーバは `''`、静的ビルドはGitHub Pagesのプロジェクトページ配下パス）
+  全てのリンク・画像srcは `basePath` 引数を受け取って組み立てる（ローカルサーバ・esltext.chobi.me とも `''`＝ルート配下）
 - `scripts/build-static-site.js` — `npm run build` で `texts/` 配下から静的HTML一式を `dist/`（gitignore対象）に生成する。
-  GitHub Actions（`.github/workflows/deploy-pages.yml`）が push のたびにこれを実行し、GitHub Pages へデプロイする
-- `texts/` は GitHub Pages で公開するためコミット対象（gitignore対象外）。生成したテキストは基本的にすべて公開される想定
-- 同じサイトを自宅サーバ g3plus でも https://esltext.chobi.me/ として公開している（`~/g3plus-ops` 管理、[docs/plans/esltext-chobi-me-deploy.md](docs/plans/esltext-chobi-me-deploy.md) を参照）。
-  ビルドは同一で環境変数のみ違い（`PAGES_BASE_PATH=` 空 + `SITE_ORIGIN=https://esltext.chobi.me`）。サーバ側 cron（15分おき）が main への push を検知して自動再ビルドするため、
-  push するだけで GitHub Pages と esltext.chobi.me の両方に反映される
+  ベースパスは `PAGES_BASE_PATH`、OGP用originは `SITE_ORIGIN` 環境変数で指定する
+- `texts/` は公開サイトで配信するためコミット対象（gitignore対象外）。生成したテキストは基本的にすべて公開される想定
+- 公開サイトは自宅サーバ g3plus 上の https://esltext.chobi.me/（`~/g3plus-ops` 管理、[docs/plans/esltext-chobi-me-deploy.md](docs/plans/esltext-chobi-me-deploy.md) を参照）。
+  ビルド時の環境変数は `PAGES_BASE_PATH=` 空 + `SITE_ORIGIN=https://esltext.chobi.me`。サーバ側 cron（15分おき）が main への push を検知して自動再ビルドするため、
+  push するだけで反映される（以前併用していた GitHub Pages への公開は廃止済み）
 
 <!-- vibeboard:begin -->
 ## 開発管理画面 (vibeboard)

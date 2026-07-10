@@ -5,22 +5,12 @@ const site = require('../lib/site');
 const OUT_DIR = path.join(__dirname, '..', 'dist');
 
 function resolveBasePath() {
-  if (process.env.PAGES_BASE_PATH !== undefined) return process.env.PAGES_BASE_PATH;
-  if (process.env.GITHUB_REPOSITORY) {
-    const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
-    return `/${repo}`;
-  }
-  return '';
+  return process.env.PAGES_BASE_PATH || '';
 }
 
 // OGPのog:url/og:imageに使う公開サイトのorigin。不明な場合は空を返し、絶対URLが必要なタグは省略する
 function resolveSiteOrigin() {
-  if (process.env.SITE_ORIGIN !== undefined) return process.env.SITE_ORIGIN;
-  if (process.env.GITHUB_REPOSITORY) {
-    const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
-    return `https://${owner}.github.io`;
-  }
-  return '';
+  return process.env.SITE_ORIGIN || '';
 }
 
 let basePath = '';
@@ -47,7 +37,6 @@ function build() {
 
   fs.rmSync(OUT_DIR, { recursive: true, force: true });
   fs.mkdirSync(OUT_DIR, { recursive: true });
-  fs.writeFileSync(path.join(OUT_DIR, '.nojekyll'), '');
 
   writeHtml('', site.renderIndex(basePath));
   writeHtml('levels', site.renderLevels(basePath));

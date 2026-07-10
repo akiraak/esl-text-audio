@@ -2,7 +2,7 @@
 
 ## 目的・背景
 
-生成テキストサイト（現在は GitHub Pages: https://akiraak.github.io/esl-text-audio/ で公開）を、
+生成テキストサイト（当時は GitHub Pages: https://akiraak.github.io/esl-text-audio/ で公開）を、
 自宅サーバ g3plus 上でもホストし `https://esltext.chobi.me/` で公開する。
 デプロイの仕組み・運用は `~/g3plus-ops`（自宅サーバ構成管理リポジトリ）側に置き、他サービス
 （photorans / esl-learning-assistant など）と同じ運用パターンに従う。
@@ -16,6 +16,7 @@
   - `SITE_ORIGIN=https://esltext.chobi.me` → OGP の絶対 URL
 - ローカルで上記環境変数を付けたビルドを検証済み（リンク・og:url ともルートパス / chobi.me origin になる）
 - GitHub Pages のデプロイ（`.github/workflows/deploy-pages.yml`）はそのまま維持し、esltext.chobi.me は追加の公開先とする
+  - ※その後 esltext.chobi.me への一本化に伴い GitHub Pages 公開は廃止した（[remove-github-pages.md](remove-github-pages.md) を参照）
 
 ### g3plus-ops 側（デプロイ設定の正本）
 

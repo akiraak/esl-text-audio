@@ -70,7 +70,7 @@ ESL学習用テキスト生成フローの最初のステップ。**トピック
 }
 ```
 
-- `topic` は公開ビューア（GitHub Pages）にそのまま表示されるため**必ず英語で保存する**。利用者が日本語でトピックを伝えた場合も、Claude Codeが英訳して保存する（利用者との対話自体は日本語のままでよい）
+- `topic` は公開ビューア（esltext.chobi.me）にそのまま表示されるため**必ず英語で保存する**。利用者が日本語でトピックを伝えた場合も、Claude Codeが英訳して保存する（利用者との対話自体は日本語のままでよい）
 - `genre` も公開ビューアに表示されるため、[esl-level-spec.md](../docs/specs/esl-level-spec.md) の「ESL読解に適した文章形式」表にある英名
   （`Narrative` / `Dialogue` / `Descriptive` / `Instructional` / `Expository` / `Personal writing` / `News-style` / `Opinion/Essay`）で保存する
 - `factCheckExemptionReason`: ジャンルは事実チェック対象だが利用者がフィクション明示したことで対象外にした場合、その理由を文字列で記録する。それ以外は `null`

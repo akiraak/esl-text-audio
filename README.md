@@ -15,20 +15,18 @@ npm start
 `http://localhost:3020` で一覧を表示する（ポートは `PORT` 環境変数または `--port` で変更可能）。
 `run-viewer.sh` は `node_modules` が無ければ `npm install` を実行し、同じportを握っている既存サーバがあれば停止してから起動する。
 
-## GitHub Pages への公開
+## 公開サイト（esltext.chobi.me）
 
-`texts/` 配下の生成物は、`main` への push のたびに GitHub Actions（[.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml)）が
-静的HTMLをビルドして GitHub Pages に自動デプロイする。
+`texts/` 配下の生成物は https://esltext.chobi.me/ で公開している（自宅サーバ g3plus、`~/g3plus-ops` 管理）。
+サーバ側の cron（15分おき）が `main` への push を検知して静的サイトを自動再ビルドするため、push するだけで反映される。
+詳細は [docs/plans/esltext-chobi-me-deploy.md](docs/plans/esltext-chobi-me-deploy.md) を参照。
 
 ```bash
 npm run build
 ```
 
-で `dist/`（gitignore対象）に静的サイトを生成できる。ローカルで動作確認する場合、GitHub Pagesはプロジェクトページ
-（`https://<user>.github.io/<repo>/` のようなサブパス）として配信されるため、`PAGES_BASE_PATH` 環境変数でリンク生成時の
-ベースパスを指定できる（未指定時は `GITHUB_REPOSITORY` 環境変数から自動算出、どちらも無ければ空文字＝ルート配下）。
-
-初回のみ、GitHubリポジトリの Settings → Pages → Source で `GitHub Actions` を選択する必要がある。
+で `dist/`（gitignore対象）に静的サイトを生成できる。リンク生成時のベースパスは `PAGES_BASE_PATH` 環境変数
+（未指定時は空文字＝ルート配下）、OGPタグの絶対URLに使うoriginは `SITE_ORIGIN` 環境変数（未指定時は絶対URLタグを省略）で指定できる。
 
 ## イラスト生成（GPT Image 2）のセットアップ
 

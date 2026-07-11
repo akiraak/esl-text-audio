@@ -1,0 +1,12 @@
+{
+  "model": "gemini-2.5-flash-preview-tts",
+  "character": "chobi",
+  "voice": "Leda",
+  "level": "B1",
+  "style": "Read aloud slowly and clearly, like a narrator for intermediate English learners. Speak in a warm, cheerful, always-smiling tone.",
+  "articleVersion": 1,
+  "segmentCount": 27,
+  "sampleRate": 24000,
+  "durationSeconds": 687.7,
+  "generatedAt": "2026-07-11T00:19:32.749Z"
+}

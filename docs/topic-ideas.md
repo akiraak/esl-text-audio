@@ -25,19 +25,21 @@
   - Food & Cooking
     - How to Make Onigiri | Instructional | A2〜B1 | 手順接続語（first, then, finally）の練習。日本文化の紹介にもなる
     - Why Does Bread Rise? | Expository | B1〜B2 | イーストの発酵でパンが膨らむ仕組み。料理と科学をつなぐ身近なテーマ
-    - Classroom Talk: Is a Tomato a Fruit or a Vegetable? | Dialogue | A2〜B1 | ESL授業で先生と生徒3人が自然に議論する会話。事実面は texts/tomato-fruit-or-vegetable-20260709-164126/ の sources を再利用できる（一度生成後に削除・再生成待ち）
-    - Classroom Debate: Team Fruit vs. Team Vegetable | Dialogue | A2〜B1 | トマトは果物か野菜かのミニディベート。判定役の生徒が悩むのがコメディ要素。sources は上と同じく再利用可（一度生成後に削除・再生成待ち）
+    - Classroom Debate: Team Fruit vs. Team Vegetable | Dialogue | A2〜B1 | トマトは果物か野菜かのミニディベート。判定役の生徒が悩むのがコメディ要素。sources は texts/tomato-fruit-or-vegetable-20260709-164126/ から再利用可（一度生成後に削除・再生成待ち）
     - The Tomato Trial: A Classroom Role-Play | Dialogue | A2〜B1 | 1893年 Nix v. Hedden 裁判を教室で再演するロールプレイ。教科書ガベルの裁判官役がオチ担当。sources は上と同じく再利用可（一度生成後に削除・再生成待ち）
   - Shopping & Dining
     - Ordering at a Restaurant | Dialogue | A1〜B1 | 注文・会計の定番表現。初級の会話練習向き
     - Bargaining at a Flea Market | Dialogue | A2〜B1 | 値段交渉の会話。数字・比較表現（too expensive / a little cheaper）の練習に向く
+    - The Waiter Brought the Wrong Dish | Narrative | A2〜B1 | 注文と違う料理が来たレストランでの小さな騒動。丁寧な苦情・お願い表現の練習に向く
   - Health & Body
     - At the Doctor's Office | Dialogue | A2〜B1 | 症状を伝える・アドバイスを受ける会話。体の部位・症状の語彙と should の練習に向く
+    - Why Do We Get Hiccups? | Expository | B1〜B2 | しゃっくりが起きる仕組みと止め方の言い伝え。身近な体の不思議で導入しやすい
   - Home & Neighborhood
     - The New Neighbor | Narrative | A1〜C2 | 引っ越してきた隣人との出会い。日常語彙中心でどのレベルにも展開しやすい
     - The Night the Power Went Out | Narrative | A2〜C1 | 停電の夜の家族の過ごし方。過去形の練習に向く
   - Hobbies & Gardening
     - How to Plant a Vegetable Garden | Instructional | A2〜B1 | 季節・道具の語彙が学べる
+    - Growing Herbs on a Windowsill | Instructional | A2〜B1 | 部屋の中でできるハーブ栽培の手順。水やり・日当たりなど世話の語彙が学べる
 - Work & School
   - A Job Interview | Dialogue | A2〜B1 | 自己紹介・経歴を話す表現の練習
   - My First Day at a Part-Time Job | Personal writing | A2〜B1 | 初日の緊張と小さな失敗談。過去形と感情表現の練習に向く
@@ -69,3 +71,4 @@
 | The Water Cycle | Expository | [texts/water-cycle-20260709-052935/](../texts/water-cycle-20260709-052935/) | 2026-07-09 |
 | How Honey Is Made | Expository | [texts/how-honey-is-made-20260709-082323/](../texts/how-honey-is-made-20260709-082323/) | 2026-07-09 |
 | Is a Tomato a Fruit or a Vegetable? | Expository | [texts/tomato-fruit-or-vegetable-20260709-164126/](../texts/tomato-fruit-or-vegetable-20260709-164126/) | 2026-07-09 |
+| Classroom Talk: Is a Tomato a Fruit or a Vegetable? | Dialogue | [texts/classroom-talk-tomato-20260710-210222/](../texts/classroom-talk-tomato-20260710-210222/) | 2026-07-10 |

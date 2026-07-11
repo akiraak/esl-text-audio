@@ -55,8 +55,10 @@
 - History & Culture
   - The History of Chocolate | Expository | B1〜C1 | カカオからチョコレートへの歴史。物流・交易の語彙も扱える
   - Why Do We Shake Hands? | Expository | B1〜B2 | 握手など挨拶の習慣の由来。文化比較の語彙が学べる
+  - Why Do Brides Wear White? | Expository | B1〜B2 | 白いウェディングドレスの由来（ヴィクトリア女王の結婚式が発端）。文化比較の語彙が学べる
 - Society & Technology
   - Is Social Media Good for Friendship? | Opinion/Essay | B2〜C2 | 学習者自身の生活に引き付けやすい論題
+  - Museum Finds Painting Was Hanging Upside Down for Decades | News-style | B1〜C1 | NYのモンドリアン作品が数十年逆さ掛けだったと判明した実話（2022年報道）。実在事件のため research 必須
   - Town Opens Its First Community Library | News-style | B1〜C1 | 見出し・リード文の構成練習。架空の町の設定なら事実チェック対象はほぼ無い
   - A Robot Waiter's First Day | Narrative | A2〜B1 | レストランのロボット店員の初出勤物語。テクノロジー語彙を物語形式でやさしく扱える
 - Personal Reflections
@@ -72,3 +74,4 @@
 | How Honey Is Made | Expository | [texts/how-honey-is-made-20260709-082323/](../texts/how-honey-is-made-20260709-082323/) | 2026-07-09 |
 | Is a Tomato a Fruit or a Vegetable? | Expository | [texts/tomato-fruit-or-vegetable-20260709-164126/](../texts/tomato-fruit-or-vegetable-20260709-164126/) | 2026-07-09 |
 | Classroom Talk: Is a Tomato a Fruit or a Vegetable? | Dialogue | [texts/classroom-talk-tomato-20260710-210222/](../texts/classroom-talk-tomato-20260710-210222/) | 2026-07-10 |
+| The Great KitKat Heist | News-style | [texts/great-kitkat-heist-20260710-230250/](../texts/great-kitkat-heist-20260710-230250/) | 2026-07-10 |

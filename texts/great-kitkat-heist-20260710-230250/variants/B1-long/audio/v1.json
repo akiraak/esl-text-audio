@@ -1,0 +1,12 @@
+{
+  "model": "gemini-2.5-flash-preview-tts",
+  "character": "manabi",
+  "voice": "Aoede",
+  "level": "B1",
+  "style": "Read aloud slowly and clearly, like a narrator for intermediate English learners. Speak in a bright, energetic voice full of curiosity.",
+  "articleVersion": 1,
+  "segmentCount": 18,
+  "sampleRate": 24000,
+  "durationSeconds": 419.4,
+  "generatedAt": "2026-07-11T06:19:50.183Z"
+}

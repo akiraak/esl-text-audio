@@ -43,7 +43,7 @@ ESL学習用テキスト生成フローの4番目のステップ。[personas/esl
 - outline の各セクションに沿って、日本語で記録された要点を、`variant.json` の `level` に応じた語彙・文法で英文に起こす
   （outline はレベルに依存しない共有の構成メモのため、レベルごとの語彙・文法選択は必ずこの段階で行う）
 - `longForm: true` の場合、outline の各セクションの「見出し候補」を土台に、`level` の語彙で無理のないH2見出しに調整する（そのまま使えない場合は言い換える）
-- `requiresFactCheck: true` の場合、事実に関わる記述を書く前に、そのセクションの outline に記録された根拠ソース（`sources/` のファイル）を読み、内容に沿って書く。根拠のない事実を新たに書き加えない
+- 現実世界の客観的事実の記述（セリフの中で語られる事実を含む）を書く前に、そのセクションの outline に記録された根拠ソース（`sources/` のファイル）を読み、内容に沿って書く。根拠のない事実を新たに書き加えない
 - セクション間のつながりを自然にし、単なる要点の羅列にならないようにする
 - タイトルと本文からなる Markdown として執筆する。装飾的なメタ情報（語数カウント等）は本文に含めない（[personas/esl-writer.md](../personas/esl-writer.md) の出力形式に従う）
 
@@ -55,13 +55,13 @@ ESL学習用テキスト生成フローの4番目のステップ。[personas/esl
 
 - [personas/learner-simulator.md](../personas/learner-simulator.md) のペルソナで、指定レベルの学習者として本文を通読し、つまずき箇所を洗い出す
 - つまずき箇所があれば、[personas/esl-writer.md](../personas/esl-writer.md) のペルソナに戻って該当箇所を修正する（手順4〜5を繰り返す）。
-  `requiresFactCheck: true` のセクションを修正する場合、根拠ソースの範囲を超える書き換えをしない
+  根拠ソースが記録されたセクションを修正する場合、根拠ソースの範囲を超える書き換えをしない
 - つまずきがなくなる（学習者シミュレーターが「つまずきなし」と判定する）まで繰り返す
 
-### 7. 最終確定（`requiresFactCheck: false` の場合のみ）
+### 7. 最終確定の扱い
 
-- [personas/final-editor.md](../personas/final-editor.md) のペルソナで、学習者シミュレーターの指摘の反映内容を統合し、この段階で本文を確定する
-- `requiresFactCheck: true` の場合はこのステップを行わず、最終統合は [workflows/factcheck.md](factcheck.md) 完了後に行う
+- 事実チェックは常時実施のため、このワークフローでは本文を最終確定しない。最終統合（[personas/final-editor.md](../personas/final-editor.md)）は
+  [workflows/factcheck.md](factcheck.md) 完了後に行う
 
 ### 8. articles/v{N}.md の保存
 
@@ -81,5 +81,4 @@ createdAt: "2026-07-09T08:23:23"
 
 ### 9. 次のワークフローへの案内
 
-- `requiresFactCheck: true` の場合、次に [workflows/factcheck.md](factcheck.md) を実行する
-- `requiresFactCheck: false` の場合、この時点で本文は確定。次に [workflows/illustrate.md](illustrate.md) を実行する
+- 次に [workflows/factcheck.md](factcheck.md) を実行する（客観的事実の記述が無い本文でも、「対象なし」の確認までは必ず行う）

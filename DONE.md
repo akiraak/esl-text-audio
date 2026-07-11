@@ -2,6 +2,11 @@
 
 ## 2026-07-10
 
+- [x] 事実チェックを常時実施に変更（対象は客観的事実の記述のみ・ユーモア保全）（[archived plan](docs/plans/archive/factcheck-always-with-content-scope.md)）
+  - ジャンル単位の除外（物語・対話文＝フィクションで対象外）を廃止し、全ジャンル常時実施＋内容単位のスコープ判定に変更。チェック対象は客観的事実の記述のみ（セリフ内の事実も対象）、会話のやりとり・主観・架空設定・明らかなジョークは対象外。お笑い・ユーモアを消さない修正を最優先するルールを明文化
+  - 更新: `esl-level-spec.md`（ジャンル表・事実チェック方針）、`CLAUDE.md`、`workflows/config.md・research.md・outline.md・generate.md・factcheck.md`、`personas/skeptical-fact-checker.md・simplification-safety-checker.md・final-editor.md・esl-writer.md`、`docs/topic-ideas.md`
+  - トマト会話3トピックに遡及適用（`requiresFactCheck: true`・sources コピー・outline v2 に根拠ソース記録・factcheck 実行）。Trial 版の根拠不明表現「by ship」1件を修正し音声を再生成。旧ルールの既存4トピック（Lost While Traveling 等）は遡及変更しない
+
 - [x] 記事ページに読み上げキャラ名を表示する（Chobi / Naruko）（[archived plan](docs/plans/archive/audio-reader-name.md)）
   - `lib/site.js` の `audioBlock()` が `audio/v{N}.json` の `character` を読み、プレイヤー直前に「Read by Chobi / Naruko」ラベルを表示（manabi は表示名 Naruko）。メタデータ欠損時はラベル無し、印刷時はプレイヤーと共に非表示
 

@@ -1,6 +1,6 @@
 # workflows/factcheck.md — 事実確認
 
-ESL学習用テキスト生成フローの5番目のステップ（`requiresFactCheck: true` の場合のみ実行）。
+ESL学習用テキスト生成フローの5番目のステップ（**常に実行する**）。
 [personas/skeptical-fact-checker.md](../personas/skeptical-fact-checker.md) と
 [personas/simplification-safety-checker.md](../personas/simplification-safety-checker.md) のペルソナで
 [workflows/generate.md](generate.md) が生成した本文と `sources/` を突き合わせ、
@@ -11,19 +11,31 @@ ESL学習用テキスト生成フローの5番目のステップ（`requiresFact
 [personas/simplification-safety-checker.md](../personas/simplification-safety-checker.md)、
 [personas/final-editor.md](../personas/final-editor.md)
 
+## チェック対象のスコープ
+
+チェック対象は本文全体ではなく、**現実世界について客観的事実として書かれている記述のみ**
+（定義の一元管理は [esl-level-spec.md](../docs/specs/esl-level-spec.md) の「事実チェック方針」）。
+
+- **対象**: 実在の地名・人物・歴史的事実・日付・数値・科学的事実など。**登場人物のセリフの中で語られる現実世界の事実も対象**
+  （例: 会話文中で先生が説明する科学・歴史）
+- **対象外**: 会話のやりとりそのもの（相づち・リアクション・冗談・言い回し）、登場人物の意見・感想など主観的な内容、
+  架空の設定（架空の人物・場所・出来事とその設定内での描写）
+- **ユーモアの扱い**: 明らかにジョークとして書かれた誇張・演出（例: 劇中のセリフ回し・オチ）は事実の主張として扱わない。
+  お笑いは教材の中核的な価値であり、事実修正でもジョーク・オチを消さない言い換えを最優先で探す
+
 ## 実行条件
 
-- `config.json` を読み、`requiresFactCheck` を確認する
-- `false` の場合はこのワークフローを実行せず、[workflows/generate.md](generate.md) の完了時点で本文は確定済みなので、
-  直接 [workflows/illustrate.md](illustrate.md) に進む
-- `true` の場合のみ以下の手順を行う
+- 常に実行する（2026-07-10 のルール変更以前は `requiresFactCheck: false` のトピックはスキップしていた。既存の `false` トピックは旧ルールのまま）
+- `sources/` が存在しないトピック（research.md を「収集対象なし」でスキップした場合）は、本文にチェック対象となる
+  客観的事実の記述が本当に無いことを確認する。無ければ「対象なし」として利用者に報告し、このワークフローを完了とする。
+  もし記述が見つかった場合は [workflows/research.md](research.md) に戻って資料を収集してから再開する
 
 ## 前提
 
 - `texts/{topic-slug}-{timestamp}/variants/{level}-{tier}/articles/v{N}.md` に [workflows/generate.md](generate.md) の本文（学習者シミュレーターのセルフレビュー済み・最終エディターによる統合前）が存在すること
 - `texts/{topic-slug}-{timestamp}/variants/{level}-{tier}/variant.json` の `outlineTier` / `outlineVersion` から対応する `outlines/{outlineTier}/v{outlineVersion}.md` が特定できること
-- `sources/`（トピック直下、バリアント間で共通）に [workflows/research.md](research.md) で取得した外部資料が保存済みであること
-- `outlines/{outlineTier}/v{outlineVersion}.md` の各セクションに根拠ソースが記録されていること
+- 客観的事実の記述を含むトピックの場合、`sources/`（トピック直下、バリアント間で共通）に [workflows/research.md](research.md) で取得した外部資料が保存済みであり、
+  `outlines/{outlineTier}/v{outlineVersion}.md` の該当セクションに根拠ソースが記録されていること
 
 ## 手順
 
@@ -35,7 +47,8 @@ ESL学習用テキスト生成フローの5番目のステップ（`requiresFact
 
 ### 2. 懐疑的ファクトチェッカーによる事実確認
 
-- [personas/skeptical-fact-checker.md](../personas/skeptical-fact-checker.md) のペルソナで、本文中の事実に関わる記述を洗い出し、
+- [personas/skeptical-fact-checker.md](../personas/skeptical-fact-checker.md) のペルソナで、本文中のチェック対象記述
+  （上記スコープ: 客観的事実の記述のみ。セリフ内の事実を含み、会話のやりとり・主観・架空設定・明らかなジョークは除く）を洗い出し、
   該当する `sources/` のファイルと突き合わせる
 - 出力形式はペルソナ定義に従い、主張ごとに「判定（OK / 要修正 / 根拠不明）・根拠ファイル・理由」のリストとする
 
@@ -55,6 +68,8 @@ ESL学習用テキスト生成フローの5番目のステップ（`requiresFact
 
 - 手順4で反映すると決めた指摘に沿って、[personas/esl-writer.md](../personas/esl-writer.md) のペルソナに戻って本文を修正する
 - 修正は根拠ソースの範囲内で行い、`sources/` にない事実を新たに書き加えない
+- 修正の際、ジョーク・オチ・会話の楽しさを消さない言い換えを最優先で探す。どうしても正確性と両立しない場合のみ正確性を優先し、
+  その場合も別の形でユーモアを補えないか検討する（お笑いは文章にとってとても大切）
 - ESLレベル制約（語彙・文長）による簡略化・言い換えは事実チェックの対象外のため、修正時もレベル目安から逸脱させない
   （[esl-level-spec.md](../docs/specs/esl-level-spec.md) の該当レベル行を参照）
 

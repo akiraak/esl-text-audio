@@ -31,7 +31,7 @@ esl-text-audio/
 │   └── topic-ideas.md    # トピック案のストック（アイデア一覧＋採用済み一覧）。config.md から参照・更新する
 ├── workflows/
 │   ├── config.md       # トピック・ジャンルなどトピック単位の生成条件の収集
-│   ├── research.md      # 事実チェック対象ジャンルの場合の外部資料収集
+│   ├── research.md      # 事実チェック用の外部資料収集（客観的事実の記述を予定しないトピックはスキップ可）
 │   ├── outline.md       # バリアント（レベル×分量）設定・アウトライン作成・承認
 │   ├── generate.md      # 本文生成
 │   ├── factcheck.md     # 生成した本文と外部資料の突き合わせ・修正
@@ -51,7 +51,7 @@ esl-text-audio/
 └── texts/                # 生成物。公開サイト（esltext.chobi.me）で配信するためコミット対象
     └── {topic-slug}-{YYYYMMDD-HHMMSS}/     # トピック単位
         ├── config.json    # topic / genre / requiresFactCheck など、トピック単位の条件
-        ├── sources/       # 事実チェック対象ジャンルの場合のみ作成。バリアント間で共有
+        ├── sources/       # 客観的事実の記述を含むトピックのみ作成（チェック用の外部資料）。バリアント間で共有
         ├── outlines/      # 分量tier単位（レベルには依存しない、複数バリアントで共有）
         │   ├── normal/v1.md, v2.md, ...
         │   ├── long/v1.md, ...
@@ -74,12 +74,14 @@ esl-text-audio/
 
 ### ワークフロー一覧（実行順）
 
-1. `workflows/config.md` — トピック・形式（ジャンル）を収集し、事実チェック要否を判定して `config.json`（トピック単位）に保存。
+1. `workflows/config.md` — トピック・形式（ジャンル）を収集して `config.json`（トピック単位）に保存（事実チェックは常時実施のため `requiresFactCheck` は常に `true`）。
    トピック決定時は [docs/topic-ideas.md](docs/topic-ideas.md)（トピック案のストック）を参照し、採用したら「採用済み」へ移動・新しいアイデアを補充する
-2. `workflows/research.md` — `requiresFactCheck: true` の場合のみ、外部資料を `sources/` に保存（トピック単位、バリアント間で共有）
+2. `workflows/research.md` — チェック対象となる客観的事実の記述を予定するトピックについて、外部資料を `sources/` に保存（トピック単位、バリアント間で共有）。
+   客観的事実を扱わない見込みなら「収集対象なし」としてスキップできる
 3. `workflows/outline.md` — バリアント（レベル×分量tier）ごとにレベル・分量を確定し、分量tier単位のアウトラインを作成・承認（`outlines/{tier}/v{N}.md`）。`variant.json` を保存
 4. `workflows/generate.md` — 承認済みアウトラインとバリアントの条件から本文を生成する（`variants/{level}-{tier}/articles/v{N}.md`）
-5. `workflows/factcheck.md` — `requiresFactCheck: true` の場合のみ、本文と `sources/` を突き合わせて事実面を修正
+5. `workflows/factcheck.md` — 本文と `sources/` を突き合わせて事実面を修正（常に実行。ただしチェック対象は客観的事実の記述のみで、
+   会話のやりとり・主観的内容・架空の設定は対象外。対象が無い本文は「対象なし」で完了）
 6. `workflows/illustrate.md` — 確定した本文に対応するAI生成イラスト（GPT Image 2）を `scripts/generate-illustration.js` 経由で生成。トピックにつき1枚のみ生成し、全バリアントで共有する（既に生成済みの場合はスキップ）
 7. `workflows/audio.md` — 確定した本文のリスニング用音声（Gemini 2.5 Flash Preview TTS）を `scripts/generate-audio.js` 経由で生成。バリアント単位で、記事バージョンと同番号の `audio/v{N}.mp3` を作る
 8. `workflows/brushup.md` — フィードバックに基づき新バージョンとして調整・再生成（1バリアント単位で実行）
@@ -88,15 +90,16 @@ esl-text-audio/
 
 - `workflows/add-ideas.md` — [docs/topic-ideas.md](docs/topic-ideas.md) へのトピックアイデアの追加（「アイデアを追加したい」と言われたらこれを実行する）
 
-トピックだけが送られてきた場合は、上記フローに沿って `config.md` から開始し、`research.md` と `factcheck.md` は `requiresFactCheck` の値に応じてスキップしながら `outline.md`（レベル・分量の確定を含む）→ `generate.md` → （`factcheck.md`）→ `illustrate.md` → `audio.md` と進める。
+トピックだけが送られてきた場合は、上記フローに沿って `config.md` から開始し、`research.md`（客観的事実を扱わない場合はスキップ可）→ `outline.md`（レベル・分量の確定を含む）→ `generate.md` → `factcheck.md` → `illustrate.md` → `audio.md` と進める。
 同じトピックに別のレベル・分量のバリアントを追加したい場合は、`config.md` 手順1でその旨を伝えれば既存トピックを再利用し、`outline.md` から再開する。
 
 ### レベル・分量・ジャンル・事実チェック方針
 
 CEFR レベル（A1〜C2）ごとの語彙・文長・分量tier別（通常/長い/すごく長い）の語数目安とジャンル別の適性レベル帯は [docs/specs/esl-level-spec.md](docs/specs/esl-level-spec.md) を参照。
 レベルと分量は独立したパラメータであり、任意の組み合わせを選べる。
-事実チェックは物語・対話文など明らかにフィクションとわかるジャンルは対象外、それ以外（説明文・手順文・説明的文章・日記/手紙/メール・ニュース記事風・意見文/エッセイ）は対象とする。
-ただし、対象ジャンルでも利用者が「架空の人物・場所を扱うフィクションである」と明示した場合は対象外にできる（理由は `config.json` に記録する）。
+事実チェックは全ジャンルで常に実施する。ただしチェック対象は「現実世界について客観的事実として書かれている記述」のみ
+（セリフの中で語られる事実も対象）で、会話のやりとりそのもの・登場人物の意見や感想など主観的な内容・架空の設定は対象外とする。
+お笑い・ユーモアは教材の中核的な価値であり、事実修正の際もジョーク・オチを消さない言い換えを最優先する（詳細は esl-level-spec.md の「事実チェック方針」を参照）。
 
 ### AIペルソナ
 

@@ -1,6 +1,6 @@
 # workflows/config.md — トピック条件の収集
 
-ESL学習用テキスト生成フローの最初のステップ。**トピック単位**の生成条件（トピック・文章形式・事実チェック要否）を収集し、
+ESL学習用テキスト生成フローの最初のステップ。**トピック単位**の生成条件（トピック・文章形式）を収集し、
 `texts/{topic-slug}-{YYYYMMDD-HHMMSS}/config.json` に保存する。レベル・分量（長さ）は**バリアント単位**の条件のため
 このワークフローでは扱わず、[workflows/outline.md](outline.md) で確定する。
 
@@ -40,14 +40,13 @@ ESL学習用テキスト生成フローの最初のステップ。**トピック
 - 選んだジャンルと、後で確定する各バリアントのレベルとの相性は、そのバリアントのレベルを確定するタイミング（[workflows/outline.md](outline.md) 手順5）で
   改めて確認する（この段階では確認しない）
 
-### 4. 事実チェック要否の判定
+### 4. requiresFactCheck の設定
 
-- [esl-level-spec.md](../docs/specs/esl-level-spec.md) の「文章形式」表にある「事実チェック」列（ジャンル単位、「要」/「不要（フィクション）」）を基本の判定とする
-- ジャンルが「要」の場合でも、利用者が「架空の人物・場所を扱うフィクションである」と明示した場合は対象外にできる
-  - この場合、以下を確認した上で `requiresFactCheck: false` とし、理由を `config.json` に記録する
-    - 具体的にどの点がフィクション設定か（例:「登場する町・会社は架空」）
-- ジャンルが「不要（フィクション）」の場合は確認なしで `requiresFactCheck: false` とする
-- 上記いずれにも該当しない場合は `requiresFactCheck: true` とする
+- 事実チェックは全ジャンルで常時実施するため、`requiresFactCheck` は**常に `true`** とする（ジャンル・利用者申告による除外は行わない）
+- チェックの対象範囲はトピック単位ではなく**内容単位**で決まる: 客観的事実の記述のみが対象で、
+  会話のやりとりそのもの・主観的な内容・架空の設定は対象外（詳細は [esl-level-spec.md](../docs/specs/esl-level-spec.md) の「事実チェック方針」を参照）
+- 客観的事実の記述を予定しないトピック（純粋なフィクション等）でも `true` のまま保存する。その場合は
+  [workflows/research.md](research.md) を「収集対象なし」でスキップでき、[workflows/factcheck.md](factcheck.md) が「対象なし」を確認して完了する
 
 ### 5. トピックスラッグ・保存先ディレクトリの決定
 
@@ -65,15 +64,14 @@ ESL学習用テキスト生成フローの最初のステップ。**トピック
   "topicSlug": "topic-slug",
   "createdAt": "YYYY-MM-DDTHH:MM:SS",
   "genre": "Expository",
-  "requiresFactCheck": true,
-  "factCheckExemptionReason": null
+  "requiresFactCheck": true
 }
 ```
 
 - `topic` は公開ビューア（esltext.chobi.me）にそのまま表示されるため**必ず英語で保存する**。利用者が日本語でトピックを伝えた場合も、Claude Codeが英訳して保存する（利用者との対話自体は日本語のままでよい）
 - `genre` も公開ビューアに表示されるため、[esl-level-spec.md](../docs/specs/esl-level-spec.md) の「ESL読解に適した文章形式」表にある英名
   （`Narrative` / `Dialogue` / `Descriptive` / `Instructional` / `Expository` / `Personal writing` / `News-style` / `Opinion/Essay`）で保存する
-- `factCheckExemptionReason`: ジャンルは事実チェック対象だが利用者がフィクション明示したことで対象外にした場合、その理由を文字列で記録する。それ以外は `null`
+- `requiresFactCheck` は常に `true`（2026-07-10 のルール変更以前に作成されたトピックには `false` や `factCheckExemptionReason` フィールドが残っていることがあるが、新規には書かない）
 - レベル・分量（長さ）・語数目安・長文モードの可否は、この `config.json` ではなくバリアント単位の `variant.json`（[workflows/outline.md](outline.md) で作成）に記録する
 
 ### 7. トピックのアイデアページの更新
@@ -89,6 +87,7 @@ ESL学習用テキスト生成フローの最初のステップ。**トピック
 ### 8. 次のワークフローへの案内
 
 - `config.json` の内容を要約して利用者に提示し、確認を得る
-- `requiresFactCheck: true` の場合は次に [workflows/research.md](research.md) を実行する
-- `requiresFactCheck: false` の場合は [workflows/research.md](research.md) をスキップし、次に [workflows/outline.md](outline.md) を実行する
-  （最初のバリアントのレベル・分量の確定、アウトライン作成をそこで行う）
+- 本文で現実世界の客観的事実を扱う見込みがあるかを判断し、あれば次に [workflows/research.md](research.md) を実行する
+- 客観的事実を扱わない見込み（純粋なフィクション等）なら [workflows/research.md](research.md) を「収集対象なし」としてスキップし、
+  次に [workflows/outline.md](outline.md) を実行する（最初のバリアントのレベル・分量の確定、アウトライン作成をそこで行う。
+  スキップした場合も [workflows/factcheck.md](factcheck.md) は実行し、本文に客観的事実の記述が無いことを確認する）

@@ -2,7 +2,7 @@
 
 ## 使用ワークフロー
 
-- `factcheck.md`（事実確認、`requiresFactCheck: true` の場合のみ）
+- `factcheck.md`（事実確認。対象は本文中の客観的事実の記述のみ — スコープは `factcheck.md` 参照）
 
 ## 役割
 

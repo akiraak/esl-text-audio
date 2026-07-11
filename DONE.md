@@ -2,6 +2,11 @@
 
 ## 2026-07-11
 
+- [x] スマホの表示に対応（[archived plan](docs/plans/archive/mobile-responsive.md)）
+  - 640px以下で body/article の余白・見出しサイズ・表セルpadding・一覧サムネイルを縮小するメディアクエリを追加
+  - 一覧ページの作成日時を日付のみ表示に変更し、meta項目が文字列途中で折り返さないよう修正
+  - Playwright（390px/1280px）で全ページ種別のスクリーンショット・水平オーバーフロー無しを確認
+
 - [x] GitHub Pages への公開を削除する（esltext.chobi.me に一本化）（[archived plan](docs/plans/archive/remove-github-pages.md)）
   - deploy-pages.yml 削除・ビルドスクリプトの GitHub 前提フォールバック削除
   - README / CLAUDE.md / workflows/config.md / lib/site.js のドキュメント更新

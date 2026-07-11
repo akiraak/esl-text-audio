@@ -129,21 +129,21 @@ True/False や穴埋めは将来の拡張とし、初期実装ではスコープ
 
 ## 実施フェーズ
 
-- [ ] **Phase 1: 仕様の確定**
-  - [ ] `docs/specs/esl-level-spec.md` に問題のレベル別基準（問題数・種類・語彙制約）を追記
-  - [ ] `questions/v{N}.json` スキーマを本プランの形式で確定
-- [ ] **Phase 2: 生成ワークフロー**
-  - [ ] `personas/question-writer.md` を作成
-  - [ ] `workflows/questions.md` を作成
-  - [ ] 既存記事 1 本（例: water-cycle の B1-normal）で試作し、learner-simulator チェックまで通す
-- [ ] **Phase 3: 表示実装**
-  - [ ] `lib/site.js` に Questions セクションの描画 + 採点 JS + CSS（既存 Playful デザインに合わせる）を追加
-  - [ ] 印刷 CSS 対応（フィードバック・スコア非表示）
-  - [ ] ローカルビューア（`npm start`）と `npm run build` の両方で表示確認
-- [ ] **Phase 4: 既存記事への展開・公開**
-  - [ ] 既存 6 トピックの全バリアントに問題を生成
-  - [ ] push → esltext.chobi.me の自動反映を確認
-  - [ ] `TODO.md` の該当項目を完了にする
+- [x] **Phase 1: 仕様の確定**
+  - [x] `docs/specs/esl-level-spec.md` に問題のレベル別基準（問題数・種類・語彙制約）を追記
+  - [x] `questions/v{N}.json` スキーマを本プランの形式で確定
+- [x] **Phase 2: 生成ワークフロー**
+  - [x] `personas/question-writer.md` を作成
+  - [x] `workflows/questions.md` を作成
+  - [x] 既存記事 1 本（例: water-cycle の B1-normal）で試作し、learner-simulator チェックまで通す
+- [x] **Phase 3: 表示実装**
+  - [x] `lib/site.js` に Questions セクションの描画 + 採点 JS + CSS（既存 Playful デザインに合わせる）を追加
+  - [x] 印刷 CSS 対応（フィードバック・スコア非表示）
+  - [x] ローカルビューア（`npm start`）と `npm run build` の両方で表示確認
+- [x] **Phase 4: 既存記事への展開・公開**
+  - [x] 既存 6 トピックの全バリアントに問題を生成
+  - [x] push → esltext.chobi.me の自動反映を確認
+  - [x] `TODO.md` の該当項目を完了にする
 
 ## 影響範囲
 

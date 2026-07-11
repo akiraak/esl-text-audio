@@ -113,7 +113,7 @@ CEFR レベル（A1〜C2）ごとの語彙・文長・分量tier別（通常/長
 - `scripts/build-static-site.js` — `npm run build` で `texts/` 配下から静的HTML一式を `dist/`（gitignore対象）に生成する。
   ベースパスは `PAGES_BASE_PATH`、OGP用originは `SITE_ORIGIN` 環境変数で指定する
 - `texts/` は公開サイトで配信するためコミット対象（gitignore対象外）。生成したテキストは基本的にすべて公開される想定
-- 公開サイトは自宅サーバ g3plus 上の https://esltext.chobi.me/（`~/g3plus-ops` 管理、[docs/plans/esltext-chobi-me-deploy.md](docs/plans/esltext-chobi-me-deploy.md) を参照）。
+- 公開サイトは自宅サーバ g3plus 上の https://esltext.chobi.me/（`~/g3plus-ops` 管理、[docs/plans/archive/esltext-chobi-me-deploy.md](docs/plans/archive/esltext-chobi-me-deploy.md) を参照）。
   ビルド時の環境変数は `PAGES_BASE_PATH=` 空 + `SITE_ORIGIN=https://esltext.chobi.me`。サーバ側 cron（15分おき）が main への push を検知して自動再ビルドするため、
   push するだけで反映される（以前併用していた GitHub Pages への公開は廃止済み）
 

@@ -19,7 +19,7 @@ npm start
 
 `texts/` 配下の生成物は https://esltext.chobi.me/ で公開している（自宅サーバ g3plus、`~/g3plus-ops` 管理）。
 サーバ側の cron（15分おき）が `main` への push を検知して静的サイトを自動再ビルドするため、push するだけで反映される。
-詳細は [docs/plans/esltext-chobi-me-deploy.md](docs/plans/esltext-chobi-me-deploy.md) を参照。
+詳細は [docs/plans/archive/esltext-chobi-me-deploy.md](docs/plans/archive/esltext-chobi-me-deploy.md) を参照。
 
 ```bash
 npm run build

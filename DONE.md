@@ -1,5 +1,19 @@
 # DONE
 
+## 2026-07-11
+
+- [x] GitHub Pages への公開を削除する（esltext.chobi.me に一本化）（[archived plan](docs/plans/archive/remove-github-pages.md)）
+  - deploy-pages.yml 削除・ビルドスクリプトの GitHub 前提フォールバック削除
+  - README / CLAUDE.md / workflows/config.md / lib/site.js のドキュメント更新
+  - GitHub リポジトリ Settings → Pages で Unpublish（akiraak 手作業）
+
+- [x] esltext.chobi.me へのデプロイ（[archived plan](docs/plans/archive/esltext-chobi-me-deploy.md)）
+  - このリポジトリ側: ルートパス + esltext.chobi.me origin でのビルド検証・ドキュメント追記
+  - g3plus-ops 側: `esltext/`（Dockerfile / docker-compose / auto-update.sh）と運用ドキュメント作成
+  - サーバ側: clone・コンテナ起動・cron 登録・動作確認
+  - Cloudflare Tunnel hostname `esltext.chobi.me` の追加（akiraak 手作業）
+  - Web表示のモバイル対応
+
 ## 2026-07-10
 
 - [x] 事実チェックを常時実施に変更（対象は客観的事実の記述のみ・ユーモア保全）（[archived plan](docs/plans/archive/factcheck-always-with-content-scope.md)）

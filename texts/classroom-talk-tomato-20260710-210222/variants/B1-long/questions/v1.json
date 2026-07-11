@@ -1,0 +1,103 @@
+{
+  "articleVersion": 1,
+  "level": "B1",
+  "generatedAt": "2026-07-11T10:19:13",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "According to Ms. Rivera, what is the science rule for a fruit?",
+      "choices": [
+        "It is sweet and full of juice, so people enjoy eating it raw.",
+        "It grows on a plant that has small yellow flowers.",
+        "It grows from a flower and holds the seeds of the plant.",
+        "It is the part of a plant that people eat as a dessert."
+      ],
+      "answerIndex": 2,
+      "explanation": "In the section \"What Science Says\", Ms. Rivera explains that in botany, a fruit is the part of a plant that grows from a flower and holds the seeds. She also says taste is not important for this rule."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why do cooks call a tomato a vegetable?",
+      "choices": [
+        "People usually put it in dishes that are not sweet.",
+        "It does not hold any seeds inside, like other vegetables.",
+        "It cannot be eaten raw, so people must cook it first.",
+        "It grows in the ground, next to onions and carrots."
+      ],
+      "answerIndex": 0,
+      "explanation": "In the section \"What Cooks Say\", Ms. Rivera explains that cooks group food by taste and use, and tomatoes usually go into savory dishes. That is why cooks and shoppers call the tomato a vegetable."
+    },
+    {
+      "type": "comprehension",
+      "question": "What does Ms. Rivera say about cucumbers, pumpkins, and peppers?",
+      "choices": [
+        "They are vegetables for science, but people sometimes use them in sweet dishes.",
+        "They are special cases that do not follow the rules of botany or the kitchen.",
+        "They taste much sweeter than tomatoes, so everybody agrees they are fruits.",
+        "They are fruits for science, but people treat them like vegetables in the kitchen."
+      ],
+      "answerIndex": 3,
+      "explanation": "In the section \"The Tomato Is Not Alone\", Ms. Rivera says cucumbers, pumpkins, peppers, and eggplants also grow from flowers and hold seeds, but in the kitchen we treat them all like vegetables."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why did the Nix family say that tomatoes are fruits?",
+      "choices": [
+        "They wanted to show the judges that science was right.",
+        "They did not want to pay the tax on imported vegetables.",
+        "They wanted to sell their tomatoes as a sweet dessert.",
+        "They believed their tomatoes tasted sweeter than others."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article says the 1883 law put a tax on imported vegetables but not on imported fruit. The Nix family said, \"Tomatoes are fruits, so we don't have to pay,\" and Kenta notes that a fruit costs less money."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why did the judges decide that a tomato is a vegetable?",
+      "choices": [
+        "They proved that the science rule about seeds was wrong.",
+        "They found that tomatoes do not really grow from flowers.",
+        "They wanted the Nix family to win the fight about the tax.",
+        "They thought the law should follow the way people speak every day."
+      ],
+      "answerIndex": 3,
+      "explanation": "Ms. Rivera says the judges did not say science was wrong, but Judge Horace Gray said the law should follow everyday language. In everyday language, people eat tomatoes with dinner, not as a dessert."
+    },
+    {
+      "type": "comprehension",
+      "question": "What is the main lesson of the class discussion?",
+      "choices": [
+        "Some questions have two right answers, and it depends on who is asking.",
+        "Cooks understand food much better than scientists understand plants.",
+        "Decisions made by courts are more important than science or cooking.",
+        "Students should always vote before they start to discuss a question."
+      ],
+      "answerIndex": 0,
+      "explanation": "In the last section, Ms. Rivera says both answers are right: a tomato is a fruit in a science class and a vegetable in the kitchen. Maria adds that the answer changes when the question changes."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the word \"savory\" describes food that...",
+      "choices": [
+        "is eaten raw, like a fresh apple.",
+        "tastes of salt, not sugar.",
+        "comes from another country.",
+        "is served after dinner, as a dessert."
+      ],
+      "answerIndex": 1,
+      "explanation": "Ms. Rivera explains the word directly in the section \"What Cooks Say\": \"savory\" means food that tastes of salt, not sugar. Tomatoes usually go into savory dishes like salads and pasta sauce."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, what does the word \"botany\" mean?",
+      "choices": [
+        "The art of cooking food.",
+        "An old law about taxes.",
+        "The study of plants.",
+        "A plant with yellow flowers."
+      ],
+      "answerIndex": 2,
+      "explanation": "Ms. Rivera defines the word at the start of the science part of the lesson: \"Botany is the study of plants.\""
+    }
+  ]
+}

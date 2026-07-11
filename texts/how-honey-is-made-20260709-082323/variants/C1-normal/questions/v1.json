@@ -1,0 +1,103 @@
+{
+  "articleVersion": 1,
+  "level": "C1",
+  "generatedAt": "2026-07-11T10:19:28",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "Why does the article emphasise that the nectar is not digested inside the forager's crop?",
+      "choices": [
+        "The nectar begins turning into honey before it ever reaches the hive.",
+        "A forager can transport a full load of nectar without spending any of it on her own metabolism.",
+        "The forager is able to visit far more flowers before she has to return home.",
+        "The processor bee no longer needs to add any enzymes to the nectar."
+      ],
+      "answerIndex": 1,
+      "explanation": "The first body section states that because the nectar is merely stored rather than digested, a single forager can carry a payload back to the hive \"without losing any of it to her own metabolism.\""
+    },
+    {
+      "type": "comprehension",
+      "question": "What does the enzyme invertase do to the nectar as it is passed between bees?",
+      "choices": [
+        "It splits the sucrose into two simpler sugars, glucose and fructose.",
+        "It removes most of the water so that the nectar can be stored safely.",
+        "It seals the sugars inside an airtight protective layer of wax.",
+        "It raises the acidity of the nectar to a pH of roughly three."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article explains that the processor adds invertase, \"which breaks the sucrose down into two simpler sugars, glucose and fructose.\""
+    },
+    {
+      "type": "comprehension",
+      "question": "According to the article, how do worker bees reduce the water content of the nectar in the comb?",
+      "choices": [
+        "They warm the nectar with their bodies until the water boils away.",
+        "They add glucose oxidase, which draws the excess moisture out.",
+        "They fan their wings over the open comb to move air and accelerate evaporation.",
+        "They keep passing the nectar from bee to bee until it dries out."
+      ],
+      "answerIndex": 2,
+      "explanation": "The text says worker bees \"fan their wings over the open comb, generating a current of air that accelerates evaporation,\" turning the hive into a natural dehydrator."
+    },
+    {
+      "type": "comprehension",
+      "question": "The article says honey's three defences against spoiling only work under one essential condition. What is that condition?",
+      "choices": [
+        "The honey must be kept at a steady, cool temperature.",
+        "The pH of the honey must stay between 3 and 4.5.",
+        "The glucose oxidase must keep producing hydrogen peroxide.",
+        "The wax seal must stay intact so that no moisture or air reaches the honey."
+      ],
+      "answerIndex": 3,
+      "explanation": "The section on spoilage states that the three defences \"only function... under one essential condition: the seal must remain intact,\" since exposure to moisture or air breaks down honey's stability."
+    },
+    {
+      "type": "comprehension",
+      "question": "What does the article say about honey production around the world today?",
+      "choices": [
+        "Africa is expanding its output faster than any other region, with Ethiopia as its largest producer.",
+        "Africa now produces more honey than any other continent, led by Ethiopia.",
+        "Global production has fallen below 1,894 thousand tonnes since 2023.",
+        "Egypt is still the world's leading producer, just as it was in ancient times."
+      ],
+      "answerIndex": 0,
+      "explanation": "The final data section states that Africa \"is now expanding its output faster than any other region, with Ethiopia standing as the continent's single largest producer.\""
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the sentence \"This handoff is deliberate rather than incidental,\" the word \"deliberate\" means that the handoff is",
+      "choices": [
+        "something that happens purely by chance.",
+        "a step that is carried out very slowly.",
+        "done intentionally as part of the colony's system.",
+        "an action that is repeated again and again."
+      ],
+      "answerIndex": 2,
+      "explanation": "The contrast with \"incidental\" and the following explanation of dividing work between foragers and processors show that \"deliberate\" here means done on purpose rather than by accident."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the final section, honey is described as \"so chemically resilient that archaeologists have found it, still edible.\" Here \"resilient\" means",
+      "choices": [
+        "pleasant and sweet in taste.",
+        "able to last a long time without breaking down.",
+        "difficult and costly to produce.",
+        "unusually rich in nutrients."
+      ],
+      "answerIndex": 1,
+      "explanation": "The clause about honey still being edible inside ancient Egyptian tombs shows that \"resilient\" refers to its ability to survive unchanged over enormous spans of time."
+    },
+    {
+      "type": "inference",
+      "question": "Based on the article, what would most likely happen to a jar of honey that was left open in a damp place for a long time?",
+      "choices": [
+        "It would stay perfectly preserved, because honey never spoils under any conditions.",
+        "It would grow more acidic and therefore become even safer to eat.",
+        "It would slowly change back into the watery nectar it came from.",
+        "It could eventually spoil, because its stability depends on staying dry and sealed."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article states that once honey is \"exposed to moisture or air, its remarkable stability gradually breaks down,\" since its resistance to microbes depends on staying dry and undiluted."
+    }
+  ]
+}

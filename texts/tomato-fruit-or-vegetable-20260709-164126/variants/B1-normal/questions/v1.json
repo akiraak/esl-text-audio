@@ -1,0 +1,67 @@
+{
+  "articleVersion": 1,
+  "level": "B1",
+  "generatedAt": "2026-07-11T10:19:51",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "Why do scientists say that a tomato is a fruit?",
+      "choices": [
+        "Because people often eat it together with sweet food.",
+        "Because it tastes very different from other vegetables.",
+        "Because it grows from a flower and has seeds inside.",
+        "Because it is sold together with fruit in most shops."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article explains that in botany a fruit grows from a flower and holds the seeds. A tomato grows from small yellow flowers and has many seeds inside."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why do cooks and most shoppers call the tomato a vegetable?",
+      "choices": [
+        "Because people use it in savory dishes and not as a dessert.",
+        "Because it does not hold any seeds inside it.",
+        "Because it grows in a different way from real fruits.",
+        "Because scientists changed its name many years ago."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article says that in the kitchen people put tomatoes in salads, soups, and other savory dishes, so they group them with vegetables."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why was the tomato question important for the court in 1893?",
+      "choices": [
+        "The judges wanted to teach people more about botany.",
+        "Shops did not know in which part to sell tomatoes.",
+        "Farmers wanted to grow more tomatoes in the United States.",
+        "People paid a tax on imported vegetables, but not on fruit."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article says the difference was about money, because at that time people paid a tax on imported vegetables but not on fruit."
+    },
+    {
+      "type": "comprehension",
+      "question": "What does the article say about cucumbers, pumpkins, peppers, and eggplants?",
+      "choices": [
+        "They are vegetables in science but fruits in the kitchen.",
+        "They are fruits in science but are used as vegetables in cooking.",
+        "They are strange cases that are very different from the tomato.",
+        "They are sweet foods that people often eat as a dessert."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article says these foods grow from flowers and hold seeds, so in botany they are fruits, but in the kitchen we treat them like vegetables."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the word \"savory\" describes dishes that are...",
+      "choices": [
+        "sweet, like cakes and other desserts.",
+        "cold and fresh, like drinks in summer.",
+        "not sweet, like salads and soups.",
+        "very expensive and difficult to make."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article puts savory dishes on the opposite side of sweet desserts: we do not eat tomatoes as a sweet dessert, but in salads, soups, and other savory dishes."
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "articleVersion": 1,
+  "level": "C1",
+  "generatedAt": "2026-07-11T10:20:24",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "Why does the nectar a forager collects remain almost chemically unchanged during her flight back to the hive?",
+      "choices": [
+        "Because it is held in the crop, an organ kept separate from her digestive stomach, so it is stored rather than broken down.",
+        "Because the forager adds the enzyme invertase to it the moment she draws it from the flower.",
+        "Because most of its water has already evaporated before she leaves the blossom.",
+        "Because she flies home quickly enough that her body has no time to absorb any of the sugars."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article explains that the crop, or \"honey stomach,\" is entirely distinct from the digestive stomach, so the stored nectar stays chemically almost unchanged during the flight home."
+    },
+    {
+      "type": "comprehension",
+      "question": "According to the article, what is the main advantage of the forager handing her nectar to a processor bee at the hive entrance?",
+      "choices": [
+        "It lets the queen decide exactly how the incoming nectar will be distributed through the hive.",
+        "It ensures the nectar has already lost most of its water before it reaches the comb.",
+        "It frees the forager to turn around quickly and set out again instead of carrying the load to the comb herself.",
+        "It guarantees that only one bee ever adds invertase to any given batch of nectar."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article states that the handoff allows foragers to turn around quickly and head back out for another load rather than spending flight time on internal hive tasks."
+    },
+    {
+      "type": "comprehension",
+      "question": "What does the enzyme invertase do to the nectar inside the hive?",
+      "choices": [
+        "It draws out the excess water so the nectar can be stored without spoiling.",
+        "It breaks the sucrose in the nectar down into two simpler sugars, glucose and fructose.",
+        "It seals each finished cell of the comb with a thin, airtight layer of wax.",
+        "It recombines glucose and fructose into sucrose so the honey will keep longer."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article says each receiving bee adds invertase, which breaks the sucrose in the nectar down into glucose and fructose."
+    },
+    {
+      "type": "comprehension",
+      "question": "How do worker bees reduce the water content of the nectar so that it can become finished honey?",
+      "choices": [
+        "They add an enzyme that chemically absorbs the surplus moisture from each cell.",
+        "They cap the cells with wax immediately so that the water is forced out under pressure.",
+        "They carry each drop out of the hive to dry in the open sun before returning it.",
+        "They fan their wings continuously around the open comb to accelerate evaporation."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article describes worker bees fanning their wings to generate a current of air that dramatically accelerates evaporation, turning part of the hive into a dehydration chamber."
+    },
+    {
+      "type": "comprehension",
+      "question": "What does the article say would happen to global crop production if pollinators were lost?",
+      "choices": [
+        "It would fall by about twelve percent each year, with the losses concentrated on African farms.",
+        "It would decline steadily until roughly three-quarters of all crops had vanished.",
+        "It would drop by around eight percent annually, a loss valued at about 577 billion dollars.",
+        "It would collapse by nearly ninety percent, eliminating most of the world's flowering plants."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article states that without pollinators the world would lose approximately eight percent of global crop production annually, a loss valued at around 577 billion U.S. dollars."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the word \"caste\" (as in the \"worker caste\") refers to:",
+      "choices": [
+        "the total number of bees that happen to be living in a single hive.",
+        "a distinct group of bees defined by the particular role it carries out in the colony.",
+        "the physical chamber within the comb where the queen lays her eggs.",
+        "the part of the year during which the colony actively gathers nectar."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article uses \"caste\" to distinguish the three roles of queen, drones, and workers, describing workers as the non-reproductive females who perform the colony's practical tasks."
+    },
+    {
+      "type": "vocabulary",
+      "question": "When the article describes early \"opportunistic\" honey hunting, it means gathering honey:",
+      "choices": [
+        "only during certain seasons that were formally set aside for the harvest.",
+        "by carefully raising and tending bees inside purpose-built hives.",
+        "in large quantities that were mainly intended for trade with distant regions.",
+        "whenever wild hives happened to be found, rather than in a planned, managed way."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article contrasts opportunistic honey hunting, in which humans simply raided wild hives wherever they found them, with the deliberate, managed beekeeping that developed later."
+    },
+    {
+      "type": "inference",
+      "question": "Based on the article, if a very old jar of honey were found to have spoiled, what would be the most likely explanation?",
+      "choices": [
+        "Its wax seal had at some point been broken, letting moisture or open air reach the honey.",
+        "The bees that produced it had failed to add enough invertase during processing.",
+        "Its acidity had gradually risen until microorganisms were finally able to survive in it.",
+        "It had been kept at too low a temperature for its sugars to stay chemically stable."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article states that honey's defenses depend entirely on an intact wax seal, and that exposure to moisture or open air causes its protective properties to break down, so spoilage implies the seal was broken."
+    }
+  ]
+}

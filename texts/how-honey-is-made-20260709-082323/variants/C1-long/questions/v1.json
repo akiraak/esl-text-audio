@@ -1,0 +1,103 @@
+{
+  "articleVersion": 1,
+  "level": "C1",
+  "generatedAt": "2026-07-11T10:19:56",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "Why does the nectar a forager collects stay almost chemically unchanged during her flight back to the hive?",
+      "choices": [
+        "Because it is held in the crop for storage rather than broken down for digestion.",
+        "Because the forager adds invertase to it before leaving the flower.",
+        "Because the cool air during the flight suspends any chemical reactions.",
+        "Because the forager restricts herself to a single type of flower per trip."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article explains that the crop is entirely distinct from the digestive stomach, so the nectar is stored rather than digested and remains chemically almost unchanged during the flight home."
+    },
+    {
+      "type": "comprehension",
+      "question": "According to the article, what happens to the nectar each time it is passed from one bee to another inside the hive?",
+      "choices": [
+        "Its water content instantly drops below the 18.6 percent threshold.",
+        "A receiving bee adds invertase, which splits sucrose into glucose and fructose.",
+        "It is immediately sealed inside a cell with a cap of beeswax.",
+        "It is carried straight to the queen so that she can inspect it."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article states that with every handoff the receiving bee adds an enzyme called invertase, which breaks the sucrose down into two simpler sugars, glucose and fructose."
+    },
+    {
+      "type": "comprehension",
+      "question": "How do worker bees reduce the water content of the nectar deposited in the comb?",
+      "choices": [
+        "They cap the cells at once so that no water can escape afterwards.",
+        "They carry the nectar outside the hive to dry it in the sun.",
+        "They fan their wings continuously to create airflow that speeds up evaporation.",
+        "They stir beeswax into the nectar so that it absorbs the excess moisture."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article describes worker bees positioning themselves around the open comb and fanning their wings to generate a current of air that dramatically accelerates evaporation."
+    },
+    {
+      "type": "comprehension",
+      "question": "Within the age-based progression the article calls temporal polyethism, what do the youngest worker bees typically do?",
+      "choices": [
+        "They guard the hive entrance and remove dead bees from inside.",
+        "They fly out to forage for nectar among distant flowering plants.",
+        "They mate with queens that belong to neighbouring colonies.",
+        "They care for larvae and attend to the queen near the centre of the hive."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article says the youngest workers remain near the centre of the hive, cleaning brood cells, feeding and tending larvae, and attending to the queen, before moving to other tasks as they age."
+    },
+    {
+      "type": "comprehension",
+      "question": "According to the article, what single condition must be met for honey's natural defences against spoilage to keep working?",
+      "choices": [
+        "The honey must be stored at a consistently warm temperature.",
+        "The colony must keep adding fresh invertase to the honey.",
+        "The honey's acidity must gradually decrease over time.",
+        "The wax seal covering the cell must remain unbroken."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article states that all three of honey's defences depend entirely on one condition, namely that the wax seal stays intact; once honey meets moisture or open air, those properties begin to break down."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, when the enzymatic conversion is described as \"distributed across every individual handoff,\" the word \"distributed\" is closest in meaning to:",
+      "choices": [
+        "completed all at once by a single bee",
+        "postponed until the final cell has been sealed",
+        "spread out among many separate acts",
+        "measured out carefully before each transfer"
+      ],
+      "answerIndex": 2,
+      "explanation": "The surrounding sentence stresses that no single bee performs the whole conversion; rather it accumulates through every handoff, so \"distributed\" here means spread out among many separate acts."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the word \"underpinning\" (in \"underpinning roughly eight percent of global crop production\") is closest in meaning to:",
+      "choices": [
+        "gradually reducing",
+        "providing the basis for",
+        "openly competing with",
+        "keeping track of"
+      ],
+      "answerIndex": 1,
+      "explanation": "The passage says pollinators sustain most flowering plants and crops, so \"underpinning\" that share of crop production means providing the basis for or supporting it."
+    },
+    {
+      "type": "inference",
+      "question": "Based on the article, what can we most reasonably infer about freshly gathered nectar before the bees have processed it?",
+      "choices": [
+        "It would be far more vulnerable to spoilage than finished honey, because of its high water content.",
+        "It would resist spoilage just as effectively as finished, sealed honey does.",
+        "It would already be too acidic for any microorganism to survive within it.",
+        "It could be capped in wax and safely stored for thousands of years."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article notes that fresh nectar is roughly seventy percent water while honey's stability rests partly on its very low water content, so unprocessed nectar's high water content would leave it far more open to spoilage."
+    }
+  ]
+}

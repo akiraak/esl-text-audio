@@ -1,0 +1,103 @@
+{
+  "articleVersion": 1,
+  "level": "B1",
+  "generatedAt": "2026-07-11T10:19:15",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "According to the article, what does botany call a fruit?",
+      "choices": [
+        "Any food that has a sweet taste and is eaten after dinner.",
+        "Any food that people put in salads and soups.",
+        "The part of a plant that grows from a flower and holds the seeds.",
+        "The part of a plant that grows under the ground."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article says that in botany, a fruit is the part of a plant that grows from a flower and keeps the seeds safe inside. The rule does not care about taste."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why is a tomato a fruit for a scientist?",
+      "choices": [
+        "It grows from the plant's flowers and has many seeds inside.",
+        "It is juicy and people can eat it without cooking it.",
+        "It has a sweet taste like apples and oranges.",
+        "It is sold together with other fruits at the market."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article explains that a tomato grows from the plant's small yellow flowers and holds many seeds, so it does everything the rule in botany asks."
+    },
+    {
+      "type": "comprehension",
+      "question": "How do people group food in the kitchen?",
+      "choices": [
+        "By the flowers and seeds of each plant.",
+        "By the color and the size of each food.",
+        "By the price of the food in shops.",
+        "By the taste of the food and the way people use it."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article says that cooks do not group food by flowers and seeds; they group it by taste and by how they use it."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, a food with a \"savory\" taste is a food that...",
+      "choices": [
+        "is always eaten raw, without any cooking.",
+        "is not sweet and is used in main dishes.",
+        "is very soft and easy to cut open.",
+        "is eaten as a dessert after a meal."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article says some foods are sweet and eaten as a dessert, while other foods have a savory taste and are used in main dishes. So \"savory\" is the opposite of sweet here."
+    },
+    {
+      "type": "comprehension",
+      "question": "Under the tax law of 1883, why did the tomato company want the tomato to be a fruit?",
+      "choices": [
+        "Because people paid a tax on imported vegetables, but not on imported fruit.",
+        "Because fruit was easier to sell in shops than vegetables.",
+        "Because people paid a tax on imported fruit, but not on vegetables.",
+        "Because the court asked the company to sell only fruit."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article says that under the 1883 law, people paid a tax on imported vegetables but not on imported fruit, so a tomato was cheaper if it was a fruit."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why did Justice Horace Gray decide that the tomato is a vegetable?",
+      "choices": [
+        "Because dictionaries clearly say that a tomato is a vegetable.",
+        "Because science shows that a tomato has no seeds inside.",
+        "Because in common speech people eat tomatoes with dinner, not as a dessert.",
+        "Because the other judges did not agree with the tomato company."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article says Justice Gray looked at how people really use the words: in common speech a tomato is eaten with dinner, not served as a dessert."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, \"imported\" vegetables are vegetables that...",
+      "choices": [
+        "are grown by farmers inside the country.",
+        "are sold at a very high price in shops.",
+        "are cooked before people can eat them.",
+        "are brought into the country from other countries."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article talks about a tax on imported food and then about a company that \"brought in\" tomatoes. So \"imported\" describes food that comes from another country."
+    },
+    {
+      "type": "comprehension",
+      "question": "What does the article say about cucumbers, pumpkins, peppers, and eggplants?",
+      "choices": [
+        "They are vegetables in science but fruits in the kitchen.",
+        "They are fruits in botany, but we cook and eat them like vegetables.",
+        "They are sometimes used in sweet, dessert-style dishes.",
+        "They are strange cases that no scientist can explain."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article says these foods grow from flowers and hold seeds, so in botany they are fruits, but we cook and eat them like vegetables."
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "articleVersion": 1,
+  "level": "B1",
+  "generatedAt": "2026-07-11T10:21:04",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "According to the article, why can a scientist and a cook give different answers about the tomato?",
+      "choices": [
+        "Because cooks do not know very much about plants and seeds.",
+        "Because they are thinking about two different kinds of tomatoes.",
+        "Because they use different rules that were made for different reasons.",
+        "Because one of them is wrong, and the other one is right."
+      ],
+      "answerIndex": 2,
+      "explanation": "The section 'It Depends on Who You Ask' explains that there are at least two ways to sort food, made for different reasons, so both people can be right."
+    },
+    {
+      "type": "comprehension",
+      "question": "In botany, what makes a food a fruit?",
+      "choices": [
+        "It grows from a flower and holds the seeds of the plant.",
+        "It has a sweet taste and is eaten at the end of a meal.",
+        "It can be eaten raw, straight from the plant, without cooking.",
+        "It is soft and juicy and turns red when it is ready."
+      ],
+      "answerIndex": 0,
+      "explanation": "The section 'What Science Calls a Fruit' says that in botany, a fruit is the part of a plant that grows from a flower and holds the seeds."
+    },
+    {
+      "type": "comprehension",
+      "question": "How do cooks and shoppers sort food into groups?",
+      "choices": [
+        "By checking if the food grows from a flower and has seeds.",
+        "By looking at the color and the price of the food.",
+        "By asking scientists which group each food belongs to.",
+        "By thinking about its taste and how it is used in meals."
+      ],
+      "answerIndex": 3,
+      "explanation": "In 'How Cooks and Shoppers Think', the article says cooks and shoppers group food by its taste and by how it is used in meals."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why does the article say that the tomato 'is not odd at all'?",
+      "choices": [
+        "Because most people already agree that it is really a fruit.",
+        "Because many other foods, like cucumbers and peppers, follow the same pattern.",
+        "Because it is the only food that belongs to two groups at the same time.",
+        "Because scientists and cooks finally chose one answer together."
+      ],
+      "answerIndex": 1,
+      "explanation": "The section 'Tomato Is Not Alone' lists cucumbers, pumpkins, peppers, eggplants, and okra, which are all fruits in botany but are treated as vegetables in the kitchen."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why did the question about the tomato become a question about money in 1883?",
+      "choices": [
+        "A new law made people pay a tax on vegetables from other countries, but not on fruit.",
+        "A new law made fruit more expensive than vegetables in all the shops.",
+        "A company started to sell tomatoes as sweet desserts for the first time.",
+        "The government paid farmers who grew fruit instead of vegetables."
+      ],
+      "answerIndex": 0,
+      "explanation": "In 'When It Became About Money', the article says the 1883 tax law made people pay a tax on vegetables brought into the country, but not on fruit."
+    },
+    {
+      "type": "comprehension",
+      "question": "In 1893, why did the judges of the highest court decide that a tomato is a vegetable?",
+      "choices": [
+        "Because dictionaries clearly said that a tomato is not a fruit.",
+        "Because scientists showed the court that the tomato has no seeds.",
+        "Because in everyday language, people eat tomatoes with dinner, not as dessert.",
+        "Because the company agreed at the end that the tax was fair."
+      ],
+      "answerIndex": 2,
+      "explanation": "In 'The Court Decides', Justice Horace Gray said that in common speech a tomato is eaten with dinner and not served as a sweet dessert, so for the tax law it is a vegetable."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the word 'savory' describes food that...",
+      "choices": [
+        "is served on its own at the end of a meal.",
+        "has a taste that is not sweet.",
+        "is full of juice and small seeds.",
+        "must be cooked before you can eat it."
+      ],
+      "answerIndex": 1,
+      "explanation": "The section 'How Cooks and Shoppers Think' talks about foods with 'a savory, not-sweet taste' that we use inside main dishes."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the word 'pattern' in 'Once you notice this pattern' means...",
+      "choices": [
+        "a mistake that many people make again and again.",
+        "a design of shapes or colors on paper or cloth.",
+        "a strict rule that everyone in the kitchen must follow.",
+        "something that happens in the same way many times."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article uses 'pattern' for the way many foods sit in one group by science and in another group by cooking. It means something that happens again and again in the same way."
+    }
+  ]
+}

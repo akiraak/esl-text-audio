@@ -10,6 +10,7 @@
 | 3 | [懐疑的ファクトチェッカー](skeptical-fact-checker.md) | `factcheck.md` | 本文の事実主張を疑い、`sources/` と突き合わせる |
 | 4 | [簡略化セーフティチェッカー](simplification-safety-checker.md) | `factcheck.md` | ESL向けの易化によって事実の意味が歪んでいないか確認する |
 | 5 | [最終エディター](final-editor.md) | `generate.md`（最終）, `brushup.md` | 各ペルソナの指摘を統合し、矛盾する指摘の優先順位を判断して最終稿を確定する |
+| 6 | [設問設計者](question-writer.md) | `questions.md` | 確定した本文から、記事と同じレベルの英語で理解度確認問題（4択）を設計する |
 
 ## ファイル構成のルール
 

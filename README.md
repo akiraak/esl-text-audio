@@ -3,7 +3,7 @@ Generate ESL reading texts, listening audio, and comprehension questions for Eng
 
 ## 生成テキストの閲覧サーバ
 
-`texts/` 配下に生成済みのテキスト（config / outline / article / sources）を一覧・閲覧できるローカルサーバ。
+`texts/` 配下に生成済みのテキスト（config / outline / article / sources / audio / questions）を一覧・閲覧できるローカルサーバ。記事ページには本文・音声に加えて理解度確認問題（4択、タップで即時採点）が表示される（[workflows/questions.md](workflows/questions.md) で作成、`questions/v{N}.json` が無い記事には表示されない）。
 
 ```bash
 npm install

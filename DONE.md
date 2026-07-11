@@ -2,6 +2,13 @@
 
 ## 2026-07-11
 
+- [x] 記事の理解度確認問題（Questions）を作成する（[archived plan](docs/plans/archive/article-questions.md)）
+  - 問題の形式: 4択選択式（内容理解/文脈語彙/推論）。`questions/v{N}.json` を音声と同じく記事バージョンと同番号で管理
+  - 回答の表示: タップで即時フィードバック方式（vanilla JS・依存なし）。全問回答でスコア表示、印刷時は紙のワークシートになる
+  - `docs/specs/esl-level-spec.md` に「理解度確認問題（Questions）の基準」を追記、`personas/question-writer.md`・`workflows/questions.md` を新規作成
+  - `lib/site.js` に Questions セクション（描画・採点JS・CSS・印刷対応）を実装。問題が無い記事の見た目は変化なし
+  - 既存6トピック全13バリアントの最新記事バージョンに問題を生成（各問題は learner-simulator チェック済み、answerIndex 分布の偏りなし）
+
 - [x] スマホの表示に対応（[archived plan](docs/plans/archive/mobile-responsive.md)）
   - 640px以下で body/article の余白・見出しサイズ・表セルpadding・一覧サムネイルを縮小するメディアクエリを追加
   - 一覧ページの作成日時を日付のみ表示に変更し、meta項目が文字列途中で折り返さないよう修正

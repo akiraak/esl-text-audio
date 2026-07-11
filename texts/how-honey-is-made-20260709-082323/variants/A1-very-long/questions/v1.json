@@ -1,0 +1,103 @@
+{
+  "articleVersion": 1,
+  "level": "A1",
+  "generatedAt": "2026-07-11T10:19:29",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "What does a bee drink from a flower?",
+      "choices": [
+        "The sweet water.",
+        "The wind from the wings.",
+        "The wax from the cell.",
+        "The eggs from the queen."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article says the flower has sweet water inside, and the bee drinks this nectar."
+    },
+    {
+      "type": "comprehension",
+      "question": "Where does the bee carry the nectar?",
+      "choices": [
+        "To another flower.",
+        "Back to the hive.",
+        "Deep under the ground.",
+        "Into a clay pot."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article says the bee carries the nectar back to the hive, the bees' home."
+    },
+    {
+      "type": "comprehension",
+      "question": "What happens to the sugar in the nectar?",
+      "choices": [
+        "The sugar becomes water.",
+        "The sugar goes away.",
+        "One big sugar becomes two small sugars.",
+        "Two small sugars become one big sugar."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article says the nectar has one big sugar, and now it becomes two small sugars."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why do the bees move their wings very fast?",
+      "choices": [
+        "To clean the hive.",
+        "To feed the baby bees.",
+        "To make the honey wet.",
+        "To dry the honey."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article says the wings make wind, and the wind dries the wet honey."
+    },
+    {
+      "type": "comprehension",
+      "question": "What does the queen bee do?",
+      "choices": [
+        "She builds the honeycomb.",
+        "She lays many eggs.",
+        "She flies outside the hive.",
+        "She dries the wet honey."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article says one queen bee lives in the hive, and she lays many eggs."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why do bad germs not grow in honey?",
+      "choices": [
+        "Honey is very wet.",
+        "Honey is very cold.",
+        "Honey has very little water.",
+        "Honey has no lid."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article says germs need water, but honey is very dry and has very little water."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the word \"hive\" means:",
+      "choices": [
+        "a kind of sweet flower.",
+        "a small bag in the bee.",
+        "a drop from the bee's body.",
+        "the home of the bees."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article says the hive is the bees' home."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the word \"wax\" means:",
+      "choices": [
+        "a small lid on the honey cell.",
+        "the sweet water inside flowers.",
+        "the wind from the fast wings.",
+        "the eggs from the queen bee."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article says the bees close the honey cell with wax, and the wax is like a small lid."
+    }
+  ]
+}

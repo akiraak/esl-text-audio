@@ -1,0 +1,67 @@
+{
+  "articleVersion": 2,
+  "level": "A2",
+  "generatedAt": "2026-07-11T10:18:50",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "Why did Mia get lost in the town?",
+      "choices": [
+        "She took the wrong bus.",
+        "She lost her paper map.",
+        "Her phone's map stopped working.",
+        "The streets had no names."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article says her phone's map app suddenly died. After that, all the streets looked the same to Mia."
+    },
+    {
+      "type": "comprehension",
+      "question": "How did Mia feel on the quiet street?",
+      "choices": [
+        "She felt nervous and a little scared.",
+        "She felt happy and very calm.",
+        "She felt tired but excited.",
+        "She felt angry at the town."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article says Mia felt more and more nervous on the quiet street, and she told the woman, 'I'm a little scared.'"
+    },
+    {
+      "type": "comprehension",
+      "question": "How did Mia find the cafe in the end?",
+      "choices": [
+        "She used her phone map again.",
+        "She asked the cafe owner for help.",
+        "She followed the small dog there.",
+        "A woman from the town showed her the way."
+      ],
+      "answerIndex": 3,
+      "explanation": "The woman said, 'I know a shortcut. Come with me!' They walked together and soon reached the cafe."
+    },
+    {
+      "type": "comprehension",
+      "question": "What did Mia do to thank the woman?",
+      "choices": [
+        "She gave her some money.",
+        "She bought her a cup of tea.",
+        "She walked her small dog.",
+        "She cooked her a nice meal."
+      ],
+      "answerIndex": 1,
+      "explanation": "Inside the cafe, Mia thanked the woman and bought her a cup of tea."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the word 'shortcut' means...",
+      "choices": [
+        "a long walk in a town",
+        "a quiet street with no people",
+        "a quick way to go to a place",
+        "a map app on a phone"
+      ],
+      "answerIndex": 2,
+      "explanation": "The woman knew all the streets very well, and after she said 'I know a shortcut,' they reached the cafe soon. So a shortcut is a quick way."
+    }
+  ]
+}

@@ -103,12 +103,16 @@ ESL学習用テキスト生成フローの8番目（最後）のステップ。[
   [workflows/audio.md](audio.md) を新しい本文バージョンに対して実行し `audio/v{N+1}.mp3` を生成する
   （記事ページは記事バージョンと同番号の音声のみ表示するため、再生成しないと新バージョンのページには音声が出ない）
 - 旧バージョンの `audio/v{N}.mp3` は旧記事ページ用にそのまま残す
+- 理解度確認問題（`questions/v{N}.json`）も同じ規約で管理している（[workflows/questions.md](questions.md) 参照）。
+  旧バージョンに問題が存在していた場合は、[workflows/questions.md](questions.md) を新しい本文バージョンに対して実行し
+  `questions/v{N+1}.json` を作成する（旧バージョンの `questions/v{N}.json` も旧記事ページ用にそのまま残す）
 
 ### 10. 保存・報告
 
 - 保存先: `variants/{level}-{tier}/articles/v{N+1}.md`（構成変更を伴った場合は対応する `outlines/{outlineTier}/v{outlineVersion+1}.md` も、
   イラストを再生成した場合はトピック直下の `images/v{M}.png` と `images/v{M}.prompt.txt` も、
-  音声を再生成した場合は `variants/{level}-{tier}/audio/v{N+1}.mp3` と `v{N+1}.json` も）
+  音声を再生成した場合は `variants/{level}-{tier}/audio/v{N+1}.mp3` と `v{N+1}.json` も、
+  問題を再作成した場合は `variants/{level}-{tier}/questions/v{N+1}.json` も）
 - 利用者に保存したバージョンと変更内容を報告する。手順4で他バリアント・他tierへの反映を行った場合、イラストを再生成した場合は
   他バリアントの表示にも影響する旨を併せて報告する
 - 追加のフィードバックがあれば、この [workflows/brushup.md](brushup.md) を再度実行する

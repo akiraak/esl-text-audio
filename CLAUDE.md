@@ -37,6 +37,7 @@ esl-text-audio/
 │   ├── factcheck.md     # 生成した本文と外部資料の突き合わせ・修正
 │   ├── illustrate.md    # 本文に対応するAI生成イラストの作成
 │   ├── audio.md         # 確定した本文のリスニング用音声（TTS）の生成
+│   ├── questions.md     # 確定した本文の理解度確認問題（4択・自動採点）の作成
 │   ├── brushup.md       # フィードバックに基づく調整・再生成
 │   └── add-ideas.md     # トピックアイデアの追加（生成パイプラインとは独立の単体ワークフロー）
 ├── scripts/
@@ -62,8 +63,10 @@ esl-text-audio/
             └── {level}-{tier}/            # 例: B1-normal, C1-long, A1-very-long
                 ├── variant.json           # level / tier / wordCountTarget / longForm / outlineTier / outlineVersion
                 ├── articles/v1.md, v2.md, ...
-                └── audio/                 # audio.md 実行後のみ作成。記事バージョンと同番号のMP3＋生成条件メタデータ
-                    └── v1.mp3, v1.json, ...
+                ├── audio/                 # audio.md 実行後のみ作成。記事バージョンと同番号のMP3＋生成条件メタデータ
+                │   └── v1.mp3, v1.json, ...
+                └── questions/             # questions.md 実行後のみ作成。記事バージョンと同番号の理解度確認問題（4択）
+                    └── v1.json, ...
 ```
 
 - outline（分量tier単位）・article（バリアント単位）はそれぞれ独立にバージョン管理し、brushup のたびに新しいバージョンとして保存する（既存バージョンは直接編集しない）
@@ -84,13 +87,14 @@ esl-text-audio/
    会話のやりとり・主観的内容・架空の設定は対象外。対象が無い本文は「対象なし」で完了）
 6. `workflows/illustrate.md` — 確定した本文に対応するAI生成イラスト（GPT Image 2）を `scripts/generate-illustration.js` 経由で生成。トピックにつき1枚のみ生成し、全バリアントで共有する（既に生成済みの場合はスキップ）
 7. `workflows/audio.md` — 確定した本文のリスニング用音声（Gemini 2.5 Flash Preview TTS）を `scripts/generate-audio.js` 経由で生成。バリアント単位で、記事バージョンと同番号の `audio/v{N}.mp3` を作る
-8. `workflows/brushup.md` — フィードバックに基づき新バージョンとして調整・再生成（1バリアント単位で実行）
+8. `workflows/questions.md` — 確定した本文の理解度確認問題（4択・自動採点）を作成。バリアント単位で、記事バージョンと同番号の `questions/v{N}.json` を作る（本文確定後なら illustrate / audio と並行して実行できる）
+9. `workflows/brushup.md` — フィードバックに基づき新バージョンとして調整・再生成（1バリアント単位で実行）
 
 上記パイプラインとは独立して、いつでも実行できる単体ワークフロー:
 
 - `workflows/add-ideas.md` — [docs/topic-ideas.md](docs/topic-ideas.md) へのトピックアイデアの追加（「アイデアを追加したい」と言われたらこれを実行する）
 
-トピックだけが送られてきた場合は、上記フローに沿って `config.md` から開始し、`research.md`（客観的事実を扱わない場合はスキップ可）→ `outline.md`（レベル・分量の確定を含む）→ `generate.md` → `factcheck.md` → `illustrate.md` → `audio.md` と進める。
+トピックだけが送られてきた場合は、上記フローに沿って `config.md` から開始し、`research.md`（客観的事実を扱わない場合はスキップ可）→ `outline.md`（レベル・分量の確定を含む）→ `generate.md` → `factcheck.md` → `illustrate.md` → `audio.md` → `questions.md` と進める。
 同じトピックに別のレベル・分量のバリアントを追加したい場合は、`config.md` 手順1でその旨を伝えれば既存トピックを再利用し、`outline.md` から再開する。
 
 ### レベル・分量・ジャンル・事実チェック方針

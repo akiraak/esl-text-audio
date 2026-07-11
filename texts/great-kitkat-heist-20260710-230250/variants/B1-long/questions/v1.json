@@ -1,0 +1,103 @@
+{
+  "articleVersion": 1,
+  "level": "B1",
+  "generatedAt": "2026-07-11T10:18:43",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "How did the thieves manage to stop the truck?",
+      "choices": [
+        "They blocked the road with another truck.",
+        "They waited for it at the factory gate.",
+        "They pretended to be police officers.",
+        "They followed it until it stopped for fuel."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article says the thieves looked exactly like police officers, so the driver stopped. But they were not real police."
+    },
+    {
+      "type": "comprehension",
+      "question": "What was special about the stolen KitKat bars?",
+      "choices": [
+        "They were shaped like small racing cars.",
+        "They were the biggest bars Nestlé has ever made.",
+        "They were made with a new kind of chocolate.",
+        "They were sold only in Italy and Poland."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article explains that every bar was a special edition shaped like a small Formula 1 racing car, made for two big birthdays."
+    },
+    {
+      "type": "comprehension",
+      "question": "Who do the Italian police think stole the truck?",
+      "choices": [
+        "A few hungry men who wanted free chocolate.",
+        "Workers from the chocolate factory.",
+        "Real police officers from another town.",
+        "Organized groups of experienced criminals."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article says the police do not believe it was a few hungry men. They are looking at organized crime groups that have robbed trucks before."
+    },
+    {
+      "type": "comprehension",
+      "question": "What happened to the truck driver after the robbery?",
+      "choices": [
+        "He drove away together with the thieves.",
+        "He was found safe later.",
+        "He hid inside the truck until help came.",
+        "He is still missing, like the chocolate."
+      ],
+      "answerIndex": 1,
+      "explanation": "The section \"Fake Police, Real Thieves\" says the driver was found safe later, which was the best news of the whole story."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why did many people think the robbery was a joke?",
+      "choices": [
+        "Nestlé often tells funny stories in the news.",
+        "The story sounded like a scene from a movie.",
+        "The news appeared just before April Fools' Day.",
+        "The number of stolen bars kept changing."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article says the news came out just before April 1, a day when companies love to tell funny stories that are not true, so people refused to believe it."
+    },
+    {
+      "type": "comprehension",
+      "question": "How can people check if their KitKat bar is one of the stolen ones?",
+      "choices": [
+        "By entering the code from the wrapper on a website.",
+        "By calling the Italian police and describing the bar.",
+        "By comparing the bar's shape with photos online.",
+        "By taking the bar back to a Nestlé factory."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article describes the \"Stolen KitKat Tracker\": if you scan or type the eight-digit code from the wrapper, the website tells you if the bar is stolen."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the word \"heist\" means...",
+      "choices": [
+        "a funny story that is not true.",
+        "a truck that carries food across Europe.",
+        "a special product made in small numbers.",
+        "a big robbery that was planned carefully."
+      ],
+      "answerIndex": 3,
+      "explanation": "The first section explains the name: newspapers called it \"The Great KitKat Heist,\" which means a big, carefully planned robbery."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the word \"wrapper\" means...",
+      "choices": [
+        "a person who reports a crime to the police.",
+        "the paper around the chocolate.",
+        "the eight-digit code on each bar.",
+        "a tool on the company's website."
+      ],
+      "answerIndex": 1,
+      "explanation": "The section about the tracker explains that the code is on the wrapper — the paper around the chocolate."
+    }
+  ]
+}

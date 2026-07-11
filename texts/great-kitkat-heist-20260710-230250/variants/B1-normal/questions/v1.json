@@ -1,0 +1,67 @@
+{
+  "articleVersion": 1,
+  "level": "B1",
+  "generatedAt": "2026-07-11T10:18:47",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "How did the thieves take the truck?",
+      "choices": [
+        "They broke into the chocolate factory at night.",
+        "They pretended to be police officers and stopped it.",
+        "They followed the truck all the way to Poland.",
+        "They paid the driver to give them the chocolate."
+      ],
+      "answerIndex": 1,
+      "explanation": "The second paragraph says the thieves looked like police officers, but they were not real. They took the driver away and drove off with the truck."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why were the stolen KitKat bars special?",
+      "choices": [
+        "They were shaped like small racing cars.",
+        "They were the largest bars Nestlé has ever made.",
+        "They were made with a new kind of chocolate.",
+        "They were sold only at Formula 1 races."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article says the bars were a special edition, shaped like small Formula 1 racing cars, made for two big birthdays."
+    },
+    {
+      "type": "comprehension",
+      "question": "What does the \"Stolen KitKat Tracker\" on Nestlé's website do?",
+      "choices": [
+        "It shows a map of where the truck is now.",
+        "It gives customers a free bar if theirs was stolen.",
+        "It tells you if the code on your bar belongs to a stolen one.",
+        "It lets the police watch every chocolate shop in Europe."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article explains that every bar has an eight-digit code on the wrapper. If you enter your code, the tool tells you if your bar is one of the stolen ones."
+    },
+    {
+      "type": "comprehension",
+      "question": "What was the situation on April 10?",
+      "choices": [
+        "The police had found the truck but not the chocolate.",
+        "The thieves had given the chocolate back to Nestlé.",
+        "Shops in Europe had run out of KitKats.",
+        "The chocolate was still missing and the police were still searching."
+      ],
+      "answerIndex": 3,
+      "explanation": "The last paragraph says that by April 10, nobody had found the missing bars, and the police in Italy were still searching."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the last paragraph, the word \"evidence\" means...",
+      "choices": [
+        "a special prize for careful customers.",
+        "information that can help solve a crime.",
+        "a warning that the food is dangerous.",
+        "an advertisement for a new product."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article says your snack may be \"an important piece of evidence\" because the wrapper can show that the bar was stolen. Evidence is something that helps show what happened in a crime."
+    }
+  ]
+}

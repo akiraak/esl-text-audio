@@ -1,0 +1,67 @@
+{
+  "articleVersion": 1,
+  "level": "A1",
+  "generatedAt": "2026-07-11T10:19:13",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "Where does a bee find nectar?",
+      "choices": [
+        "In the hive.",
+        "In a bee's body.",
+        "In a flower.",
+        "In the wax."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article says a bee visits a flower and takes sweet juice from it. This sweet juice is nectar."
+    },
+    {
+      "type": "comprehension",
+      "question": "A bee brings nectar to the hive. What does the next bee do?",
+      "choices": [
+        "It adds something from its body.",
+        "It takes the nectar to a flower.",
+        "It closes the nectar with wax.",
+        "It puts water in the nectar."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article says another bee takes the nectar and adds something from its body. Then the nectar slowly turns into honey."
+    },
+    {
+      "type": "comprehension",
+      "question": "The bees fan their wings. What does this do to the honey?",
+      "choices": [
+        "It makes the honey warm.",
+        "It makes the honey sweet.",
+        "It makes the honey wet.",
+        "It makes the honey dry."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article says the bees fan their wings, and this dries the honey."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why does honey with a good seal not go bad?",
+      "choices": [
+        "Bees clean it every day.",
+        "It has little water, and it is sour.",
+        "It has much water, and it is sweet.",
+        "People keep it in a cold place."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article says the honey has very little water and is very sour. These things stop bad germs."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the word \"tiny\" means...",
+      "choices": [
+        "very small.",
+        "very sweet.",
+        "very old.",
+        "very fast."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article says a tiny drop of honey has a big story. \"Tiny\" means very small."
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "articleVersion": 1,
+  "level": "B1",
+  "generatedAt": "2026-07-11T10:14:52",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "According to the article, where does the journey of the water cycle start?",
+      "choices": [
+        "In the clouds high above the land.",
+        "With heat from the sun warming the water.",
+        "With rain falling on the mountains.",
+        "In rivers that flow into the sea."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article says the journey starts with the sun. Heat from the sun warms the oceans, lakes, and rivers."
+    },
+    {
+      "type": "comprehension",
+      "question": "How are clouds formed?",
+      "choices": [
+        "Warm air holds more and more vapor until it turns white.",
+        "Rain freezes high in the sky and becomes clouds.",
+        "Water vapor cools down and changes into tiny drops of water.",
+        "Trees and plants send tiny drops of water into the sky."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article explains that cool air cannot hold as much water vapor as warm air, so the vapor changes back into tiny drops of liquid water. This process is called condensation."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the word \"precipitation\" means...",
+      "choices": [
+        "water falling from the sky as rain, snow, or hail.",
+        "water rising from the sea into the air.",
+        "water that is stored under the ground.",
+        "tiny drops of water floating together in a cloud."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article says that when a cloud becomes full, the water falls back to Earth as rain, snow, or hail, and that this is called precipitation."
+    },
+    {
+      "type": "comprehension",
+      "question": "What happens to water after it reaches the ground?",
+      "choices": [
+        "It stays in one place until the sun dries it.",
+        "All of it goes straight back into the sky.",
+        "It always turns into snow and ice.",
+        "Some flows into rivers, and some sinks into the soil."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article says some water flows over the land into rivers and streams, and some slowly sinks into the soil and becomes groundwater."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why is the ocean so important in the water cycle?",
+      "choices": [
+        "It is the only place where rain can fall.",
+        "It holds most of the water on Earth.",
+        "It is warmer than lakes and rivers.",
+        "It keeps water still in one place."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article says the oceans store about 96 percent of all the water on Earth, so the ocean is the biggest starting point and ending point of the cycle."
+    }
+  ]
+}

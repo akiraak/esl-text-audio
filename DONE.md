@@ -2,6 +2,12 @@
 
 ## 2026-07-10
 
+- [x] 記事ページに読み上げキャラ名を表示する（Chobi / Naruko）（[archived plan](docs/plans/archive/audio-reader-name.md)）
+  - `lib/site.js` の `audioBlock()` が `audio/v{N}.json` の `character` を読み、プレイヤー直前に「Read by Chobi / Naruko」ラベルを表示（manabi は表示名 Naruko）。メタデータ欠損時はラベル無し、印刷時はプレイヤーと共に非表示
+
+- [x] 読み上げキャラ未指定時はトピック内で使用回数が偏らないよう選ぶ（[archived plan](docs/plans/archive/tts-character-balance.md)）
+  - `generate-audio.js` の完全ランダム選択を、同トピックの既存音声（`variants/*/audio/*.json`）の `character` を集計して最少使用のキャラを選ぶ方式に変更（同数はランダム、上書き対象の自メタデータは集計から除外）。`workflows/audio.md`・`.env.example` の記述も更新
+
 - [x] 記事ページのレイアウト順変更（パンくず→イラスト→タイトル→メタ→本文）（[archived plan](docs/plans/archive/article-page-layout-order.md)）
   - `lib/site.js` の `renderArticleContent()` でイラストをタイトルの前に移動。バージョンリンクはパンくず直後、音声プレイヤーはメタ情報後・本文前に配置
 

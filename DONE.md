@@ -2,6 +2,9 @@
 
 ## 2026-07-10
 
+- [x] 記事ページのレイアウト順変更（パンくず→イラスト→タイトル→メタ→本文）（[archived plan](docs/plans/archive/article-page-layout-order.md)）
+  - `lib/site.js` の `renderArticleContent()` でイラストをタイトルの前に移動。バージョンリンクはパンくず直後、音声プレイヤーはメタ情報後・本文前に配置
+
 - [x] github pages に OGPタグを設定（[archived plan](docs/plans/archive/ogp-tags.md)）
   - `lib/site.js` の `layout()` に og:site_name / og:title / og:type / og:url / og:image / (og:)description / twitter:card の出力を追加し、各 `render*` が `description`・`imageParts`（トピックのイラスト）・`ogType` を返すように変更
   - 記事系ページの description は本文 Markdown 冒頭からの抜粋（~160字）、og:image はトピック共有イラスト（1536x864 のため twitter:card は summary_large_image）

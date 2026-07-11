@@ -10,3 +10,4 @@
   - [x] g3plus-ops 側: `esltext/`（Dockerfile / docker-compose / auto-update.sh）と運用ドキュメント作成
   - [x] サーバ側: clone・コンテナ起動・cron 登録・動作確認
   - [ ] Cloudflare Tunnel hostname `esltext.chobi.me` の追加（akiraak 手作業、手順は g3plus-ops docs/workflows/esltext.md）
+  - [ ] Web表示のモバイル対応

@@ -15,10 +15,37 @@ const CHARACTERS = {
   manabi: { voice: 'Aoede', tone: 'Speak in a bright, energetic voice full of curiosity.' },
 };
 
-// キャラ未指定時は2キャラをランダムに使い分ける
-function randomCharacterName() {
-  const names = Object.keys(CHARACTERS);
-  return names[Math.floor(Math.random() * names.length)];
+// キャラ未指定時はトピック内でキャラが偏らないよう、同トピックの既存音声（variants/*/audio/*.json）の
+// character を集計し、使用回数が最少のキャラを選ぶ（同数の場合はその中からランダム）。
+// 今回上書きされる自分自身のメタデータは集計から除外する（再生成時に旧値が影響しないように）
+function pickCharacterName(variantDir, version) {
+  const counts = Object.fromEntries(Object.keys(CHARACTERS).map((name) => [name, 0]));
+  const variantsDir = path.dirname(path.resolve(variantDir));
+  const selfMetaPath = path.resolve(variantDir, 'audio', `v${version}.json`);
+  let variantEntries = [];
+  try {
+    variantEntries = fs.readdirSync(variantsDir);
+  } catch {
+    /* 集計できない場合は全キャラ0票＝ランダム選択にフォールバック */
+  }
+  for (const entry of variantEntries) {
+    const audioDir = path.join(variantsDir, entry, 'audio');
+    if (!fs.existsSync(audioDir)) continue;
+    for (const file of fs.readdirSync(audioDir)) {
+      if (!file.endsWith('.json')) continue;
+      const metaPath = path.join(audioDir, file);
+      if (metaPath === selfMetaPath) continue;
+      try {
+        const { character } = JSON.parse(fs.readFileSync(metaPath, 'utf-8'));
+        if (character in counts) counts[character] += 1;
+      } catch {
+        /* 壊れたメタデータは無視 */
+      }
+    }
+  }
+  const min = Math.min(...Object.values(counts));
+  const leastUsed = Object.keys(counts).filter((name) => counts[name] === min);
+  return leastUsed[Math.floor(Math.random() * leastUsed.length)];
 }
 const FALLBACK_SAMPLE_RATE = 24000; // Gemini TTS は s16le/mono/24kHz を返す。実際のレートは応答の mimeType から取る
 const MAX_SEGMENT_CHARS = 4000; // これを超える段落のみ文境界でさらに分割する
@@ -233,7 +260,7 @@ async function main() {
   if (!variantDir || !version) {
     console.error('Usage: node scripts/generate-audio.js <variant-dir> <article-version> [character]');
     console.error('  e.g. node scripts/generate-audio.js texts/water-cycle-20260709-052935/variants/B1-normal 1 chobi');
-    console.error(`  character: ${Object.keys(CHARACTERS).join(' | ')} (default: random)`);
+    console.error(`  character: ${Object.keys(CHARACTERS).join(' | ')} (default: least-used within the topic)`);
     process.exit(1);
   }
   if (!/^\d+$/.test(version)) {
@@ -241,7 +268,7 @@ async function main() {
     process.exit(1);
   }
 
-  const characterName = characterArg || process.env.GEMINI_TTS_CHARACTER || randomCharacterName();
+  const characterName = characterArg || process.env.GEMINI_TTS_CHARACTER || pickCharacterName(variantDir, version);
   const character = CHARACTERS[characterName];
   if (!character) {
     console.error(`Unknown character: ${characterName} (available: ${Object.keys(CHARACTERS).join(', ')})`);
@@ -339,4 +366,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { segmentArticle, splitLongSegments, pauseSecondsBetween, assemblePcm, PAUSES, CHARACTERS };
+module.exports = { segmentArticle, splitLongSegments, pauseSecondsBetween, assemblePcm, pickCharacterName, PAUSES, CHARACTERS };

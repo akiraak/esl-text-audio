@@ -1,0 +1,103 @@
+{
+  "articleVersion": 1,
+  "level": "C2",
+  "generatedAt": "2026-07-12T19:27:21",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "Why does the article argue that a definition anchored to taste would be useless to a botanist?",
+      "choices": [
+        "Because taste cannot be described in scientific language.",
+        "Because sweetness varies with ripeness, variety, and season, so it reveals nothing dependable about a plant's biology.",
+        "Because botanists are, as a rule, unable to taste the plants they study.",
+        "Because cooks had already claimed taste as their own territory."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article explains that sweetness shifts with ripeness, variety, and the season and so tells you nothing reliable about a plant's biology, which is why the botanist anchors the definition to the flower and the seed instead."
+    },
+    {
+      "type": "comprehension",
+      "question": "According to the article, what role does the tomato's juicy flesh play from the plant's own point of view?",
+      "choices": [
+        "It is simply a by-product with no purpose in the plant's life.",
+        "It stores water to help the plant survive dry weather.",
+        "It is the packaging and the bribe that persuades an animal to carry the seeds away to a new place.",
+        "It is what allows the tomato to grow directly from the root."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article describes the flesh as the plant's packaging and bribe — a parcel that tempts an animal to carry the seeds away and leave them somewhere new — since, for the plant, the seeds are the point."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why, in the article, does a shared botanical ancestry matter so little to a nutritionist?",
+      "choices": [
+        "Because foods that are close relations in botanical terms need not share the same nutritional makeup.",
+        "Because nutritionists are not permitted to consult botanical sources.",
+        "Because all botanical fruits contain exactly the same nutrients.",
+        "Because the nutritional value of a food changes only after it is cooked."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article notes that botanically related foods do not necessarily share a nutritional makeup, so knowing their kinship tells the nutritionist little about how to eat them or what they will do for the body."
+    },
+    {
+      "type": "comprehension",
+      "question": "What examples does the article give of the border being crossed in the opposite direction — vegetables behaving like fruits?",
+      "choices": [
+        "Cucumber and squash, which are eaten raw in salads.",
+        "Peppers and aubergines, which are cooked in savoury dishes.",
+        "Peas and beans, which the Court also discussed.",
+        "Rhubarb and sweet potato, which are botanical vegetables used in sweet, dessert-style recipes."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article says rhubarb and sweet potato are vegetables by botanical classification yet are enlisted in sweet, dessert-style dishes, showing that the traffic across the border runs both ways."
+    },
+    {
+      "type": "comprehension",
+      "question": "How did Justice Gray treat the dictionary definitions of \"fruit\" in his opinion?",
+      "choices": [
+        "He rejected them as simply mistaken about the tomato.",
+        "He ignored them entirely and relied only on the tariff's exact wording.",
+        "He used them to prove that the tomato should be taxed as a fruit.",
+        "He granted that they defined fruit as the seed of the plant, but said they did nothing to show that tomatoes were fruit rather than vegetables in ordinary language."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article reports that Gray freely granted the dictionaries defined fruit as the seed of the plant, yet held that this did nothing to show tomatoes were fruit rather than vegetables in the ordinary language of daily life."
+    },
+    {
+      "type": "comprehension",
+      "question": "Besides the tomato, which foods did the Court's reasoning also sweep up as vegetables?",
+      "choices": [
+        "Cucumbers, squashes, peas, and beans.",
+        "Rhubarb, sweet potato, and avocado.",
+        "Apples, oranges, and other sweet fruits.",
+        "Only foods imported through the port of New York."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article states that Gray's reasoning swept up cucumbers, squashes, peas, and beans, all of which the everyday tongue likewise counted among the vegetables."
+    },
+    {
+      "type": "inference",
+      "question": "The article stresses that the Court \"did not presume to overturn the science.\" What does this most strongly suggest about the ruling's scope?",
+      "choices": [
+        "The ruling settled, once and for all, what a tomato is in nature.",
+        "The ruling applied only to the narrow legal question of the tariff, leaving the botanical fact untouched.",
+        "The ruling made the botanical definition illegal to use.",
+        "The ruling forced scientists to reclassify the tomato as a vegetable."
+      ],
+      "answerIndex": 1,
+      "explanation": "By emphasising that the Court did not overturn the science and ruled only for the narrow legal question before it, the article implies the decision governed the tariff alone and left the tomato's botanical status as a fruit intact."
+    },
+    {
+      "type": "vocabulary",
+      "question": "The article says the culinary and botanical schemes are \"specialists tending separate kingdoms.\" In context, this phrase means that the two systems —",
+      "choices": [
+        "are constantly at war over which one should rule.",
+        "were both created by the same group of experts.",
+        "each have authority within their own domain and are not really competing for a single role.",
+        "will eventually merge into one shared classification."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article uses the image of separate kingdoms to say that each scheme is sovereign within its own borders and that the two are not rivals contending for a single crown."
+    }
+  ]
+}

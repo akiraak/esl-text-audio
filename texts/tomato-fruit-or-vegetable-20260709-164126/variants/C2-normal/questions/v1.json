@@ -1,0 +1,103 @@
+{
+  "articleVersion": 1,
+  "level": "C2",
+  "generatedAt": "2026-07-12T19:27:21",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "According to the article, why does the botanical definition of a fruit ignore whether something is sweet?",
+      "choices": [
+        "Because sweetness is difficult to measure accurately in a laboratory.",
+        "Because the definition turns on origin and structure — growing from a flower and containing seeds — rather than on taste.",
+        "Because most botanical fruits happen to taste identical to one another.",
+        "Because chefs, not scientists, are the ones who decide what counts as sweet."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article states that the single question that matters to a botanist is one of origin and structure — did it grow from a flower, and does it hold seeds — and that sugar and flavour lie beneath the botanist's notice."
+    },
+    {
+      "type": "comprehension",
+      "question": "On what grounds does the article say a tomato satisfies the botanical definition of a fruit?",
+      "choices": [
+        "It grows out of the plant's small yellow flowers and holds many seeds inside.",
+        "It is round, red, and juicy enough to be eaten raw like an apple.",
+        "It is nutritionally similar to other foods that scientists call fruits.",
+        "It is sold beside apples and oranges rather than beside onions."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article explains that a tomato grows directly out of the plant's small yellow flowers and, when cut open, reveals a crowded multitude of seeds, meeting every condition the definition lays down."
+    },
+    {
+      "type": "comprehension",
+      "question": "How does the article characterise the way cooks classify food?",
+      "choices": [
+        "By the plant's flowers and seeds, exactly as botanists do.",
+        "By price and by how long the food will keep in storage.",
+        "By the country the food was originally imported from.",
+        "By flavour and by use — whether a food is sweet and eaten as dessert, or savoury and built into a main dish."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article says that in the kitchen food is sorted by flavour and by use, distinguishing sweet foods eaten as dessert from savoury foods used in main dishes."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why, according to the article, is the culinary classification genuinely useful to chefs, shoppers, and nutritionists?",
+      "choices": [
+        "Because it always agrees with the botanical classification in the end.",
+        "Because it is simpler and requires no special training to apply.",
+        "Because foods close in botanical terms can still differ entirely in flavour and use on the plate, which is what those people need to know.",
+        "Because it was formally established by a decision of the Supreme Court."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article argues that the culinary system serves chefs, shoppers, and nutritionists precisely because two foods can be close cousins botanically yet have nothing in common in taste or use — the very thing the kitchen must know."
+    },
+    {
+      "type": "comprehension",
+      "question": "What point does the article make with cucumbers, squash, peppers, and aubergines?",
+      "choices": [
+        "That the tomato is no lone exception, since these are also botanical fruits treated as vegetables in the kitchen.",
+        "That they are the only foods besides the tomato that grow from flowers.",
+        "That they are, unlike the tomato, genuinely sweet enough for dessert.",
+        "That the Supreme Court refused to rule on their classification."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article lists cucumbers, squash, peppers, and aubergines as botanical fruits treated as vegetables, showing that the tomato is merely the most famous member of a large club rather than a freak case."
+    },
+    {
+      "type": "comprehension",
+      "question": "According to the article, what actually prompted the dispute that reached the Supreme Court in Nix v. Hedden?",
+      "choices": [
+        "A disagreement among scientists about how the tomato grows.",
+        "A public campaign to have the tomato officially renamed.",
+        "A shortage of tomatoes at the port of New York.",
+        "A tariff law that taxed imported vegetables but let imported fruit enter duty-free, which gave importers a financial reason to call tomatoes fruit."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article explains that the Tariff Act of 1883 taxed imported vegetables but not fruit, so the Nix importers had a financial motive to argue their tomatoes were fruit, and sued the port's tax collector."
+    },
+    {
+      "type": "inference",
+      "question": "What does the article most strongly imply about the relationship between the botanical and culinary answers?",
+      "choices": [
+        "One of them must eventually be proven wrong by better evidence.",
+        "They only seem to conflict because each answers a different question, so both can be correct at once.",
+        "The culinary answer is a rough approximation that science will one day replace.",
+        "They are identical claims expressed in two different vocabularies."
+      ],
+      "answerIndex": 1,
+      "explanation": "Throughout, and especially in the conclusion, the article insists the two answers are not rivals but responses to different questions — how the tomato is made versus how it is used — so neither is the counterfeit of the other."
+    },
+    {
+      "type": "vocabulary",
+      "question": "In the article, the Supreme Court's decision to be ruled by \"common usage rather than by botanical strictness\" means the Court chose to follow —",
+      "choices": [
+        "the precise technical definition favoured by scientists.",
+        "the oldest dictionary definition available to the judges.",
+        "the way ordinary people actually speak of and use the food in everyday life.",
+        "whichever interpretation raised the most tax revenue."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article explains that Justice Gray relied on how tomatoes were spoken of and served in common speech — as part of the main course, not dessert — rather than on the strict botanical definition."
+    }
+  ]
+}

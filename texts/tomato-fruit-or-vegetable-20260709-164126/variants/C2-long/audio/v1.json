@@ -1,0 +1,12 @@
+{
+  "model": "gemini-2.5-flash-preview-tts",
+  "character": "manabi",
+  "voice": "Aoede",
+  "level": "C2",
+  "style": "Read aloud at a natural pace with clear articulation, like an audiobook narrator. Speak in a bright, energetic voice full of curiosity.",
+  "articleVersion": 1,
+  "segmentCount": 34,
+  "sampleRate": 24000,
+  "durationSeconds": 1078.5,
+  "generatedAt": "2026-07-13T02:56:08.677Z"
+}

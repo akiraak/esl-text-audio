@@ -1,0 +1,103 @@
+{
+  "articleVersion": 1,
+  "level": "C2",
+  "generatedAt": "2026-07-12T19:27:21",
+  "questions": [
+    {
+      "type": "comprehension",
+      "question": "In the section \"Two Ways to Sort Food,\" what general point does the article make about categories?",
+      "choices": [
+        "A category is a tool built for a purpose, not a property read off the object itself.",
+        "Every object carries a single true category that never changes.",
+        "Only scientists are entitled to place foods into categories.",
+        "Categories are fixed by law and cannot be revised."
+      ],
+      "answerIndex": 0,
+      "explanation": "The article argues that a category is not a property of an object but a tool somebody built for a purpose, so the same object may be sorted into different boxes when the purposes differ."
+    },
+    {
+      "type": "comprehension",
+      "question": "Why does the article reject the idea that the botanical scheme is the \"real\" truth while the culinary scheme is a rough approximation?",
+      "choices": [
+        "Because the culinary scheme is actually older than the botanical one.",
+        "Because the Supreme Court declared the culinary scheme superior.",
+        "Because each scheme is sharp and exact within its own purpose and beside the point outside it, so neither is a blurred version of the other.",
+        "Because botanists secretly agree with cooks about the tomato."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article says neither scheme is a blurred version of the other: each is sharp within its own purpose, one telling the truth about how the tomato grows and the other about how it is eaten, with no deeper truth ranking them."
+    },
+    {
+      "type": "comprehension",
+      "question": "What does the article say happens to a person's cooking after they learn that the tomato is botanically a fruit?",
+      "choices": [
+        "They begin serving tomatoes with cream as a dessert.",
+        "Nothing changes; the tomato goes on being chopped into the salad exactly as before.",
+        "They stop using tomatoes in savoury dishes altogether.",
+        "They start sorting all their food by flower and seed."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article observes that the botanical revelation has no consequences for the plate — the tomato is still chopped into the salad as before — which shows the kitchen was answering a different question all along."
+    },
+    {
+      "type": "comprehension",
+      "question": "How does the article describe the relationship between the tomato and foods like rhubarb and sweet potato?",
+      "choices": [
+        "They are all botanical fruits that behave as vegetables.",
+        "They are all botanical vegetables that behave as fruits.",
+        "They are foods the Supreme Court refused to classify.",
+        "They are perfect mirror-images: the tomato is a botanical fruit used as a vegetable, while rhubarb and sweet potato are botanical vegetables used as sweets."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article calls rhubarb and the sweet potato the perfect mirror-images of the tomato, since the border between the categories is crossed in both directions by respectable foods."
+    },
+    {
+      "type": "comprehension",
+      "question": "According to the article, why could the law not simply leave the tomato its comfortable double life?",
+      "choices": [
+        "Because scientists demanded a single official answer.",
+        "Because a tariff must be either paid or not paid, so the customs house needed one answer in dollars and cents.",
+        "Because the importers refused to bring in any more tomatoes.",
+        "Because the dictionary offered two conflicting definitions."
+      ],
+      "answerIndex": 1,
+      "explanation": "The article explains that the law cannot tolerate two answers — a crate cannot be taxed as a vegetable and waved through as a fruit at once — so the legal setting forced the two peaceable classifications into a real collision."
+    },
+    {
+      "type": "comprehension",
+      "question": "What does the article identify as the irony at the heart of the Nix v. Hedden decision?",
+      "choices": [
+        "The importers won even though their argument was scientifically false.",
+        "The Court secretly agreed with the importers but ruled against them anyway.",
+        "The judges could not decide whether the tomato was a fruit or a vegetable.",
+        "The importers lost precisely because they were botanically correct, since the tariff was written in ordinary language, not scientific language."
+      ],
+      "answerIndex": 3,
+      "explanation": "The article points out that the importers lost because they were botanically right: the true fact that a tomato is a fruit answered the wrong question, since the tariff was written in ordinary language in which the tomato is a vegetable."
+    },
+    {
+      "type": "inference",
+      "question": "Which statement best captures the broader lesson the article draws from the tomato?",
+      "choices": [
+        "Many apparent contradictions are really two people answering different questions with the same word, so agreeing on the question matters before arguing the answer.",
+        "Most everyday disagreements are impossible to resolve.",
+        "Scientific definitions should always overrule everyday ones.",
+        "Words have single fixed meanings that experts alone may use."
+      ],
+      "answerIndex": 0,
+      "explanation": "In its closing sections the article generalises that a great many conflicts are the tomato's predicament in disguise — a word stretched across two purposes — and urges making sure people agree on the question before arguing about the answer."
+    },
+    {
+      "type": "vocabulary",
+      "question": "The article compares the scientist and cook to \"two people arguing about whether it is 'morning' while standing in different time zones.\" This comparison is meant to show that their disagreement is —",
+      "choices": [
+        "impossible to settle because no clocks are accurate.",
+        "caused by one of them simply being ignorant of the facts.",
+        "real on the surface but unreal underneath, because each is right within a different frame of reference.",
+        "proof that only one of the two answers can ever be correct."
+      ],
+      "answerIndex": 2,
+      "explanation": "The article uses the time-zone image to say the disagreement is real on the surface and unreal underneath — everything depends on the frame, which is set by the question each person is really asking."
+    }
+  ]
+}

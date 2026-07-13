@@ -1,5 +1,16 @@
 # DONE
 
+## 2026-07-12
+
+- [x] 印刷時のページ番号表示（[archived plan](docs/plans/archive/print-page-numbers.md)）
+  - ブラウザの「ヘッダーとフッター」設定だと日付・タイトル・URLも出てしまうため、
+    CSS `@page` マージンボックスで「現在ページ / 総ページ数」だけを下部中央に表示（Chrome 131+）
+
+- [x] 印刷時のデザイン修正（[archived plan](docs/plans/archive/print-design-fixes.md)）
+  - 音声プレーヤー（シークバー）を印刷時も表示するようにした（"Read by ..." 行は純黒化）。
+    ネイティブコントロールはバーが印刷されないため、枠線だけで描いた印刷専用ブロック（再生時間付き）に差し替える方式
+  - レベル・分量tierなどのバッジに印刷時のふち枠線（#999）を追加した
+
 ## 2026-07-11
 
 - [x] 記事の理解度確認問題（Questions）を作成する（[archived plan](docs/plans/archive/article-questions.md)）
